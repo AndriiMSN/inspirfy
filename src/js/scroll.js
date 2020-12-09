@@ -208,30 +208,30 @@ let currentY = 0,
     currentX = 0
 
 window.addEventListener('touchmove', (e) => {
-
-    if (modalLets.classList.contains("open")
-        ||
-        modalStart.classList.contains("open")
-    ) {
-
-    } else {
+    if (document.documentElement.clientWidth >= 1366) {
+        // if (modalLets.classList.contains("open")
+        //     ||
+        //     modalStart.classList.contains("open")
+        // ) {
+        //
+        // } else {
         e.preventDefault()
         e.stopPropagation()
         return false
+        // }
     }
-
 
 }, document.documentElement.clientWidth >= 1366 ? {passive: false} : {passive: true})
 
 
 window.addEventListener('touchstart', (e) => {
-    // if (document.documentElement.clientWidth >= 1366) {
-    //     e.preventDefault()
-    currentY = e.changedTouches[0].clientY;
-    currentX = e.changedTouches[0].clientX;
+    if (document.documentElement.clientWidth >= 1366) {
+        //     e.preventDefault()
+        currentY = e.changedTouches[0].clientY;
+        currentX = e.changedTouches[0].clientX;
 
-    return currentY, currentX
-    // }
+        return currentY, currentX
+    }
 })
 
 window.addEventListener(

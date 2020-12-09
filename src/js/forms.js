@@ -47,10 +47,10 @@ AllInputsLetsTalk.forEach((el) => {
 })
 
 TextareaLetsTalk.addEventListener('blur', () => {
-	CheckEmptyInputs(Textarea)
+	CheckEmptyInputs(TextareaLetsTalk)
 })
 TextareaLetsTalk.addEventListener('input', () => {
-	CheckEmptyInputs(Textarea)
+	CheckEmptyInputs(TextareaLetsTalk)
 })
 
 

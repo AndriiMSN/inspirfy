@@ -26,6 +26,8 @@
 
     position: relative;
 
+    overflow: hidden;
+
     // 1560px
     @media (max-width: $screen-xl-min)
     {
@@ -34,7 +36,12 @@
     // 992px
     @media (max-width: $screen-md-min)
     {
-      min-height: 900px;
+      min-height: 1024px;
+    }
+    // 520px
+    @media (max-width: $screen-mdsm-min)
+    {
+      min-height: 568px;
     }
   }
 
@@ -68,6 +75,7 @@
       width: 100%;
       height: 100%;
     }
+
     // 992px
     @media (max-width: $screen-md-min)
     {
@@ -161,7 +169,7 @@
     {
       div:last-child
       {
-        display: block;
+
       }
     }
   }
@@ -216,14 +224,16 @@
     @media (max-width: $screen-sm-min)
     {
       max-width: 100%;
+      width: 100%;
+      min-width: 100%;
+      box-sizing: border-box;
     }
     // 520px
     @media (max-width: $screen-mdsm-min)
     {
-      flex-direction: column;
-      align-items: flex-start;
-      padding-top: 40px;
-      max-width: 100%;
+      padding-top: 24px;
+      padding-left: 16px;
+      padding-right: 16px;
     }
   }
 
@@ -254,7 +264,6 @@
     @media (max-width: $screen-mdsm-min)
     {
       padding-left: 0;
-      padding-top: 24px;
     }
 
     h1
@@ -278,7 +287,7 @@
       // 520px
       @media (max-width: $screen-mdsm-min)
       {
-        padding-top: 14px;
+        padding-top: 10px;
       }
     }
   }
@@ -307,11 +316,20 @@
       margin-top: calc(100vh * 0.14);
       margin-right: 0;
     }
+
+    // 768px
+    @media (max-width: $screen-sm-min)
+    {
+      max-width: 480px;
+
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: calc(100vh * 0.10);
+    }
     // 520px
     @media (max-width: $screen-mdsm-min)
     {
-      margin-top: 26px;
-      margin-right: 0;
+      margin-top: calc(100vh * 0.05);
     }
 
     form
@@ -336,6 +354,13 @@
       @media (max-width: $screen-sm-min)
       {
         align-items: center;
+        min-height: 462px;
+      }
+      // 520px
+      @media (max-width: $screen-mdsm-min)
+      {
+        position: relative;
+        min-height: 390px;
       }
     }
 
@@ -345,6 +370,11 @@
       @media (max-width: $screen-xl-min)
       {
         margin-bottom: 45px;
+      }
+      // 520px
+      @media (max-width: $screen-mdsm-min)
+      {
+        margin-bottom: 20px;
       }
     }
 
@@ -358,9 +388,16 @@
         bottom: 35px;
       }
       // 992px
-      @media (max-width: $screen-md-min) {
+      @media (max-width: $screen-md-min)
+      {
         bottom: 10px;
       }
+      // 520px
+      @media (max-width: $screen-mdsm-min)
+      {
+        position: relative;
+      }
+
     }
 
     &__input,

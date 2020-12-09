@@ -5480,6 +5480,11 @@ form button {
     margin-top: 0px;
   }
 }
+@media (max-height: 750px) and (min-width: 1365px) {
+  .faq__toggle {
+    margin-top: 0;
+  }
+}
 .faq__toggle__items {
   display: flex;
   flex-direction: column;
@@ -6708,6 +6713,7 @@ form button {
   justify-content: center;
   align-items: baseline;
   position: relative;
+  overflow: hidden;
 }
 @media (max-width: 1560px) {
   .lets__talk .inherit {
@@ -6716,7 +6722,12 @@ form button {
 }
 @media (max-width: 992px) {
   .lets__talk .inherit {
-    min-height: 900px;
+    min-height: 1024px;
+  }
+}
+@media (max-width: 520px) {
+  .lets__talk .inherit {
+    min-height: 568px;
   }
 }
 .lets__talk.open {
@@ -6820,11 +6831,6 @@ form button {
 .lets__talk__marks div:last-child {
   display: none;
 }
-@media (max-width: 767px) {
-  .lets__talk__marks div:last-child {
-    display: block;
-  }
-}
 .lets__talk .container {
   width: 100%;
   max-width: 1370px;
@@ -6867,14 +6873,16 @@ form button {
 @media (max-width: 767px) {
   .lets__talk .container {
     max-width: 100%;
+    width: 100%;
+    min-width: 100%;
+    box-sizing: border-box;
   }
 }
 @media (max-width: 520px) {
   .lets__talk .container {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-top: 40px;
-    max-width: 100%;
+    padding-top: 24px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 .lets__talk__text {
@@ -6903,7 +6911,6 @@ form button {
 @media (max-width: 520px) {
   .lets__talk__text {
     padding-left: 0;
-    padding-top: 24px;
   }
 }
 .lets__talk__text h1 {
@@ -6924,7 +6931,7 @@ form button {
 }
 @media (max-width: 520px) {
   .lets__talk__text__title {
-    padding-top: 14px;
+    padding-top: 10px;
   }
 }
 .lets__talk__form {
@@ -6942,10 +6949,17 @@ form button {
     margin-right: 0;
   }
 }
+@media (max-width: 767px) {
+  .lets__talk__form {
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: calc(100vh * 0.10);
+  }
+}
 @media (max-width: 520px) {
   .lets__talk__form {
-    margin-top: 26px;
-    margin-right: 0;
+    margin-top: calc(100vh * 0.05);
   }
 }
 .lets__talk__form form {
@@ -6969,11 +6983,23 @@ form button {
 @media (max-width: 767px) {
   .lets__talk__form form {
     align-items: center;
+    min-height: 462px;
+  }
+}
+@media (max-width: 520px) {
+  .lets__talk__form form {
+    position: relative;
+    min-height: 390px;
   }
 }
 @media (max-width: 1560px) {
   .lets__talk__form__input {
     margin-bottom: 45px;
+  }
+}
+@media (max-width: 520px) {
+  .lets__talk__form__input {
+    margin-bottom: 20px;
   }
 }
 .lets__talk__form__submit {
@@ -6988,6 +7014,11 @@ form button {
 @media (max-width: 992px) {
   .lets__talk__form__submit {
     bottom: 10px;
+  }
+}
+@media (max-width: 520px) {
+  .lets__talk__form__submit {
+    position: relative;
   }
 }
 .lets__talk__form__input, .lets__talk__form__submit {
