@@ -1,0 +1,45 @@
+// Smartphones (landscape view)
+
+$screen-exsm-min: 375px;
+// 375px
+@media (max-width: $screen-exsm-min) {
+}
+
+$screen-mdsm-min: 520px;
+// 520px
+@media (max-width: $screen-mdsm-min) {
+
+}
+
+
+// Small tablets (portrait view)
+$screen-sm-min: 767px;
+// 768px
+@media (max-width: $screen-sm-min) {
+}
+
+// Tablets
+$screen-md-min: 992px;
+// 992px
+@media (max-width: $screen-md-min)
+{
+}
+
+// Small desktops
+
+$screen-lg-min: 1260px;
+// 1260px
+@media (max-width: $screen-lg-min) {
+}
+
+// Large tablets and desktops
+$screen-xl-min: 1560px;
+// 1560px
+@media (max-width: $screen-xl-min)
+{
+}
+
+$screen-xxl-min: 1919px;
+// 1919px
+@media (max-width: $screen-xxl-min) {
+}

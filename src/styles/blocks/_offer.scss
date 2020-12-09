@@ -1,0 +1,497 @@
+@import "../base/mixins";
+
+.offer {
+  @include block;
+  background-color: $black;
+
+
+  .container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: -92px;
+    // 1560px
+    @media (max-width: $screen-xl-min) {
+      margin-top: -30px;
+    }
+    // 992px
+    @media (max-width: $screen-md-min) {
+      margin-top: 0;
+    }
+  }
+
+  &__title {
+  }
+
+  h1 {
+    padding-top: 123px;
+    // 1560px
+    @media (max-width: $screen-xl-min) {
+      padding-top: 60px;
+    }
+    // 992px
+    @media (max-width: $screen-md-min) {
+    }
+    // 768px
+    @media (max-width: $screen-sm-min) {
+      padding-top: 20px;
+    }
+  }
+
+  &__items {
+    padding-top: 40px;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    // 1560px
+    @media (max-width: $screen-xl-min) {
+      max-width: calc(1120px - 35px);
+      padding-top: 40px;
+    }
+    // 992px
+    @media (max-width: $screen-md-min) {
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    // 768px
+    @media (max-width: $screen-sm-min) {
+      padding-top: 23px;
+    }
+
+    &__item {
+      flex: 0 0 25%;
+      max-width: 345px;
+      // 1560px
+      @media (max-width: $screen-xl-min) {
+        max-width: 230px;
+      }
+      // 992px
+      @media (max-width: $screen-md-min) {
+        min-width: 338px;
+        flex: 0 0 50%;
+        margin-bottom: 50px;
+      }
+      // 768px
+      @media (max-width: $screen-sm-min) {
+        flex: 0 0 100%;
+        max-width: 288px;
+        margin-bottom: 0;
+      }
+
+      &__title {
+        padding-top: 40px;
+        padding-bottom: 24px;
+        max-width: 307px;
+        @include text($Noto-sans, normal, bold, 24px, 34px);
+        // 1560px
+        @media (max-width: $screen-xl-min) {
+          font-size: 18px;
+          line-height: 25px;
+          padding-top: 35px;
+        }
+        // 992px
+        @media (max-width: $screen-md-min) {
+          max-width: 220px;
+        }
+        // 768px
+        @media (max-width: $screen-sm-min) {
+          padding-top: 14px;
+          padding-bottom: 10px;
+          font-size: 18px;
+          line-height: 26px;
+        }
+      }
+
+      &__description {
+        @include text($Noto-sans, normal, normal, 18px, 28px);
+        letter-spacing: 0.02em;
+        max-width: 307px;
+        // 1560px
+        @media (max-width: $screen-xl-min) {
+          font-size: 14px;
+          line-height: 24px;
+        }
+        // 992px
+        @media (max-width: $screen-md-min) {
+          max-width: 288px;
+        }
+        // 768px
+        @media (max-width: $screen-sm-min) {
+          padding-bottom: 24px;
+        }
+      }
+
+      .offer__items__item__figure {
+        width: 140px;
+        height: 140px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        div {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        // 1560px
+        @media (max-width: $screen-xl-min) {
+          width: 95px;
+          height: 95px;
+        }
+        // 768px
+        @media (max-width: $screen-sm-min) {
+          width: 75px;
+          height: 75px;
+        }
+      }
+
+      &:nth-child(1) {
+        .offer__items__item__figure {
+          // Main circle
+          div {
+            @include circle(130px, #1f1f1f);
+            // 1560px
+            @media (max-width: $screen-xl-min) {
+              @include circle(95px, #1f1f1f);
+            }
+            // 768px
+            @media (max-width: $screen-sm-min) {
+              @include circle(70px, #1f1f1f);
+            }
+            // Inner circle
+            div {
+              @include circle(85px, #404040);
+              // 1560px
+              @media (max-width: $screen-xl-min) {
+                @include circle(62px, #404040);
+              }
+              // 768px
+              @media (max-width: $screen-sm-min) {
+                @include circle(45px, #404040);
+              }
+              // Main circle inner
+              div {
+                @include circle(57px, #1f1f1f);
+                // 1560px
+                @media (max-width: $screen-xl-min) {
+                  @include circle(42px, #1f1f1f);
+                }
+                // 768px
+                @media (max-width: $screen-sm-min) {
+                  @include circle(31px, #1f1f1f);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &:nth-child(2) {
+        .offer__items__item__figure {
+          // Main square
+          & > div {
+            @include square(100px, #1f1f1f);
+            transform: rotate(45deg);
+            // 1560px
+            @media (max-width: $screen-xl-min) {
+              @include square(75px, #1f1f1f);
+            }
+            // 768px
+            @media (max-width: $screen-sm-min) {
+              @include square(50px, #1f1f1f);
+            }
+            // Inner square
+            div {
+              @include square(70px, #404040);
+              // 1560px
+              @media (max-width: $screen-xl-min) {
+                @include square(50px, #404040);
+              }
+              // 768px
+              @media (max-width: $screen-sm-min) {
+                @include square(36px, #404040);
+              }
+              // Inner circle
+              div {
+                @include circle(18px, #767676);
+                // 1560px
+                @media (max-width: $screen-xl-min) {
+                  @include circle(12px, #767676);
+                }
+                // 768px
+                @media (max-width: $screen-sm-min) {
+                  @include circle(9px, #767676);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &:nth-child(3) {
+        .offer__items__item__figure {
+          // Main square
+          & > div {
+            @include square(100px, #1f1f1f);
+            transform: rotate(45deg);
+            // 1560px
+            @media (max-width: $screen-xl-min) {
+              @include square(70px, #1f1f1f);
+            }
+            // 768px
+            @media (max-width: $screen-sm-min) {
+              @include square(52px, #1f1f1f);
+            }
+            // Inner circle
+            div {
+              @include circle(100px, #404040);
+              // 1560px
+              @media (max-width: $screen-xl-min) {
+                @include circle(70px, #404040);
+              }
+              // 768px
+              @media (max-width: $screen-sm-min) {
+                @include circle(52px, #404040);
+              }
+              // Inner main circle
+              div {
+                @include circle(72px, #1f1f1f);
+                // 1560px
+                @media (max-width: $screen-xl-min) {
+                  @include circle(50px, #1f1f1f);
+                }
+                // 768px
+                @media (max-width: $screen-sm-min) {
+                  @include circle(38px, #1f1f1f);
+                }
+                // Inner small square
+                div {
+                  @include circle(10px, #7f7f7f);
+                  // 1560px
+                  @media (max-width: $screen-xl-min) {
+                    @include circle(6.7px, #7f7f7f);
+                  }
+                  // 768px
+                  @media (max-width: $screen-sm-min) {
+                    @include circle(5px, #7f7f7f);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &:nth-child(4) {
+        .offer__items__item__figure {
+          // Main square
+          div {
+            @include square(130px, #1f1f1f);
+            // 1560px
+            @media (max-width: $screen-xl-min) {
+              @include square(95px, #1f1f1f);
+            }
+            // 768px
+            @media (max-width: $screen-sm-min) {
+              @include square(70px, #1f1f1f);
+            }
+            // Inner square
+            div {
+              @include square(90px, #404040);
+              // 1560px
+              @media (max-width: $screen-xl-min) {
+                @include square(68px, #404040);
+              }
+              // 768px
+              @media (max-width: $screen-sm-min) {
+                @include square(48px, #404040);
+              }
+              // Inner small circle
+              div {
+                @include circle(18px, #767676);
+                // 1560px
+                @media (max-width: $screen-xl-min) {
+                  @include square(14px, #767676);
+                }
+                // 768px
+                @media (max-width: $screen-sm-min) {
+                  @include circle(10px, #767676);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.animate {
+
+    .container {
+      h1 {
+        animation: OfferTitleTranslate 1s .3s, InitHide .3s;
+
+      }
+
+      .offer__items__item__title{
+        animation: OfferTitleTranslate .5s .9s , InitHide .9s;
+      }
+      .offer__items__item__description {
+        animation: OfferTitleTranslate .5s 1.1s , InitHide 1.1s;
+      }
+    }
+
+    .offer__items {
+      &__item {
+        &:nth-child(1) {
+          .offer__items__item__figure {
+            // Main circle
+            div {
+
+              animation: OfferCircle .8s .8s, OfferInitItem .8s;
+
+
+              // Inner circle
+              div {
+
+
+                animation: OfferCircle 1s 1.2s, OfferInitItem 1.2s;
+
+
+                // Main circle inner
+                div {
+
+                  animation: OfferCircle .5s 1.2s, OfferInitItem 1.2s;
+
+                }
+              }
+            }
+          }
+        }
+
+        &:nth-child(2) {
+          .offer__items__item__figure {
+            // Main square
+            div {
+
+
+              animation: OfferSquare 1.7s .8s, OfferInitItem .8s;
+
+
+              // Inner square
+              div {
+
+                animation: OfferSquareRev 1.7s .8s, OfferInitItem .8s;
+
+                // Inner circle
+                div {
+                  animation: OfferCircle .6s 1.1s, OfferInitItem 1.1s;
+                }
+              }
+            }
+          }
+        }
+
+        &:nth-child(3) {
+          .offer__items__item__figure {
+            // Main square
+            & > div {
+
+              animation: OfferSquare 1.7s .8s, OfferInitItem .8s;
+
+              // Inner circle
+              div {
+
+                animation: OfferCircle .8s 1.1s, OfferInitItem 1.1s;
+
+                // Inner main circle
+                div {
+
+                  animation: OfferCircle .8s 1.1s, OfferInitItem 1.1s;
+
+                  // Inner small square
+                  div {
+                    animation: OfferSquareRev 1.7s .8s, OfferInitItem .8s;
+
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        &:nth-child(4) {
+          .offer__items__item__figure {
+            // Main square
+            div {
+
+              animation: OfferSquareRev 1.7s .8s, OfferInitItem .8s;
+
+              // Inner square
+              div {
+
+                animation: OfferSquareRev 1.7s .8s, OfferInitItem .8s;
+
+                // Inner small circle
+                div {
+
+                  animation: OfferCircle .6s 1.1s, OfferInitItem 1.1s;
+
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes OfferInitItem {
+  from {
+    width: 0;
+    height: 0;
+  }
+  to {
+    width: 0;
+    height: 0;
+  }
+}
+
+@keyframes OfferCircle {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes OfferSquare {
+  from {
+    transform: rotate(-270deg);
+  }
+  to {
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes OfferSquareRev {
+  from {
+    transform: rotate(90deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes OfferTitleTranslate {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

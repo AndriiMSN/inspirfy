@@ -1,0 +1,48 @@
+@font-face {
+  font-family: "Eina03W03-SemiBold";
+  src: url("../assets/fonts/Eina\ 03\ W03\ SemiBold.ttf");
+}
+
+// REMOVE HIGHLIGHT WHEN USER SELECT OR CLICK ITEM
+html{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+@import "./base/breakpoints";
+@import "./base/variables";
+@import "./base/mixins";
+@import "./base/animation";
+
+@import "./index";
+@import './blocks/arrowUp';
+@import "./blocks/cover";
+@import "./blocks/header";
+@import "./blocks/mobile__menu";
+@import "./vidbg.css";
+@import "./blocks/hero";
+@import "./blocks/brands";
+@import "./blocks/toggleTemplate";
+@import "./blocks/target";
+@import "./blocks/selling";
+@import "./blocks/tools";
+@import "./blocks/offer";
+@import "./blocks/about";
+@import "./blocks/stages";
+@import "./blocks/people";
+@import "./blocks/faq";
+@import "./blocks/write_us";
+@import "./blocks/beta";
+@import "./blocks/footer";
+
+// POPUPS
+
+@import "./blocks/start__earning";
+@import "./blocks/lets__talk";
+

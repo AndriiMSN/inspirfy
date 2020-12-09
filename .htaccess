@@ -1,0 +1,5 @@
+
+	
+RewriteEngine On
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+RewriteRule ^index\.html$ http://andrey.takasho.work/Inspirfy [R=301,L]

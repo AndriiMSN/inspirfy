@@ -1,0 +1,596 @@
+.header {
+  position: absolute;
+  width: 100%;
+  padding-top: 63px;
+  box-sizing: border-box;
+  height: 100vh;
+  transition: all 0.5s ease;
+  z-index: 120;
+
+
+  &.blur {
+    filter: blur(10px);
+  }
+
+  // 1560px
+  @media (max-width: $screen-xl-min) {
+    padding-top: 45px;
+  }
+
+  // 992px
+  @media (max-width: $screen-md-min) {
+    padding-top: 40px;
+  }
+
+  // 768px
+  @media (max-width: $screen-sm-min) {
+    padding-top: 20px;
+    &.normalize {
+      //background-color: rgba($color: #000000, $alpha: 0.3);
+      height: 30px;
+      box-sizing: content-box;
+    }
+  }
+
+  &.scroll {
+    // transition: all 0.5s ease;
+    // padding-top: 30px;
+    // background-color: rgba($color: #000000, $alpha: 0.3);
+    // height: 40px;
+    // box-sizing: content-box;
+    // z-index: 100;
+  }
+
+  &.normalize {
+    // height: 38px;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    @media (max-width: $screen-lg-min) {
+      width: auto;
+    }
+    @media (max-width: $screen-md-min) {
+      justify-content: space-between;
+    }
+  }
+
+  &__mobBtn {
+    width: 24px;
+    height: 24px;
+    box-sizing: border-box;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    align-self: baseline;
+    cursor: pointer;
+    transform: translateY(-50%);
+    animation: hideInitMenu 3s;
+    z-index: 110;
+
+    span {
+      width: 100%;
+      height: 2px;
+      border: 1px solid #ffffff;
+      background: #ffffff;
+      // 768px
+      @media (max-width: $screen-sm-min) {
+        height: 0px;
+      }
+    }
+
+    // 992px
+    @media (max-width: $screen-md-min) {
+      display: flex;
+    }
+  }
+
+  &__logo {
+    position: absolute;
+    z-index: 60;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // 0s ----------- hide for loadinng htmlDOM
+    // .5S ---------- Start logo Circle Animation
+    // 1.5s --------- Start Text translate and Animate
+    // 1.8s --------- Delay before scaling
+    // 2.1S --------- Scaling
+    // TOTAL : 3.3S
+    animation: LogoInitHide .5s, LogoInit 1s .5s, translateLogo .3s 1.5s ease-in, translateLogoDelay .3s 1.8s,
+    scaleLogo 1.2s 2.1s ease-in-out;
+    // 992px
+    @media (max-width: $screen-md-min) {
+      animation: LogoInitHide .5s, LogoInitSm 1s .5s, translateLogoSm .3s 1.5s ease-in, translateLogoDelaySm .3s 1.8s,
+      scaleLogoSm 1.2s 2.1s ease-in-out;
+    }
+
+    // 768px
+    @media (max-width: $screen-sm-min) {
+      animation: LogoInitHide .5s, LogoInitSm 1s .5s, translateLogoSm .3s 1.5s ease-in, translateLogoDelaySm .3s 1.8s,
+      scaleLogoMob 1.2s 2.1s ease-in-out;
+    }
+
+    @keyframes LogoInitHide {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+
+    @keyframes LogoInit {
+      from {
+        top: calc(50% - 63px);
+        left: 50%;
+        transform: translate(calc(-50% + 286px - 72.5px), -50%);
+      }
+      to {
+        top: calc(50% - 63px);
+        left: 50%;
+        transform: translate(calc(-50% + 286px - 72.5px), -50%);
+      }
+    }
+
+    @keyframes LogoInitSm {
+      from {
+        top: calc(50% - 40px);
+        left: 50%;
+        transform: translate(calc(-50% + 143px - 36.25px), -50%);
+      }
+      to {
+        top: calc(50% - 40px);
+        left: 50%;
+        transform: translate(calc(-50% + 143px - 36.25px), -50%);
+      }
+    }
+
+    @keyframes translateLogo {
+      from {
+        top: calc(50% - 63px);
+        left: 50%;
+        transform: translate(calc(-50% + 286px - 72.5px), -50%);
+        // 1560px
+        @media (max-width: $screen-xl-min) {
+          top: calc(100% - 45px);
+        }
+      }
+      to {
+        top: calc(50% - 63px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+        // 1560px
+        @media (max-width: $screen-xl-min) {
+          top: calc(100% - 45px);
+        }
+      }
+    }
+
+    @keyframes translateLogoDelay {
+      from {
+        top: calc(50% - 63px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      to {
+        top: calc(50% - 63px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    @keyframes translateLogoSm {
+      from {
+        top: calc(50% - 40px);
+        left: 50%;
+        transform: translate(calc(-50% + 143px - 36.25px), -50%);
+      }
+      to {
+        top: calc(50% - 40px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    @keyframes translateLogoDelaySm {
+      from {
+        top: calc(50% - 40px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      to {
+        top: calc(50% - 40px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    @keyframes scaleLogo {
+      from {
+        top: calc(50% - 63px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      to {
+        top: 0;
+        left: 0;
+        transform: scale(0.26);
+        transform-origin: 0 -9.5px;
+        // 1560px
+        @media (max-width: $screen-xl-min) {
+          transform: scale(0.2);
+          transform-origin: 0 -5.5px;
+        }
+      }
+    }
+
+    @keyframes scaleLogoSm {
+      from {
+        top: calc(50% - 40px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      to {
+        top: 0;
+        transform: scale(0.45) translateX(-50%);
+        transform-origin: 0 -5.5px;
+        left: 50%;
+      }
+    }
+
+    @keyframes scaleLogoMob {
+      from {
+        top: calc(50% - 40px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      to {
+        top: -60px;
+        transform: scale(0.115) translateX(-50%);
+        transform-origin: 0 -5.5px;
+        left: 50%;
+      }
+    }
+
+    // 992px
+    @media (max-width: $screen-md-min) {
+      // opacity: 0;
+    }
+
+    &.scale {
+      top: 0;
+      left: 0;
+      transform: scale(0.26);
+      transform-origin: 0 -9.5px;
+      // 1560px
+      @media (max-width: $screen-xl-min) {
+        transform: scale(0.2);
+        transform-origin: 0 -5.5px;
+      }
+      // 992px
+      @media (max-width: $screen-md-min) {
+        transform: scale(0.45) translateX(-50%);
+        transform-origin: 0 -5.5px;
+        left: 50%;
+      }
+      // 768px
+      @media (max-width: $screen-sm-min) {
+        transform: scale(0);
+        top: -60px;
+      }
+    }
+
+    &__items {
+      min-width: 144.5px;
+      min-height: 144.5px;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // 992px
+      @media (max-width: $screen-md-min) {
+        min-width: 72.25px;
+        min-height: 72.25px;
+      }
+
+      &__circle__main {
+        width: 144.5px;
+        height: 144.5px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        animation: circleAnimation .5s .5s linear;
+        // 992px
+        @media (max-width: $screen-md-min) {
+          width: 72.25px;
+          height: 72.25px;
+          animation: circleAnimationSm .5s .5s linear;
+        }
+
+        @keyframes circleAnimation {
+          from {
+            width: 0px;
+            height: 0px;
+          }
+          to {
+            width: 144.5px;
+            height: 144.5px;
+          }
+        }
+        @keyframes circleAnimationSm {
+          from {
+            width: 0px;
+            height: 0px;
+          }
+          to {
+            width: 72.25px;
+            height: 72.25px;
+          }
+        }
+      }
+
+      &__text {
+        position: absolute;
+        bottom: 4.5px;
+        right: 0px;
+        width: 80%;
+        margin-left: auto;
+        // 992px
+        @media (max-width: $screen-md-min) {
+          bottom: 1.5px;
+        }
+
+        path:first-child {
+          animation: svgTranslateLetter 0.5s .5s, svgTranslateLetterInit .5s;
+        }
+
+        path:last-child {
+          animation: svgTranslateLetter 0.5s .7s, svgTranslateLetterInit .7s;
+        }
+      }
+
+      &__circle {
+        width: 27.5px;
+        height: 27.5px;
+        border-radius: 50%;
+        position: absolute;
+        top: 25px;
+        left: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // 992px
+        @media (max-width: $screen-md-min) {
+          width: 13.75px;
+          height: 13.75px;
+          top: 12.5px;
+          left: 12px;
+        }
+
+        div {
+          @include circle(27.5px, #000000);
+          animation: circleSmallAnimation 0.5s .5s linear;
+          // 992px
+          @media (max-width: $screen-md-min) {
+            width: 13.75px;
+            height: 13.75px;
+            animation: circleSmallAnimationSm 0.5s .5s linear;
+          }
+          @keyframes circleSmallAnimation {
+            from {
+              width: 0px;
+              height: 0px;
+            }
+            to {
+              width: 27.5px;
+              height: 27.5px;
+            }
+          }
+
+          @keyframes circleSmallAnimationSm {
+            from {
+              width: 0px;
+              height: 0px;
+            }
+            to {
+              width: 13.75px;
+              height: 13.75px;
+            }
+          }
+        }
+      }
+    }
+
+    &__inspirfy {
+      margin-left: 55px;
+      width: 372.5px;
+      align-self: flex-end;
+      animation: LogoText 1.3s 1.3s ease-in-out, LogoTextInit 1.3s;
+      // 992px
+      @media (max-width: $screen-md-min) {
+        width: calc(372.5px / 2);
+        margin-left: 22.5px;
+      }
+      @keyframes LogoText {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes LogoTextInit {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+
+      svg {
+        width: 100%;
+      }
+    }
+  }
+
+  &__nav {
+    flex-grow: 1;
+    margin-left: 260px;
+    align-self: baseline;
+    animation: InitMenu 2.1s, InitMenutranslateY 1s 2.1s linear;
+
+    // 992px
+    @media (max-width: $screen-md-min) {
+      animation: none;
+    }
+    // 1560px
+    @media (max-width: $screen-xl-min) {
+      margin-left: 193px;
+    }
+    // 992px
+    @media (max-width: $screen-md-min) {
+      display: none;
+    }
+
+    &__items {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      list-style: none;
+
+      &__item {
+        @include text;
+        opacity: 0.7;
+        margin-right: 40px;
+        cursor: pointer;
+        transition: opacity 0.5s ease-in;
+
+        &:hover {
+          opacity: 1;
+          transition: opacity 0.5s ease-in;
+        }
+
+        // 1560px
+        @media (max-width: $screen-xl-min) {
+          font-size: 12px;
+          line-height: 16px;
+          margin-right: 30px;
+        }
+
+        &.active {
+          font-weight: 600;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__start {
+    align-self: baseline;
+    animation: InitMenu 2.1s, InitMenutranslateY 1s 2.1s linear;
+
+    &:hover {
+      svg {
+        path {
+          stroke: $brown;
+          transition: all 0.3s ease-in;
+        }
+      }
+    }
+
+    // 992px
+    @media (max-width: $screen-md-min) {
+      transform: translateY(0);
+      animation: hideInitMenu 2.5s;
+    }
+
+    p {
+      @include text($Noto-sans, normal, 800);
+      @media (max-width: $screen-xl-min) {
+        font-weight: 800;
+        font-size: 12px;
+        line-height: 16px;
+      }
+    }
+
+    svg {
+      transform: translateY(50%);
+      margin-left: 25px;
+      transition: all 0.6s ease-in;
+      fill: #ffffff;
+      // 1560px
+      @media (max-width: $screen-xl-min) {
+        width: 38px;
+        height: 12px;
+        margin-left: 16px;
+      }
+
+      path {
+        stroke: #ffffff;
+        transition: all 0.3s ease-out;
+      }
+
+      // 768px
+      @media (max-width: $screen-sm-min) {
+        margin-left: 10px;
+        width: 27px;
+        height: auto;
+        transform: translateY(50%);
+      }
+    }
+  }
+}
+
+@keyframes InitMenu {
+  from {
+    transform: translateY(-500px);
+  }
+  to {
+    transform: translateY(-500px);
+  }
+}
+
+@keyframes InitMenutranslateY {
+  from {
+    transform: translateY(-300px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes svgTranslateLetter {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes svgTranslateLetterInit {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes hideInitMenu {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
