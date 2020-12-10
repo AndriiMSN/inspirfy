@@ -17,12 +17,6 @@ const ArrowBtnUp = document.querySelector('.arrow__up')
 
 mobileButton.addEventListener('click', () => {
     document.querySelector('html').classList.add('lock')
-    document.querySelector('html').classList.add('lock')
-    sectionsAll.forEach((el) => {
-        el.classList.add('blur')
-    })
-    ArrowBtnUp.classList.add('blur')
-    header.classList.add('blur')
     mobileMenu.classList.add('open')
 
 
@@ -44,8 +38,6 @@ mobileNavItems.forEach((el) => {
             el.classList.remove('blur')
         })
 
-        header.classList.remove('blur')
-        ArrowBtnUp.classList.remove('blur')
         document.querySelector('html').classList.remove('lock')
         $("html,body").animate(
             {
@@ -60,11 +52,7 @@ mobileNavItems.forEach((el) => {
 mobileButtonClose.addEventListener('click', () => {
     document.querySelector('html').classList.remove('lock')
     mobileMenu.classList.remove('open')
-    sectionsAll.forEach((el) => {
-        el.classList.remove('blur')
-    })
-    ArrowBtnUp.classList.remove('blur')
-    header.classList.remove('blur')
+
 })
 
 

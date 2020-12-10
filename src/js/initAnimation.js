@@ -9,6 +9,9 @@
 //     // document.querySelector(".header .header__nav").classList.add("init");
 //   }
 // }, 2900);
+
+let wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+
 function InitSections() {
     setTimeout(() => {
 
@@ -19,9 +22,17 @@ function InitSections() {
         document.querySelector(".header").classList.add("normalize");
         document.querySelector(".cover").classList.add("hide");
 
-        document.querySelectorAll("section").forEach((el) => {
-            el.classList.remove("hide-section");
-        });
+        const sectionsAllToShow = document.querySelectorAll("section")
+
+        const ShowHideSections = async () => {
+            for (let i = 0; i <= sectionsAllToShow.length - 1; i++) {
+                sectionsAllToShow[i].classList.remove('hide-section')
+                await wait(100)
+            }
+        }
+
+        ShowHideSections()
+
     }, 3000);
     // }
     // else {

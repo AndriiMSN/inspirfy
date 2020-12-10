@@ -1550,30 +1550,74 @@ form button {
 .mobile__menu {
   width: 100%;
   height: 100vh;
-  background: rgba(40, 40, 40, 0.7);
+  background: #282828;
   filter: blur(0px) !important;
   position: fixed;
   top: 0;
   z-index: 150;
   display: none;
-  justify-content: center;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: center;
   overflow-y: scroll;
 }
 .mobile__menu.open {
   display: flex;
 }
-.mobile__menu__close, .mobile__menu__logo {
+.mobile__menu__coub {
   position: absolute;
+  right: -10px;
+  top: 257px;
 }
-.mobile__menu__close {
-  right: 18px;
-  top: 32px;
-  cursor: pointer;
+.mobile__menu__coub img {
+  width: 100%;
+}
+@media (max-width: 520px) {
+  .mobile__menu__coub {
+    max-width: 74px;
+    right: -3px;
+    top: 167px;
+  }
+}
+.mobile__menu__piramide__big {
+  position: absolute;
+  left: -10px;
+  bottom: 316px;
+}
+.mobile__menu__piramide__big img {
+  width: 100%;
+}
+@media (max-width: 520px) {
+  .mobile__menu__piramide__big {
+    max-width: 110px;
+    bottom: 93px;
+  }
+}
+.mobile__menu__piramide__small {
+  position: absolute;
+  bottom: 69px;
+  right: 76px;
+  max-width: 69px;
+}
+.mobile__menu__piramide__small img {
+  width: 100%;
+}
+@media (max-width: 520px) {
+  .mobile__menu__piramide__small {
+    right: 7px;
+    bottom: 16px;
+  }
+}
+.mobile__menu__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  width: calc(100% - 50px);
+  position: relative;
 }
 .mobile__menu__logo {
-  left: 32px;
-  top: 32px;
+  margin-right: 50%;
+  transform: translateX(50%);
 }
 @media (max-width: 520px) {
   .mobile__menu__logo {
@@ -1589,32 +1633,36 @@ form button {
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 100%;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
 }
 .mobile__menu__nav__items {
   list-style: none;
   width: 100%;
+  margin-top: 204px;
+}
+@media (max-width: 520px) {
+  .mobile__menu__nav__items {
+    margin-top: 109px;
+  }
 }
 .mobile__menu__nav__items__item {
   font-family: "Noto Sans", sans-serif;
   font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 27px;
+  font-weight: 600;
+  font-size: 51px;
+  line-height: 66px;
   color: #ffffff;
-  margin-top: 60px;
-  opacity: 0.7;
+  margin-bottom: 48px;
   cursor: pointer;
   text-align: center;
 }
 @media (max-width: 520px) {
   .mobile__menu__nav__items__item {
-    font-size: 16px;
-    line-height: 22px;
-    margin-top: 30px;
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 32px;
   }
 }
 .mobile__menu__nav__items__item.active {
