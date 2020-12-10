@@ -16,9 +16,26 @@
   z-index: 150;
 
   display: none;
-  flex-direction: column;
-  align-items: center;
   overflow-y: scroll;
+
+
+  & .inherit
+  {
+    min-height: 1024px;
+    position: relative;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+
+    // 520px
+    @media (max-width: $screen-mdsm-min)
+    {
+      min-height: 568px;
+    }
+  }
 
   &.open
   {

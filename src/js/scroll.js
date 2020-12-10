@@ -11,128 +11,79 @@ const modalStart = document.querySelector(".start__earning");
 // const navItems =
 // document.querySelectorAll(".header__nav__items li");
 
-function scrollToSection(e,
-                         directionY,
-                         directionX) {
-    if (delay || sections[2].offsetTop === 0) {
-        return;
-    }
+function scrollDown() {
 
-    // console.log(directionX);
-    delay = true;
+    if (counter + 1 !== sections.length) {
+        counter++;
+        sections[counter - 1].classList.remove("active");
+        sections[counter].classList.add("active");
+        sections[counter].classList.add("animate");
 
-
-    if (directionY !== 0) {
-        // if scroll by y
-        e.preventDefault();
-        setTimeout(function () {
-                delay = false;
-            },
-            1400);
-    } else {
-        // If scroll by x remove Delay
-        delay = false;
-    }
-
-
-    if (directionY > 0 && directionX === 0) {
-        //scroll down
-
-        if (counter + 1 !== sections.length) {
-            counter++;
-            sections[counter - 1].classList.remove("active");
-            sections[counter].classList.add("active");
-            sections[counter].classList.add("animate");
-
-            // Disable people or brands block adding invise
-            if (counter !== sections.length) {
-                sections[counter - 1].classList.add("active");
-            } else {
-                sections[counter - 1].classList.add("invise");
-            }
-
-
-            // NavBar(); // Change active item Navbar
-
-
-            if (sections[counter + 1]) {
-                sections[counter + 1].classList.remove('active')
-                sections[counter + 1].classList.add("invise");
-            }
+        // Disable people or brands block adding invise
+        if (counter !== sections.length) {
+            sections[counter - 1].classList.add("active");
         } else {
-
-            counter = counter;
+            sections[counter - 1].classList.add("invise");
         }
 
-        // Easy animation
-        // If scroll to write us block show part of previous block
-        if (counter === sections.length - 2) {
-            $("html,body")
-                .animate(
-                    {
-                        scrollTop: sections[counter].offsetTop - (
-                            document.documentElement.clientHeight - (sections[counter].clientHeight)) / 2,
-                        behavior: "smooth",
-                    },
-                    800
-                );
-        } else {
-            $("html,body")
-                .animate(
-                    {
-                        scrollTop: sections[counter].offsetTop,
-                        behavior: "smooth",
-                    },
-                    800
-                );
-        }
-        return counter;
+
+        // NavBar(); // Change active item Navbar
 
 
-    } else if (directionY < 0 && directionX === 0) {
-        //scroll up
-
-        if (counter - 1 !== -1) {
-            counter--;
-            sections[counter].classList.remove("invise");
-            sections[counter + 1].classList.remove("active");
-            sections[counter].classList.add("animate");
-            sections[counter].classList.add("active");
+        if (sections[counter + 1]) {
+            sections[counter + 1].classList.remove('active')
             sections[counter + 1].classList.add("invise");
-
-            // NavBar(); // Change active item Navbar
-
-        } else {
-
-            counter = counter;
         }
+    } else {
 
-        // Easy animation
-        // If scroll to write us block show part of previous block
-        if (counter === sections.length - 2) {
-            $("html,body")
-                .animate(
-                    {
-                        scrollTop: sections[counter].offsetTop - (
-                            document.documentElement.clientHeight - (sections[counter].clientHeight)) / 2,
-                        behavior: "smooth",
-                    },
-                    800
-                );
-        } else {
-            $("html,body")
-                .animate(
-                    {
-                        scrollTop: sections[counter].offsetTop,
-                        behavior: "smooth",
-                    },
-                    800
-                );
-        }
+        counter = counter;
+    }
 
-        return counter;
+    return counter
+}
+
+function scrollUp() {
+    if (counter - 1 !== -1) {
+        counter--;
+        sections[counter].classList.remove("invise");
+        sections[counter + 1].classList.remove("active");
+        sections[counter].classList.add("animate");
+        sections[counter].classList.add("active");
+        sections[counter + 1].classList.add("invise");
+
+        // NavBar(); // Change active item Navbar
+
+    } else {
+
+        counter = counter;
+    }
+
+    return counter
+}
+
+function easeScroll() {
+    if (counter === sections.length - 2) {
+        $("html,body")
+            .animate(
+                {
+                    scrollTop: sections[counter].offsetTop - (
+                        document.documentElement.clientHeight - (sections[counter].clientHeight)) / 2,
+                    behavior: "smooth",
+                },
+                800
+            );
+    } else {
+        $("html,body")
+            .animate(
+                {
+                    scrollTop: sections[counter].offsetTop,
+                    behavior: "smooth",
+                },
+                800
+            );
     }
 }
+
 
 // function NavBar() {
 // 	navItems.forEach((element) => {
@@ -204,21 +155,68 @@ window.addEventListener(
     {passive: false}
 );
 
+function scrollToSection(e,
+                         directionY,
+                         directionX) {
+    if (delay || sections[2].offsetTop === 0) {
+        return;
+    }
+
+
+    delay = true;
+
+
+    if (directionY !== 0) {
+        // if scroll by y
+        e.preventDefault();
+        setTimeout(function () {
+                delay = false;
+            },
+            1400);
+    } else {
+        // If scroll by x remove Delay
+        delay = false;
+    }
+
+
+    if (directionY > 0 && directionX === 0) {
+        //scroll down
+
+        scrollDown()
+
+        // Easy animation
+
+
+        easeScroll()
+
+
+    } else if (directionY < 0 && directionX === 0) {
+        //scroll up
+
+        scrollUp()
+
+
+        // Easy animation
+
+        easeScroll()
+    }
+}
+
 let currentY = 0,
     currentX = 0
 
 window.addEventListener('touchmove', (e) => {
     if (document.documentElement.clientWidth >= 1366) {
-        // if (modalLets.classList.contains("open")
-        //     ||
-        //     modalStart.classList.contains("open")
-        // ) {
-        //
-        // } else {
-        e.preventDefault()
-        e.stopPropagation()
-        return false
-        // }
+        if (modalLets.classList.contains("open")
+            ||
+            modalStart.classList.contains("open")
+        ) {
+
+        } else {
+            e.preventDefault()
+            e.stopPropagation()
+            return false
+        }
     }
 
 }, document.documentElement.clientWidth >= 1366 ? {passive: false} : {passive: true})
@@ -318,121 +316,28 @@ function touchToSection(e, directionY, directionX) {
     if (directionY < -30) {
         //scroll down
 
-        if (counter + 1 !== sections.length) {
-            counter++;
-            sections[counter - 1].classList.remove("active");
-            sections[counter].classList.add("active");
-            sections[counter].classList.add("animate");
-
-            // Disable people or brands block adding invise
-            if (counter !== sections.length) {
-                sections[counter - 1].classList.add("active");
-            } else {
-                sections[counter - 1].classList.add("invise");
-            }
-
-
-            // NavBar(); // Change active item Navbar
-
-
-            if (sections[counter + 1]) {
-                sections[counter + 1].classList.remove('active')
-                sections[counter + 1].classList.add("invise");
-            }
-        } else {
-
-            counter = counter;
-        }
+        scrollDown()
 
         // Easy animation
-        // If scroll to write us block show part of previous block
-        if (counter === sections.length - 2) {
-            $("html,body")
-                .animate(
-                    {
-                        scrollTop: sections[counter].offsetTop - (
-                            document.documentElement.clientHeight - (sections[counter].clientHeight)) / 2,
-                        behavior: "smooth",
-                    },
-                    800
-                );
-        } else {
-            $("html,body")
-                .animate(
-                    {
-                        scrollTop: sections[counter].offsetTop,
-                        behavior: "smooth",
-                    },
-                    800
-                );
-        }
+
+        easeScroll()
+
         return counter;
 
 
     } else if (directionY > 30) {
         //scroll up
 
-        if (counter - 1 !== -1) {
-            counter--;
-            sections[counter].classList.remove("invise");
-            sections[counter + 1].classList.remove("active");
-            sections[counter].classList.add("animate");
-            sections[counter].classList.add("active");
-            sections[counter + 1].classList.add("invise");
-
-            // NavBar(); // Change active item Navbar
-
-        } else {
-
-            counter = counter;
-        }
+        scrollUp()
 
         // Easy animation
-        // If scroll to write us block show part of previous block
-        if (counter === sections.length - 2) {
-            $("html,body")
-                .animate(
-                    {
-                        scrollTop: sections[counter].offsetTop - (
-                            document.documentElement.clientHeight - (sections[counter].clientHeight)) / 2,
-                        behavior: "smooth",
-                    },
-                    800
-                );
-        } else {
-            $("html,body")
-                .animate(
-                    {
-                        scrollTop: sections[counter].offsetTop,
-                        behavior: "smooth",
-                    },
-                    800
-                );
-        }
 
-        return counter;
+        easeScroll()
     }
 }
 
 // Remove scroll pc
 
-const ArrowBtnScroll = document.querySelector('.arrow__up');
-
-['click', 'touchend'].forEach(evl => ArrowBtnScroll.addEventListener(evl, () => {
-    counter = 0
-    $("html,body")
-        .animate(
-            {
-                scrollTop: sections[counter].offsetTop,
-                behavior: "smooth",
-            },
-            800
-        );
-    return counter
-}))
-
-
-//
 window.addEventListener('scroll',
     (e) => {
         e.preventDefault()
@@ -452,6 +357,22 @@ window.addEventListener('scroll',
             }
         }
     })
+
+const ArrowBtnScroll = document.querySelector('.arrow__up');
+
+['click', 'touchend'].forEach(evl => ArrowBtnScroll.addEventListener(evl, () => {
+    counter = 0
+    $("html,body")
+        .animate(
+            {
+                scrollTop: sections[counter].offsetTop,
+                behavior: "smooth",
+            },
+            800
+        );
+    return counter
+}))
+
 
 // header anchor
 
@@ -492,147 +413,68 @@ document.querySelectorAll(".header__nav__items li")
 document.onkeydown = checkKey;
 
 function checkKey(e) {
-    // Remove scroll by space
-    if (e.keyCode === 32 && e.target === document.body) {
-        e.preventDefault();
-    }
 
-    if (e.keyCode == "38") {
-        // up arrow
-        if (delay) {
+    if (document.documentElement.clientWidth >= 1366) {
+
+        // Remove scroll by space
+        if (e.keyCode === 32 && e.target === document.body) {
             e.preventDefault();
-            return;
         }
 
-        delay = true;
-
-        setTimeout(function () {
-                delay = false;
-            },
-            1400);
-        if (
-            modalLets.classList.contains("open") ||
-            modalStart.classList.contains("open")
-        ) {
-            return false;
-        }
-        if (document.documentElement.clientWidth >= 1366) {
-
-            if (counter - 1 !== -1) {
-
-                counter--;
-                sections[counter].classList.remove("invise");
-                sections[counter + 1].classList.remove("active");
-                sections[counter].classList.add("animate");
-                sections[counter].classList.add("active");
-                sections[counter + 1].classList.add("invise");
-
-
-                // NavBar();
-            } else {
-
-                counter = counter;
+        if (e.keyCode == "38") {
+            // up arrow
+            if (delay) {
+                e.preventDefault();
+                return;
             }
+
+            delay = true;
+
+            setTimeout(function () {
+                    delay = false;
+                },
+                1400);
+            if (
+                modalLets.classList.contains("open") ||
+                modalStart.classList.contains("open")
+            ) {
+                return false;
+            }
+
+            scrollUp()
 
             // Easy animation
-            // If scroll to write us block show part of previous block
-            if (counter === sections.length - 2) {
-                $("html,body")
-                    .animate(
-                        {
-                            scrollTop: sections[counter].offsetTop - (
-                                document.documentElement.clientHeight - (sections[counter].clientHeight)) / 2,
-                            behavior: "smooth",
-                        },
-                        800
-                    );
-            } else {
-                $("html,body")
-                    .animate(
-                        {
-                            scrollTop: sections[counter].offsetTop,
-                            behavior: "smooth",
-                        },
-                        800
-                    );
+
+            easeScroll()
+
+
+        } else if (e.keyCode == "40") {
+            if (delay) {
+                e.preventDefault();
+                return;
+            }
+
+            delay = true;
+
+            setTimeout(function () {
+                    delay = false;
+                },
+                1400);
+            if (
+                modalLets.classList.contains("open") ||
+                modalStart.classList.contains("open")
+            ) {
+                return false;
             }
 
 
-            return counter;
-        }
-    } else if (e.keyCode == "40") {
-        if (delay) {
-            e.preventDefault();
-            return;
-        }
-
-        delay = true;
-
-        setTimeout(function () {
-                delay = false;
-            },
-            1400);
-        if (
-            modalLets.classList.contains("open") ||
-            modalStart.classList.contains("open")
-        ) {
-            return false;
-        }
-        if (document.documentElement.clientWidth >= 1366) {
-            if (counter + 1 !== sections.length) {
-                // scrollHeight +=
-                // sections[counter].clientHeight;
-                counter++;
-                sections[counter - 1].classList.remove("active");
-                sections[counter].classList.add("active");
-                sections[counter].classList.add("animate");
-                if (counter !== sections.length) {
-                    sections[counter - 1].classList.add("active");
-                } else {
-                    sections[counter - 1].classList.add("invise");
-                }
-
-                // NavBar();
-
-                if (pageYOffset >= sections[counter - 1].offsetTop) {
-                    // console.log(pageYOffset,
-                    // sections[counter]);
-                }
-                if (sections[counter + 1]) {
-                    sections[counter + 1].classList.add("invise");
-                }
-            } else {
-                // scrollHeight = scrollHeight;
-                counter = counter;
-            }
+            scrollDown()
 
             // Easy animation
-            // If scroll to write us block show part of previous block
-            if (counter === sections.length - 2) {
-                $("html,body")
-                    .animate(
-                        {
-                            scrollTop: sections[counter].offsetTop - (
-                                document.documentElement.clientHeight - (sections[counter].clientHeight)) / 2,
-                            behavior: "smooth",
-                        },
-                        800
-                    );
-            } else {
-                $("html,body")
-                    .animate(
-                        {
-                            scrollTop: sections[counter].offsetTop,
-                            behavior: "smooth",
-                        },
-                        800
-                    );
-            }
 
-            // console.log(scrollHeight + "\n", counter);
+            easeScroll()
+
         }
-        return counter;
-        // down arrow
     }
 }
 
