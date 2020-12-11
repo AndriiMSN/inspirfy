@@ -8,11 +8,17 @@ const sections = document.querySelectorAll(".scrolling-block");
 const modalLets = document.querySelector(".lets__talk");
 const modalStart = document.querySelector(".start__earning");
 
+function returnFalse(e) {
+    e.preventDefault()
+    return false
+}
+
 // const navItems =
 // document.querySelectorAll(".header__nav__items li");
 
 function scrollDown() {
-
+    window.removeEventListener('wheel', onWheel,)
+    window.addEventListener('wheel', returnFalse, {passive: false})
     if (counter + 1 !== sections.length) {
         counter++;
         sections[counter - 1].classList.remove("active");
@@ -44,6 +50,8 @@ function scrollDown() {
 
 function scrollUp() {
     if (counter - 1 !== -1) {
+        window.removeEventListener('wheel', onWheel,)
+        window.addEventListener('wheel', returnFalse, {passive: false})
         counter--;
         sections[counter].classList.remove("invise");
         sections[counter + 1].classList.remove("active");
@@ -70,7 +78,13 @@ function easeScroll() {
                         document.documentElement.clientHeight - (sections[counter].clientHeight)) / 2,
                     behavior: "smooth",
                 },
-                800
+                800, (() => {
+                    setTimeout(() => {
+                        window.removeEventListener('wheel', returnFalse)
+                        window.addEventListener('wheel', onWheel, {passive: false})
+                    }, 400)
+
+                })
             );
     } else {
         $("html,body")
@@ -79,7 +93,13 @@ function easeScroll() {
                     scrollTop: sections[counter].offsetTop,
                     behavior: "smooth",
                 },
-                800
+                800, (() => {
+                    setTimeout(() => {
+                        window.removeEventListener('wheel', returnFalse)
+                        window.addEventListener('wheel', onWheel, {passive: false})
+                    }, 400)
+
+                })
             );
     }
 }
@@ -103,76 +123,80 @@ function easeScroll() {
 // } else {
 // document.querySelector(".header").classList.remove("scroll"); } }
 
+function onWheel(e) {
+    // If open modals
+    if (
+        modalLets.classList.contains("open") ||
+        modalStart.classList.contains("open")
+    ) {
+        return false;
+    }
+
+    if (document.documentElement.clientWidth >= 1366) {
+
+        let directionY = e.deltaY;
+
+        let directionX = e.deltaX;
+
+
+        let maxY = sections[sections.length - 1].offsetTop;
+
+        // if (pageYOffset < maxY - 10) {
+
+        // Remove scroll after scrolling to next
+        // section by Y
+        if (directionY !== 0) {
+            e.preventDefault();
+        }
+
+        scrollToSection(e,
+            directionY,
+            directionX);
+
+        // } else {
+        // if scroll up start scroll by sections
+        // if (pageYOffset < maxY && directionY < 0 && directionX === 0) {
+        //
+        //     // Remove scroll after scrolling to
+        //     // next section by Y
+        //     if (directionY !== 0) {
+        //         e.preventDefault();
+        //     }
+        //     scrollToSection(e,
+        //         directionY,
+        //         directionX);
+        // }
+    } else {
+    }
+
+}
 
 window.addEventListener(
     "wheel",
-    function (e) {
-        // If open modals
-        if (
-            modalLets.classList.contains("open") ||
-            modalStart.classList.contains("open")
-        ) {
-            return false;
-        }
-
-        if (document.documentElement.clientWidth >= 1366) {
-
-            let directionY = e.deltaY;
-
-            let directionX = e.deltaX;
-
-
-            let maxY = sections[sections.length - 1].offsetTop;
-
-            // if (pageYOffset < maxY - 10) {
-
-            // Remove scroll after scrolling to next
-            // section by Y
-            if (directionY !== 0) {
-                e.preventDefault();
-            }
-
-            scrollToSection(e,
-                directionY,
-                directionX);
-
-            // } else {
-            // if scroll up start scroll by sections
-            if (pageYOffset < maxY && directionY < 0 && directionX === 0) {
-
-                // Remove scroll after scrolling to
-                // next section by Y
-                if (directionY !== 0) {
-                    e.preventDefault();
-                }
-                scrollToSection(e,
-                    directionY,
-                    directionX);
-            }
-        } else {
-        }
-    },
+    onWheel,
     {passive: false}
 );
 
 function scrollToSection(e,
                          directionY,
                          directionX) {
-    if (delay || sections[2].offsetTop === 0) {
-        return;
-    }
 
 
-    delay = true;
+    // if (delay || sections[2].offsetTop === 0) {
+    //     return;
+    // }
+    //
+    //
+    // delay = true;
 
 
     if (directionY !== 0) {
         // if scroll by y
         e.preventDefault();
-        setTimeout(function () {
-                delay = false;
-            },
-            1400);
+        // setTimeout(function () {
+        //         delay = false;
+        //     },
+        //     400);
     } else {
         // If scroll by x remove Delay
         delay = false;
@@ -306,7 +330,7 @@ function touchToSection(e, directionY, directionX) {
         setTimeout(function () {
                 delay = false;
             },
-            1400);
+            400);
     } else {
         // If scroll by x remove Delay
         delay = false;
@@ -433,7 +457,7 @@ function checkKey(e) {
             setTimeout(function () {
                     delay = false;
                 },
-                1400);
+                700);
             if (
                 modalLets.classList.contains("open") ||
                 modalStart.classList.contains("open")
@@ -459,7 +483,7 @@ function checkKey(e) {
             setTimeout(function () {
                     delay = false;
                 },
-                1400);
+                700);
             if (
                 modalLets.classList.contains("open") ||
                 modalStart.classList.contains("open")
