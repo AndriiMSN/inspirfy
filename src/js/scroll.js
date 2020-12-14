@@ -49,9 +49,11 @@ function scrollDown() {
 }
 
 function scrollUp() {
+    window.removeEventListener('wheel', onWheel,)
+    window.addEventListener('wheel', returnFalse, {passive: false})
+
     if (counter - 1 !== -1) {
-        window.removeEventListener('wheel', onWheel,)
-        window.addEventListener('wheel', returnFalse, {passive: false})
+
         counter--;
         sections[counter].classList.remove("invise");
         sections[counter + 1].classList.remove("active");
