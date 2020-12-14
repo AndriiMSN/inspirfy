@@ -1,21 +1,27 @@
-.tools {
+.tools
+{
 
-  &__toggle {
+  &__toggle
+  {
 
-    h1 {
-      svg {
-        max-width: 252px;
+    h1
+    {
+      svg
+      {
+        //max-width: 252px;
         margin-right: 15px;
         // 1560px
-        @media (max-width: $screen-xl-min) {
-          max-width: 200px;
-          transform: translateY(2.5px);
+        @media (max-width: $screen-xl-min)
+        {
+          //max-width: 200px;
+          //transform: translateY(2.5px);
         }
         // 520px
-        @media (max-width: $screen-mdsm-min) {
-          max-width: 95px;
+        @media (max-width: $screen-mdsm-min)
+        {
+          //max-width: 95px;
           margin-right: 8px;
-          transform: translateY(1px);
+          //transform: translateY(1px);
         }
       }
     }
@@ -23,7 +29,8 @@
 
   position: relative;
 
-  &__figure__bg {
+  &__figure__bg
+  {
     position: absolute;
     z-index: 10;
     left: -10px;
@@ -33,30 +40,37 @@
     max-width: 266px;
     bottom: 20px;
     // 992px
-    @media (max-width: $screen-md-min) {
+    @media (max-width: $screen-md-min)
+    {
       display: none;
       max-width: 254px;
     }
     // 768px
-    @media (max-width: $screen-sm-min) {
+    @media (max-width: $screen-sm-min)
+    {
       max-width: 80px;
       bottom: 10px;
       left: -24px;
     }
 
-    img {
+    img
+    {
       width: 100%;
       height: 100%;
     }
   }
 
-  .container {
+  .container
+  {
     z-index: 20;
   }
 
-  &__slider {
-    &__img {
-      &__images__toggle-1 {
+  &__slider
+  {
+    &__img
+    {
+      &__images__toggle-1
+      {
         position: absolute;
         width: 100%;
         height: 100%;
@@ -65,36 +79,44 @@
         justify-content: center;
         align-items: center;
 
-        &__tools-1 {
+        &__tools-1
+        {
           // 1560px
-          @media (max-width: $screen-xl-min) {
+          @media (max-width: $screen-xl-min)
+          {
             max-width: 656px;
           }
         }
 
-        &__tools-2 {
+        &__tools-2
+        {
           max-width: 900px;
           // 1560px
-          @media (max-width: $screen-xl-min) {
+          @media (max-width: $screen-xl-min)
+          {
             max-width: 656px;
           }
         }
 
-        &__tools-3 {
+        &__tools-3
+        {
           max-width: 905px;
           // 1560px
-          @media (max-width: $screen-xl-min) {
+          @media (max-width: $screen-xl-min)
+          {
             max-width: 656px;
           }
         }
 
-        & img {
+        & img
+        {
           position: relative;
           width: auto;
           height: auto;
           z-index: 20;
           // 1260px
-          @media (max-width: $screen-lg-min) {
+          @media (max-width: $screen-lg-min)
+          {
             max-width: 135%;
           }
         }
@@ -103,9 +125,11 @@
   }
 }
 
-.mob-tools {
+.mob-tools
+{
   // position: relative;
-  &__figure__bg {
+  &__figure__bg
+  {
     position: absolute;
     z-index: 10;
     max-height: 267px;
@@ -114,19 +138,24 @@
     bottom: 10px;
     left: -24px;
 
-    img {
+    img
+    {
       width: 100%;
       height: 100%;
     }
   }
 
-  .container {
+  .container
+  {
     z-index: 20;
   }
 
-  &__slider {
-    &__img {
-      &__images__toggle-1 {
+  &__slider
+  {
+    &__img
+    {
+      &__images__toggle-1
+      {
         position: absolute;
         width: 100%;
         height: 100%;
@@ -135,62 +164,74 @@
         justify-content: center;
         align-items: center;
         // 768px
-        @media (max-width: $screen-sm-min) {
+        @media (max-width: $screen-sm-min)
+        {
           justify-content: center;
         }
 
-        img {
+        img
+        {
           position: absolute !important;
           width: auto !important;
           height: auto !important;
         }
 
-        &__tools-1 {
+        &__tools-1
+        {
           max-width: 732px;
           // 768px
-          @media (max-width: $screen-sm-min) {
+          @media (max-width: $screen-sm-min)
+          {
             max-width: 450px;
 
           }
           // 375px
-          @media (max-width: $screen-exsm-min) {
+          @media (max-width: $screen-exsm-min)
+          {
             max-width: 344px;
             right: 0px;
             transform: translateX(10px);
           }
         }
 
-        &__tools-2 {
+        &__tools-2
+        {
           max-width: 732px;
           // 768px
-          @media (max-width: $screen-sm-min) {
+          @media (max-width: $screen-sm-min)
+          {
             max-width: 450px;
 
           }
           // 375px
-          @media (max-width: $screen-exsm-min) {
+          @media (max-width: $screen-exsm-min)
+          {
             max-width: 344px;
             right: 0px;
             transform: translateX(10px);
           }
         }
 
-        &__tools-3 {
+        &__tools-3
+        {
           max-width: 732px;
           // 768px
-          @media (max-width: $screen-sm-min) {
+          @media (max-width: $screen-sm-min)
+          {
             max-width: 450px;
 
           }
           // 375px
-          @media (max-width: $screen-exsm-min) {
+          @media (max-width: $screen-exsm-min)
+          {
             max-width: 344px;
             right: 0px;
             transform: translateX(10px);
           }
         }
 
-        & img {
+        & img
+        {
           position: relative;
           width: auto;
           height: auto;

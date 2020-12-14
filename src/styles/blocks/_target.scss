@@ -1,113 +1,137 @@
 @import "../base/mixins";
 
-.target {
+.target
+{
 
-  &.animate {
+  &.animate
+  {
 
   }
 
-  &__toggle {
+  &__toggle
+  {
 
-    h1 {
-      svg {
-        max-width: 329px;
+    h1
+    {
+      svg
+      {
+        //max-width: 329px;
         margin-left: 15px;
 
         // 1560px
-        @media (max-width: $screen-xl-min) {
-          max-width: 250px;
-          transform: translateY(-1.5px);
+        @media (max-width: $screen-xl-min)
+        {
+          //max-width: 250px;
+          //transform: translateY(-1.5px);
+
         }
 
         // 520px
-        @media (max-width: $screen-mdsm-min) {
-          max-width: 120px;
-          transform: translateY(-.5px);
+        @media (max-width: $screen-mdsm-min)
+        {
+          //max-width: 120px;
+          //transform: translateY(-.5px);
           margin-left: 8px;
         }
       }
     }
   }
 
-  &__slider {
-    &__img {
-      &__images__toggle-1 {
+  &__slider
+  {
+    &__img
+    {
+      &__images__toggle-1
+      {
         position: absolute;
         width: 100%;
         height: 100%;
 
-        &__key {
+        &__key
+        {
           top: 50%;
           left: -224px;
           transform: translateY(-63%);
           // 1560px
-          @media (max-width: $screen-xl-min) {
+          @media (max-width: $screen-xl-min)
+          {
             max-width: 320px;
             left: -152px;
           }
         }
 
-        &__user {
+        &__user
+        {
           top: 50%;
           right: -105px;
           transform: translateY(-35%);
           max-width: 350px;
           // 1560px
-          @media (max-width: $screen-xl-min) {
+          @media (max-width: $screen-xl-min)
+          {
             max-width: 235px;
             right: -35px;
           }
         }
 
-        &__earth {
+        &__earth
+        {
           top: 50%;
           left: -80px;
           transform: translateY(-85%);
           max-width: 385px;
           // 1560px
-          @media (max-width: $screen-xl-min) {
+          @media (max-width: $screen-xl-min)
+          {
             max-width: 245px;
             left: -40px;
           }
         }
 
-        &__star {
+        &__star
+        {
           top: 50%;
           right: -118px;
           transform: translateY(-35%);
           max-width: 309px;
           // 1560px
-          @media (max-width: $screen-xl-min) {
+          @media (max-width: $screen-xl-min)
+          {
             max-width: 225px;
             right: -72px;
           }
         }
 
-        &__graph {
+        &__graph
+        {
           top: 50%;
           left: -71px;
           transform: translateY(-10%);
           max-width: 375px;
           // 1560px
-          @media (max-width: $screen-xl-min) {
+          @media (max-width: $screen-xl-min)
+          {
             max-width: 240px;
             left: -30px;
           }
         }
 
-        &__wall {
+        &__wall
+        {
           top: 50%;
           right: -49px;
           transform: translateY(-60%);
           max-width: 273px;
           // 1560px
-          @media (max-width: $screen-xl-min) {
+          @media (max-width: $screen-xl-min)
+          {
             max-width: 165px;
             right: -15px;
           }
         }
 
-        & img {
+        & img
+        {
           position: absolute;
           width: auto;
           height: auto;
@@ -118,26 +142,33 @@
   }
 }
 
-.mob-target {
-  &__slider {
-    &__img {
-      &__images__toggle-1 {
+.mob-target
+{
+  &__slider
+  {
+    &__img
+    {
+      &__images__toggle-1
+      {
         position: absolute;
         width: 100%;
         height: 100%;
 
-        img {
+        img
+        {
           height: auto !important;
         }
 
-        &__key {
+        &__key
+        {
           top: 50%;
           transform: translateY(-63%);
           max-width: 320px;
           left: -152px;
 
           // 768px
-          @media (max-width: $screen-sm-min) {
+          @media (max-width: $screen-sm-min)
+          {
             max-width: 180px;
             top: 50%;
             height: auto !important;
@@ -146,13 +177,15 @@
           }
         }
 
-        &__user {
+        &__user
+        {
           max-width: 260px;
           top: 50%;
           transform: translateY(-35%);
           right: -55px;
           // 768px
-          @media (max-width: $screen-sm-min) {
+          @media (max-width: $screen-sm-min)
+          {
             top: 50%;
             transform: translateY(-35%);
             max-width: 57%;
@@ -160,24 +193,28 @@
           }
         }
 
-        &__earth {
+        &__earth
+        {
           top: 50%;
           left: -50px;
           transform: translateY(-85%);
           max-width: 57%;
           // 768px
-          @media (max-width: $screen-sm-min) {
+          @media (max-width: $screen-sm-min)
+          {
             top: 35%;
           }
         }
 
-        &__star {
+        &__star
+        {
           top: 50%;
           right: -48px;
           transform: translateY(-35%);
           max-width: 50%;
           // 768px
-          @media (max-width: $screen-sm-min) {
+          @media (max-width: $screen-sm-min)
+          {
             top: 50%;
             right: -8px;
             transform: translateY(-35%);
@@ -185,21 +222,24 @@
           }
         }
 
-        &__graph {
+        &__graph
+        {
           top: 50%;
           left: -21px;
           transform: translateY(-10%);
           max-width: 61%;
         }
 
-        &__wall {
+        &__wall
+        {
           top: 50%;
           right: 9px;
           transform: translateY(-70%);
           max-width: 44.53%;
         }
 
-        & img {
+        & img
+        {
           position: absolute;
           width: auto;
           height: auto;

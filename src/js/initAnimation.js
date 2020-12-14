@@ -27,7 +27,7 @@ function InitSections() {
         const ShowHideSections = async () => {
             for (let i = 0; i <= sectionsAllToShow.length - 1; i++) {
                 sectionsAllToShow[i].classList.remove('hide-section')
-                await wait(100)
+                await wait(10)
             }
         }
 
