@@ -233,15 +233,24 @@ let currentY = 0,
 
 window.addEventListener('touchmove', (e) => {
     if (document.documentElement.clientWidth >= 1366) {
+        ;
+
         if (modalLets.classList.contains("open")
             ||
             modalStart.classList.contains("open")
         ) {
 
         } else {
+
+            let directionY = e.changedTouches[0].clientY - currentY;
+
+            let directionX = e.changedTouches[0].clientX - currentX;
+            console.log(directionY)
+            // if (directionY > 30 && directionY < -30) {
             e.preventDefault()
             e.stopPropagation()
             return false
+            // }
         }
     }
 
@@ -254,9 +263,10 @@ window.addEventListener('touchstart', (e) => {
         currentY = e.changedTouches[0].clientY;
         currentX = e.changedTouches[0].clientX;
 
-        return currentY, currentX
+        e.preventDefault()
+        return currentY, currentX, false
     }
-})
+}, {passive: false})
 
 window.addEventListener(
     "touchend",
