@@ -243,14 +243,16 @@ window.addEventListener('touchmove', (e) => {
         } else {
 
             let directionY = e.changedTouches[0].clientY - currentY;
-
             let directionX = e.changedTouches[0].clientX - currentX;
-            console.log(directionY)
-            // if (directionY > 30 && directionY < -30) {
-            e.preventDefault()
-            e.stopPropagation()
-            return false
-            // }
+
+
+            if (directionX > 30 || directionX < -30) {
+                console.log(directionX)
+            } else {
+                e.preventDefault()
+                e.stopPropagation()
+                return false
+            }
         }
     }
 
@@ -259,11 +261,11 @@ window.addEventListener('touchmove', (e) => {
 
 window.addEventListener('touchstart', (e) => {
     if (document.documentElement.clientWidth >= 1366) {
-        //     e.preventDefault()
+        // e.preventDefault()
         currentY = e.changedTouches[0].clientY;
         currentX = e.changedTouches[0].clientX;
 
-        e.preventDefault()
+
         return currentY, currentX, false
     }
 }, {passive: false})
