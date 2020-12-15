@@ -3,14 +3,38 @@ const heroTitleSvgText = 'Inspiration'
 
 const regLetterLong = /^[qypgj]/g
 
+// let y = regLetterLong.test('') ? '85%' : '80%'
+
+
 function fitSvgTextElements(elements) {
 
 
     for (const el of elements) {
-        const box = el.querySelector('text') ?
-            el.querySelector('text').getBBox() : false
-        el ? el.style.width = `${box.width}px` : false
-        el ? el.style.height = `${box.height}px` : false
+
+        const box = el.querySelectorAll('text') ?
+            el.querySelectorAll('text') : false
+        console.log(box);
+
+        let maxWidth, maxHeight
+
+        maxWidth = box[0].getBBox().width
+        maxHeight = box[0].getBBox().height
+
+        if (box.length > 0) {
+
+            for (let i = 1; i < box.length; i++) {
+
+                (maxWidth > box[i].getBBox().width) ? maxWidth = maxWidth : maxWidth = box[i].getBBox().width
+
+                maxHeight += box[i].getBBox().height
+
+                console.log(maxHeight);
+
+            }
+
+        }
+        el ? el.style.width = `${maxWidth}px` : false
+        el ? el.style.height = `${maxHeight}px` : false
     }
 }
 
@@ -22,7 +46,6 @@ setTimeout(() => {
     });
 }, 4000)
 
-// let y = regLetterLong.test('') ? '85%' : '80%'
 
 function CreateSvgMainBlock(text, element) {
     let y = regLetterLong.test(text) ? '60%' : '65%'
@@ -145,13 +168,13 @@ function CreateSvgToggleImages() {
 CreateSvgToggleImages()
 
 
-// OFFER BLOCK -----------------------------------------------------------
+// STAGES BLOCK -----------------------------------------------------------
 
 const stagesTitleSvgText = 'sadipscing'
 
 const stagesTitle = document.querySelector('.stages .container h1')
 
-function CreateSvgTextStages() {
+function CreateSvgTextStagesTitle() {
     let y = regLetterLong.test(stagesTitleSvgText) ? '85%' : '80%'
 
     let h1 = `
@@ -160,7 +183,7 @@ function CreateSvgTextStages() {
             consetetur 
             <svg
                   shape-rendering="geometricPrecision"
-                  class="svg-text-stages svg-text"
+                  class="svg-text-stages-title svg-text"
                   xmlns="http://www.w3.org/2000/svg">
                     <text 
                         x="0" 
@@ -175,7 +198,35 @@ function CreateSvgTextStages() {
     stagesTitle.innerHTML = h1
 }
 
-CreateSvgTextStages()
+CreateSvgTextStagesTitle()
+
+const stagesItems = document.querySelectorAll('.stages__items__item__animate')
+
+const nameEveryStage = 'Stage'
+const arrayStagesItemsTitles = ['MVP', 'Beta Testing', 'Official Launch', 'Official Launch', 'Official Launch']
+
+function CreateSvgTextStagesItems() {
+
+    for (let i = 0; i < stagesItems.length; i++) {
+
+        let y = regLetterLong.test(arrayStagesItemsTitles[i]) ? '90%' : '85%'
+
+        let svg = `
+           <svg 
+            shape-rendering="geometricPrecision"
+            class="svg-text svg-text-item-title" 
+            xmlns="http://www.w3.org/2000/svg">
+               
+                <text x="0"  text-rendering="geometricPrecision"  y="35%">${nameEveryStage + ' ' + (i + 1)}</text>
+                <text x="0"  text-rendering="geometricPrecision"  y=${y}>${arrayStagesItemsTitles[i]}</text>
+            </svg>
+        `
+        stagesItems[i].insertAdjacentHTML('beforebegin', svg)
+
+    }
+}
+
+CreateSvgTextStagesItems()
 
 
 

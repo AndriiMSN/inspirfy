@@ -4540,10 +4540,12 @@ form button {
   z-index: 10;
   padding-top: 98px;
   display: block;
+  max-width: 1120px;
 }
 @media (max-width: 1560px) {
   .stages h1 {
     padding-top: 60px;
+    max-width: 820px;
   }
 }
 @media (max-width: 992px) {
@@ -4642,31 +4644,6 @@ form button {
     padding-bottom: 32px;
   }
 }
-.stages__items__item:nth-child(1) svg {
-  max-width: 153px;
-}
-.stages__items__item:nth-child(2) svg {
-  max-width: 247px;
-}
-.stages__items__item:nth-child(3) svg {
-  max-width: 280px;
-}
-.stages__items__item:nth-child(4) svg {
-  max-width: 274px;
-}
-.stages__items__item:nth-child(5) svg {
-  max-width: 275px;
-}
-@media (max-width: 1560px) {
-  .stages__items__item svg {
-    transform: translateY(15px);
-  }
-}
-@media (max-width: 992px) {
-  .stages__items__item svg {
-    transform: translateY(-7px);
-  }
-}
 .stages__items__item svg text {
   color: transparent;
   fill-opacity: 0;
@@ -4681,11 +4658,6 @@ form button {
   font-size: 36px;
   line-height: 46px;
   color: #ffffff;
-}
-@media (max-width: 1560px) {
-  .stages__items__item svg text:nth-child(3) {
-    transform: translateY(-15px);
-  }
 }
 @media (max-width: 1560px) {
   .stages__items__item svg text {
