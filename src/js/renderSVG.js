@@ -3,6 +3,27 @@ const heroTitleSvgText = 'Inspiration'
 
 const regLetterLong = /^[qypgj]/g
 
+function fitSvgTextElements(elements) {
+
+
+    for (const el of elements) {
+        const box = el.querySelector('text') ?
+            el.querySelector('text').getBBox() : false
+        el ? el.style.width = `${box.width}px` : false
+        el ? el.style.height = `${box.height}px` : false
+    }
+}
+
+setTimeout(() => {
+    const elements = document.querySelectorAll('.svg-text')
+    fitSvgTextElements(elements)
+    window.addEventListener('resize', () => {
+        fitSvgTextElements(elements)
+    });
+}, 4000)
+
+// let y = regLetterLong.test('') ? '85%' : '80%'
+
 function CreateSvgMainBlock(text, element) {
     let y = regLetterLong.test(text) ? '60%' : '65%'
     const svg = `
@@ -123,24 +144,38 @@ function CreateSvgToggleImages() {
 
 CreateSvgToggleImages()
 
-function fitSvgTextElements(elements) {
 
+// OFFER BLOCK -----------------------------------------------------------
 
-    for (const el of elements) {
-        const box = el.querySelector('text') ?
-            el.querySelector('text').getBBox() : false
-        el ? el.style.width = `${box.width}px` : false
-        el ? el.style.height = `${box.height}px` : false
-    }
+const stagesTitleSvgText = 'sadipscing'
+
+const stagesTitle = document.querySelector('.stages .container h1')
+
+function CreateSvgTextStages() {
+    let y = regLetterLong.test(stagesTitleSvgText) ? '85%' : '80%'
+
+    let h1 = `
+        
+            Lorem ipsum dolor sit amet, 
+            consetetur 
+            <svg
+                  shape-rendering="geometricPrecision"
+                  class="svg-text-stages svg-text"
+                  xmlns="http://www.w3.org/2000/svg">
+                    <text 
+                        x="0" 
+                        y=${y}>
+                       sadipscing
+                    </text>
+            </svg>
+            elitr
+        
+    `
+
+    stagesTitle.innerHTML = h1
 }
 
-setTimeout(() => {
-    const elements = document.querySelectorAll('.svg-text')
-    fitSvgTextElements(elements)
-    window.addEventListener('resize', () => {
-        fitSvgTextElements(elements)
-    });
-}, 4000)
+CreateSvgTextStages()
 
 
 

@@ -4541,34 +4541,6 @@ form button {
   padding-top: 98px;
   display: block;
 }
-.stages h1 svg {
-  max-width: 379px;
-  height: auto;
-  transform: translateY(20px);
-}
-@media (max-width: 1560px) {
-  .stages h1 svg {
-    max-width: 280px;
-    transform: translateY(15px);
-  }
-}
-@media (max-width: 520px) {
-  .stages h1 svg {
-    max-width: 150px;
-    transform: translateY(8px);
-  }
-}
-@media (max-width: 375px) {
-  .stages h1 svg {
-    margin-top: -10px;
-  }
-}
-.stages h1 br:first-child {
-  display: block;
-}
-.stages h1 br.mob {
-  display: none;
-}
 @media (max-width: 1560px) {
   .stages h1 {
     padding-top: 60px;
@@ -4580,12 +4552,44 @@ form button {
   }
 }
 @media (max-width: 767px) {
+  .stages h1 {
+    width: calc(100% - 10px);
+  }
   .stages h1 br:first-child {
     display: none;
   }
   .stages h1 br.mob {
     display: block;
   }
+}
+@media (max-width: 375px) {
+  .stages h1 {
+    width: calc(100% - 15px);
+  }
+}
+.stages h1 svg {
+  margin-bottom: -20px;
+}
+@media (max-width: 1560px) {
+  .stages h1 svg {
+    margin-bottom: -16px;
+  }
+}
+@media (max-width: 520px) {
+  .stages h1 svg {
+    margin-bottom: -6px;
+  }
+}
+@media (max-width: 375px) {
+  .stages h1 svg {
+    margin-bottom: -6px;
+  }
+}
+.stages h1 br:first-child {
+  display: block;
+}
+.stages h1 br.mob {
+  display: none;
 }
 .stages__items {
   padding-top: 94px;
