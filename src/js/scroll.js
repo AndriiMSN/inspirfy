@@ -246,7 +246,7 @@ window.addEventListener('touchmove', (e) => {
             let directionX = e.changedTouches[0].clientX - currentX;
 
 
-            if (directionX > 30 || directionX < -30) {
+            if ((directionX > 50 || directionX < -50) && (directionY < 50 && directionY > -50)) {
                 console.log(directionX)
             } else {
                 e.preventDefault()
