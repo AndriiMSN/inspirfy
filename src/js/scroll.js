@@ -3,6 +3,8 @@ let delay = false;
 let counter = 0;
 // let scrollHeight = 0;
 
+window.scrollTo(0, 0)
+
 const sections = document.querySelectorAll(".scrolling-block");
 
 const modalLets = document.querySelector(".lets__talk");

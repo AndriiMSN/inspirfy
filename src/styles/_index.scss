@@ -103,7 +103,7 @@ h1
   // 1560px
   @media (max-width: $screen-xl-min)
   {
-    font-size: 55px;
+    font-size: 50px;
     line-height: 61px;
   }
   // 520px
@@ -140,8 +140,13 @@ h1
       // 1560px
       @media (max-width: $screen-xl-min)
       {
-        font-size: 55px;
+        font-size: 50px;
         line-height: 61px;
+      }
+      // 768px
+      @media (max-width: $screen-sm-min)
+      {
+        stroke-width: .7;
       }
       // 520px
       @media (max-width: $screen-mdsm-min)
@@ -152,6 +157,19 @@ h1
     }
   }
 
+}
+
+svg
+{
+
+  text
+  {
+    // 768px
+    @media (max-width: $screen-sm-min)
+    {
+      stroke-width: .7 !important;
+    }
+  }
 }
 
 section
