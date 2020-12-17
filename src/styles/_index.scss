@@ -6,6 +6,10 @@ html
 
   height: fit-content;
   overflow: hidden;
+  @media (max-width: 1366px)
+  {
+    overflow: scroll;
+  }
 
   &.lock
   {

@@ -13,7 +13,7 @@ function fitSvgTextElements(elements) {
 
         const box = el.querySelectorAll('text') ?
             el.querySelectorAll('text') : false
-        console.log(box);
+        // console.log(box);
 
         let maxWidth, maxHeight
 
@@ -28,7 +28,7 @@ function fitSvgTextElements(elements) {
 
                 maxHeight += box[i].getBBox().height
 
-                console.log(maxHeight);
+                // console.log(maxHeight);
 
             }
 

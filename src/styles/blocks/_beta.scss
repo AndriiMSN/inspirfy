@@ -7,6 +7,38 @@
   position: relative;
   overflow: hidden;
 
+  &.animate
+  {
+    .beta__block
+    {
+
+      h1
+      {
+        animation: titleTranslate .45s .3s ease-in, InitHide .3s;
+
+        svg
+        {
+          text
+          {
+            animation: draw 2s .7s ease-in, InitHide .7s;
+          }
+        }
+
+        & + p
+        {
+          animation: ShowItem 1s 1.3s, InitHide 1.3s;
+        }
+
+      }
+
+      &__button
+      {
+        animation: scaleItem .3s ease-in-out 1.5s, ShowItem .5s ease-in 1.5s, InitHide 1.5s;
+        transform: scale(1);
+      }
+    }
+  }
+
   & .container
   {
     height: inherit;
@@ -279,12 +311,27 @@
       svg
       {
         margin-bottom: -3px;
+        height: 70px !important;
+
+        // 1560px
+        @media (max-width: $screen-xl-min)
+        {
+          height: 50px !important;
+        }
+
+        // 520px
+        @media (max-width: $screen-mdsm-min)
+        {
+          height: 24px !important;
+        }
 
         // 520px
         @media (max-width: $screen-mdsm-min)
         {
           margin-bottom: -2px;
         }
+
+
       }
     }
 
@@ -344,6 +391,18 @@
         max-width: 200px;
         height: 40px;
         margin-top: 40px;
+      }
+
+      &.clicked
+      {
+        background: #ffffff;
+        outline: transparent;
+        border: none;
+
+        p
+        {
+          color: #0c0c0c;
+        }
       }
 
       p
