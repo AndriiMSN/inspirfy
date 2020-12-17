@@ -187,8 +187,9 @@ function CreateSvgTextStagesTitle() {
                   xmlns="http://www.w3.org/2000/svg">
                     <text 
                         x="0" 
+                        text-rendering="geometricPrecision" 
                         y=${y}>
-                       sadipscing
+                       ${stagesTitleSvgText}
                     </text>
             </svg>
             ${arrayStagesTitleText[1]}

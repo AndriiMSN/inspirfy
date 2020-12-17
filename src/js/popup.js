@@ -23,32 +23,35 @@ OpenModal(
 OpenModal(
     letsTalkBtn,
     letsTalk,
-    letsTalkCloseBtn
+    letsTalkCloseBtn,
 );
 
 // Open and close modal
 function OpenModal(btn,
                    modal,
                    closeBtn) {
+
+    let currElement
     // open click
     btn.forEach((el) => {
         el.addEventListener(
             "click",
             () => {
+
+                currElement = el
+
                 currPosition = pageYOffset;
-                modal.classList.add("open");
-                document.querySelector('html').classList.add('lock')
+                currElement.classList.add('clicked')
+                setTimeout(() => {
+
+                    modal.classList.add("open");
+                    document.querySelector('html').classList.add('lock')
+                }, 300)
+                return currElement
             }
         );
 
-        // el.addEventListener(
-        //     "touchstart",
-        //     () => {
-        //         currPosition = pageYOffset;
-        //         modal.classList.add("open");
-        //         document.querySelector('html').classList.add('lock')
-        //     }
-        // );
+
     });
 
     // close
@@ -56,6 +59,8 @@ function OpenModal(btn,
         "click",
         (e) => {
             document.querySelector('html').classList.remove('lock')
+            console.log(currElement);
+            currElement.classList.remove('clicked')
             modal.classList.remove("open");
             window.scrollTo(
                 0,
@@ -64,17 +69,7 @@ function OpenModal(btn,
         }
     );
 
-    // closeBtn.addEventListener(
-    //     "touchstart",
-    //     () => {
-    //         document.querySelector('html').classList.remove('lock')
-    //         modal.classList.remove("open");
-    //         window.scrollTo(
-    //             0,
-    //             currPosition
-    //         );
-    //     }
-    // );
+
 }
 
 

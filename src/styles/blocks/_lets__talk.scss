@@ -48,6 +48,7 @@
   &.open
   {
     display: flex;
+    animation: ShowItem .2s linear;
   }
 
   // 992px
