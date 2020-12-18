@@ -19,8 +19,8 @@ function returnFalse(e) {
 // document.querySelectorAll(".header__nav__items li");
 
 function scrollDown() {
-    window.removeEventListener('wheel', onWheel,)
-    window.addEventListener('wheel', returnFalse, {passive: false})
+    // window.removeEventListener('wheel', onWheel,)
+    // window.addEventListener('wheel', returnFalse, {passive: false})
     if (counter + 1 !== sections.length) {
         counter++;
         sections[counter - 1].classList.remove("active");
@@ -51,8 +51,8 @@ function scrollDown() {
 }
 
 function scrollUp() {
-    window.removeEventListener('wheel', onWheel,)
-    window.addEventListener('wheel', returnFalse, {passive: false})
+    // window.removeEventListener('wheel', onWheel,)
+    // window.addEventListener('wheel', returnFalse, {passive: false})
 
     if (counter - 1 !== -1) {
 
@@ -84,8 +84,8 @@ function easeScroll() {
                 },
                 800, (() => {
                     setTimeout(() => {
-                        window.removeEventListener('wheel', returnFalse)
-                        window.addEventListener('wheel', onWheel, {passive: false})
+                        // window.removeEventListener('wheel', returnFalse)
+                        // window.addEventListener('wheel', onWheel, {passive: false})
                     }, 400)
 
                 })
@@ -99,8 +99,8 @@ function easeScroll() {
                 },
                 800, (() => {
                     setTimeout(() => {
-                        window.removeEventListener('wheel', returnFalse)
-                        window.addEventListener('wheel', onWheel, {passive: false})
+                        // window.removeEventListener('wheel', returnFalse)
+                        // window.addEventListener('wheel', onWheel, {passive: false})
                     }, 400)
 
                 })
@@ -135,7 +135,7 @@ function onWheel(e) {
     ) {
         return false;
     }
-
+    console.log('wheel');
     if (document.documentElement.clientWidth >= 1366) {
 
         let directionY = e.deltaY;
@@ -175,11 +175,45 @@ function onWheel(e) {
 
 }
 
+function debounce(func, wait, immediate) {
+    let timeout;
+    return function () {
+        let context = this, args = arguments;
+        let later = function () {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        let callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+};
+
+const myEfficientFn = debounce(function (e) {
+    // All the taxing stuff you do
+    onWheel(e)
+}, 50);
+
 window.addEventListener(
     "wheel",
-    onWheel,
+    // $.debounce(((e) => {
+    //     console.log('wheel');
+    //     onWheel(e)
+    // }), 40),
+
+    myEfficientFn,
+
     {passive: false}
 );
+
+// window.addEventListener(
+//     "wheel",
+//     $.debounce(((e) => {
+//
+//     }), 300),
+//     {passive: false}
+// );
 
 function scrollToSection(e,
                          directionY,
@@ -306,6 +340,7 @@ window.addEventListener(
                 e.preventDefault();
                 // console.log('prev');
             } else {
+
                 touchToSection(e,
                     directionY,
                     directionX);
