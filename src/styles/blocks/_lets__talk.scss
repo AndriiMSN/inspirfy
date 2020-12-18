@@ -49,6 +49,20 @@
   {
     display: flex;
     animation: ShowItem .2s linear;
+
+    .lets__talk__text
+    {
+
+      h1
+      {
+        animation: titleTranslate .4s linear;
+
+        & + p
+        {
+          animation: ShowItem 1s ease-in;
+        }
+      }
+    }
   }
 
   // 992px
@@ -270,6 +284,22 @@
     h1
     {
       display: block;
+
+      svg
+      {
+        margin-bottom: -18px;
+        // 1560px
+        @media (max-width: $screen-xl-min)
+        {
+          margin-bottom: -12px;
+        }
+
+        // 520px
+        @media (max-width: $screen-mdsm-min)
+        {
+          margin-bottom: -6px;
+        }
+      }
     }
 
     &__title

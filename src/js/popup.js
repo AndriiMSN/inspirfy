@@ -13,23 +13,62 @@ const letsTalkCloseBtn = document.querySelector(
     ".lets__talk .lets__talk__close"
 );
 
+const html = document.querySelector('html')
+
+// MODALS RENDER SVG ------------------------------------------------------------------
+function fitSvgTextModals(element) {
+
+
+    const box = element.querySelectorAll('text') ?
+        element.querySelectorAll('text') : false
+    // console.log(box);
+
+    let maxWidth, maxHeight
+
+    maxWidth = box[0].getBBox().width
+    maxHeight = box[0].getBBox().height
+
+    if (box.length > 0) {
+
+        for (let i = 1; i < box.length; i++) {
+
+            (maxWidth > box[i].getBBox().width) ? maxWidth = maxWidth : maxWidth = box[i].getBBox().width
+
+            maxHeight += box[i].getBBox().height
+
+            // console.log(maxHeight);
+
+        }
+
+    }
+    element ? element.style.width = `${maxWidth}px` : false
+    element ? element.style.height = `${maxHeight}px` : false
+
+}
+
+const letsTalkSvgText = document.querySelector('.lets__talk__text h1 svg')
+const startEarningSvgText = document.querySelector('.start__earning__text h1 svg')
+
 let currPosition = 0;
 
 OpenModal(
     startEarningsBtn,
     startEarning,
-    startEarningCloseBtn
+    startEarningCloseBtn,
+    startEarningSvgText
 );
 OpenModal(
     letsTalkBtn,
     letsTalk,
     letsTalkCloseBtn,
+    letsTalkSvgText
 );
 
 // Open and close modal
 function OpenModal(btn,
                    modal,
-                   closeBtn) {
+                   closeBtn,
+                   svgText) {
 
     let currElement
     // open click
@@ -41,11 +80,19 @@ function OpenModal(btn,
                 currElement = el
 
                 currPosition = pageYOffset;
+
                 currElement.classList.add('clicked')
+
                 setTimeout(() => {
 
                     modal.classList.add("open");
-                    document.querySelector('html').classList.add('lock')
+
+                    svgText && fitSvgTextModals(svgText)
+                    svgText && window.addEventListener('resize', () => {
+                        fitSvgTextModals(svgText)
+                    });
+
+                    html.classList.add('lock')
                 }, 300)
                 return currElement
             }
@@ -58,8 +105,7 @@ function OpenModal(btn,
     closeBtn.addEventListener(
         "click",
         (e) => {
-            document.querySelector('html').classList.remove('lock')
-            console.log(currElement);
+            html.classList.remove('lock')
             currElement.classList.remove('clicked')
             modal.classList.remove("open");
             window.scrollTo(
@@ -71,6 +117,8 @@ function OpenModal(btn,
 
 
 }
+
+
 
 
 

@@ -257,6 +257,15 @@ section
   cursor: pointer;
   align-items: center;
 
+  &.clicked
+  {
+    p
+    {
+      color: $brown;
+    }
+
+  }
+
   svg
   {
     transform: translateY(50%);
@@ -664,6 +673,7 @@ form
     .start-earning.header__start
     {
       transform: translate(0, 0);
+
 
       img
       {

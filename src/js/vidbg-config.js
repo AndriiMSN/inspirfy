@@ -24,7 +24,7 @@ function createVideoBG() {
         );
 
         // Show loading animation.
-        var playPromise = document.querySelector('.vidbg-container video').play();
+        const playPromise = document.querySelector('.vidbg-container video').play();
         console.log(playPromise);
         if (playPromise !== undefined) {
             playPromise.then(_ => {
