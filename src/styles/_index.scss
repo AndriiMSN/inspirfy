@@ -6,10 +6,7 @@ html
 
   height: fit-content;
   overflow-x: hidden;
-  @media (max-width: 1366px)
-  {
-    overflow: scroll;
-  }
+
 
   &.unlock
   {
@@ -31,6 +28,14 @@ html
   {
     // scroll-snap-align: start;
     // position: relative;
+    scrollbar-width: none; /* Also needed to disable scrollbar Firefox */
+    -ms-overflow-style: none; /* Disable scrollbar IE 10+ */
+
+    &::-webkit-scrollbar
+    {
+      width: 0px;
+      background: transparent; /* Disable scrollbar Chrome/Safari/Webkit */
+    }
   }
 
   @-moz-document url-prefix()
@@ -53,6 +58,11 @@ html
     width: 100%;
     //overflow: hidden;
     // height: auto !important;
+    &::-webkit-scrollbar
+    {
+      width: 0px;
+      background: transparent; /* Disable scrollbar Chrome/Safari/Webkit */
+    }
   }
 }
 

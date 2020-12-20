@@ -161,7 +161,13 @@ function easeScroll() {
 
 window.addEventListener('wheel', (e) => {
     if (document.documentElement.clientWidth >= 1366) {
-        e.preventDefault()
+        let directionY = e.deltaY;
+
+        let directionX = e.deltaX;
+
+        if (directionY !== 0 && (directionX < 20 || directionX > -20)) {
+            e.preventDefault()
+        }
     }
 }, {passive: false})
 
@@ -219,7 +225,7 @@ const myEfficientFn = debounce(function (e) {
     // All the taxing stuff you do
 
     onWheel(e)
-}, 50);
+}, 300);
 
 window.addEventListener(
     "wheel",
