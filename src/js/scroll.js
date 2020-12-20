@@ -5,7 +5,24 @@ let counter = 0;
 
 window.scrollTo(0, 0)
 
+
+function debounce(func, wait, immediate) {
+    let timeout;
+    return function () {
+        let context = this, args = arguments;
+        let later = function () {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        let callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+};
+
 const sections = document.querySelectorAll(".scrolling-block");
+
 
 const modalLets = document.querySelector(".lets__talk");
 const modalStart = document.querySelector(".start__earning");
@@ -74,12 +91,27 @@ function scrollUp() {
 }
 
 function easeScroll() {
-    if (counter === sections.length - 2) {
+    if (counter === sections.length - 3) {
         $("html,body")
             .animate(
                 {
                     scrollTop: sections[counter].offsetTop - (
                         document.documentElement.clientHeight - (sections[counter].clientHeight)) / 2,
+                    behavior: "smooth",
+                },
+                800, (() => {
+                    setTimeout(() => {
+                        // window.removeEventListener('wheel', returnFalse)
+                        // window.addEventListener('wheel', onWheel, {passive: false})
+                    }, 400)
+
+                })
+            );
+    } else if (counter === sections.length - 1) {
+        $("html,body")
+            .animate(
+                {
+                    scrollTop: sections[counter - 1].offsetTop + sections[counter].offsetTop,
                     behavior: "smooth",
                 },
                 800, (() => {
@@ -127,6 +159,12 @@ function easeScroll() {
 // } else {
 // document.querySelector(".header").classList.remove("scroll"); } }
 
+window.addEventListener('wheel', (e) => {
+    if (document.documentElement.clientWidth >= 1366) {
+        e.preventDefault()
+    }
+}, {passive: false})
+
 function onWheel(e) {
     // If open modals
     if (
@@ -137,6 +175,7 @@ function onWheel(e) {
     }
     console.log('wheel');
     if (document.documentElement.clientWidth >= 1366) {
+        e.preventDefault()
 
         let directionY = e.deltaY;
 
@@ -159,7 +198,7 @@ function onWheel(e) {
 
         // } else {
         // if scroll up start scroll by sections
-        // if (pageYOffset < maxY && directionY < 0 && directionX === 0) {
+        // if (pageYOffset < maxY + 10 && directionY < 0 && directionX === 0) {
         //
         //     // Remove scroll after scrolling to
         //     // next section by Y
@@ -170,28 +209,15 @@ function onWheel(e) {
         //         directionY,
         //         directionX);
         // }
-    } else {
-    }
+        // }
 
+    }
 }
 
-function debounce(func, wait, immediate) {
-    let timeout;
-    return function () {
-        let context = this, args = arguments;
-        let later = function () {
-            timeout = null;
-            if (!immediate) func.apply(context, args);
-        };
-        let callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
-    };
-};
 
 const myEfficientFn = debounce(function (e) {
     // All the taxing stuff you do
+
     onWheel(e)
 }, 50);
 
@@ -278,17 +304,11 @@ window.addEventListener('touchmove', (e) => {
 
         } else {
 
-            let directionY = e.changedTouches[0].clientY - currentY;
-            let directionX = e.changedTouches[0].clientX - currentX;
 
+            e.preventDefault()
+            e.stopPropagation()
+            return false
 
-            if ((directionX > 50 || directionX < -50) && (directionY < 50 && directionY > -50)) {
-                console.log(directionX)
-            } else {
-                e.preventDefault()
-                e.stopPropagation()
-                return false
-            }
         }
     }
 
@@ -330,7 +350,7 @@ window.addEventListener(
             // console.log(directionX, directionY);
 
 
-            let maxY = sections[sections.length - 1].offsetTop;
+            // let maxY = sections[sections.length - 1].offsetTop;
 
             // if (pageYOffset < maxY - 10) {
 
@@ -341,25 +361,29 @@ window.addEventListener(
                 // console.log('prev');
             } else {
 
+                // if (pageYOffset > maxY - 10 && directionY < 0) {
+                //     console.log('max');
+                // } else {
+
                 touchToSection(e,
                     directionY,
                     directionX);
+                // }
             }
-
 
             // } else {
             // if scroll up start scroll by sections
-            if (pageYOffset < maxY && directionY < 0 && directionX === 0) {
-
-                // Remove scroll after scrolling to
-                // next section by Y
-                if (directionY !== 0) {
-                    e.preventDefault();
-                }
-                touchToSection(e,
-                    directionY,
-                    directionX);
-            }
+            // if (pageYOffset < maxY && directionY < 0 && directionX === 0) {
+            //
+            //     // Remove scroll after scrolling to
+            //     // next section by Y
+            //     if (directionY !== 0) {
+            //         e.preventDefault();
+            //     }
+            //     touchToSection(e,
+            //         directionY,
+            //         directionX);
+            // }
         } else {
         }
     },
@@ -419,7 +443,7 @@ window.addEventListener('scroll',
         if (counter !== sections.length - 1) {
             if ((document.documentElement.clientWidth >= 1366)) {
 
-                if (counter === sections.length - 2) {
+                if (counter === sections.length - 3) {
 
                     window.scrollTo(0,
                         sections[counter].offsetTop - (
@@ -493,64 +517,106 @@ function checkKey(e) {
 
         // Remove scroll by space
         if (e.keyCode === 32 && e.target === document.body) {
-            e.preventDefault();
+            if (
+                modalLets.classList.contains("open") ||
+                modalStart.classList.contains("open")
+            ) {
+
+            } else {
+                if (delay) {
+                    e.preventDefault();
+                    return;
+                }
+
+                delay = true;
+
+                setTimeout(function () {
+                        delay = false;
+                    },
+                    700);
+
+
+                scrollDown()
+
+                // Easy animation
+
+                easeScroll()
+            }
+
         }
 
         if (e.keyCode == "38") {
             // up arrow
-            if (delay) {
-                e.preventDefault();
-                return;
-            }
 
-            delay = true;
-
-            setTimeout(function () {
-                    delay = false;
-                },
-                700);
             if (
                 modalLets.classList.contains("open") ||
                 modalStart.classList.contains("open")
             ) {
-                return false;
+
+            } else {
+
+                // let maxY = sections[sections.length - 1].offsetTop;
+                //
+                // if (pageYOffset > maxY - 10) {
+                // } else {
+
+                if (delay) {
+                    e.preventDefault();
+                    return;
+                }
+
+                delay = true;
+
+                setTimeout(function () {
+                        delay = false;
+                    },
+                    700);
+
+
+                scrollUp()
+
+                // Easy animation
+
+                easeScroll()
             }
-
-            scrollUp()
-
-            // Easy animation
-
-            easeScroll()
-
+            // }
 
         } else if (e.keyCode == "40") {
-            if (delay) {
-                e.preventDefault();
-                return;
-            }
-
-            delay = true;
-
-            setTimeout(function () {
-                    delay = false;
-                },
-                700);
             if (
                 modalLets.classList.contains("open") ||
                 modalStart.classList.contains("open")
             ) {
-                return false;
+
+            } else {
+
+                // let maxY = sections[sections.length - 1].offsetTop;
+                //
+                // if (pageYOffset > maxY - 10) {
+                // } else {
+
+
+                if (delay) {
+                    e.preventDefault();
+                    return;
+                }
+
+                delay = true;
+
+                setTimeout(function () {
+                        delay = false;
+                    },
+                    700);
+
+
+                scrollDown()
+
+                // Easy animation
+
+                easeScroll()
             }
-
-
-            scrollDown()
-
-            // Easy animation
-
-            easeScroll()
-
         }
     }
+    // }
 }
 
 

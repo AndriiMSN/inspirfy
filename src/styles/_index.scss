@@ -5,7 +5,7 @@ html
   -ms-overflow-style: none; /* Disable scrollbar IE 10+ */
 
   height: fit-content;
-  overflow: hidden;
+  overflow-x: hidden;
   @media (max-width: 1366px)
   {
     overflow: scroll;
@@ -51,7 +51,7 @@ html
     position: relative;
     background-color: #1a1a1a;
     width: 100%;
-    overflow: hidden;
+    //overflow: hidden;
     // height: auto !important;
   }
 }
