@@ -278,16 +278,20 @@
       &__number
       {
 
+        min-width: 162px;
+
         // 992px
         @media (max-width: $screen-md-min)
         {
           transform: translate(0px, -15px);
+          min-width: 116px;
         }
 
         // 768px
         @media (max-width: $screen-sm-min)
         {
           transform: translateY(-10px);
+          min-width: 72px;
         }
 
         & svg
@@ -296,6 +300,7 @@
           width: 100%;
           //max-width: 200px;
           height: auto;
+          margin-left: auto;
 
           // 1560px
           @media (max-width: $screen-xl-min)

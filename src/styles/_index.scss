@@ -11,6 +11,11 @@ html
     overflow: scroll;
   }
 
+  &.unlock
+  {
+    overflow: scroll;
+  }
+
   &.lock
   {
     height: 100vh;
