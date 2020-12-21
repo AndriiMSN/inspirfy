@@ -185,7 +185,6 @@ function onWheel(e) {
     ) {
         return false;
     }
-    console.log('wheel');
     if (document.documentElement.clientWidth >= 1366) {
 
 
@@ -415,7 +414,7 @@ window.addEventListener(
             // }
         }
     },
-    {}
+    {passive: false}
 );
 
 function touchToSection(e, directionY, directionX) {
@@ -487,11 +486,25 @@ window.addEventListener('scroll',
 
 window.addEventListener('scroll', (e) => {
     if (document.documentElement.clientWidth < 1366) {
+        let clientHeight = document.documentElement.clientHeight
         for (let i = 0; i < sections.length; i++) {
-
+            if (
+                sections[i + 1]
+                &&
+                (pageYOffset > (sections[i].offsetTop + (sections[i].clientHeight)) - 10)
+                &&
+                (pageYOffset < (sections[i + 1].offsetTop + sections[i + 1].clientHeight))
+            ) {
+                console.log(i);
+                counter = i
+                sections[counter].classList.add('animate')
+                return counter
+            }
         }
     }
 })
+
+window.addEventListener()
 
 const ArrowBtnScroll = document.querySelector('.arrow__up');
 
