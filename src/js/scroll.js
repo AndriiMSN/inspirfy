@@ -114,7 +114,7 @@ function easeScroll() {
                     scrollTop: sections[counter - 1].offsetTop + sections[counter].offsetTop,
                     behavior: "smooth",
                 },
-                800, (() => {
+                10, (() => {
                     setTimeout(() => {
                         // window.removeEventListener('wheel', returnFalse)
                         // window.addEventListener('wheel', onWheel, {passive: false})
@@ -181,7 +181,7 @@ function onWheel(e) {
     }
     console.log('wheel');
     if (document.documentElement.clientWidth >= 1366) {
-        e.preventDefault()
+
 
         let directionY = e.deltaY;
 
