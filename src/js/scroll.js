@@ -492,6 +492,16 @@ window.addEventListener('scroll',
 window.addEventListener('scroll', (e) => {
     if (document.documentElement.clientWidth < 1366) {
 
+        if (
+            pageYOffset > sections[sections.length - 2].offsetTop
+        ) {
+
+            counter = sections.length - 1;
+            sections[counter].classList.add('animate')
+            sections[counter].classList.add('active')
+            return counter
+        }
+
         for (let i = 0; i < sections.length; i++) {
             if (
                 sections[i + 1]
@@ -503,6 +513,8 @@ window.addEventListener('scroll', (e) => {
                 console.log(i + 1);
                 counter = i + 1
                 sections[counter].classList.add('animate')
+                sections[counter].classList.add('active')
+
                 return counter
             }
         }
