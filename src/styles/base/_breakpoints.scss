@@ -1,3 +1,9 @@
+$scrollBreakPoint:1366px;
+@media (max-width: $scrollBreakPoint)
+{
+  // scroll per block breakpoint
+}
+
 // Smartphones (landscape view)
 
 $screen-exsm-min: 375px;

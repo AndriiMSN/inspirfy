@@ -69,11 +69,19 @@
       &__items
       {
         animation: ScrollingAnimation 1.2s .5s linear, ScrollingAnimationInit .5s;
+        @media (max-width: $scrollBreakPoint)
+        {
+          animation: none;
+        }
       }
 
       .start-earning
       {
         animation: ScrollingAnimation 1.2s .5s linear, ScrollingAnimationInit .5s;
+        @media (max-width: $scrollBreakPoint)
+        {
+          animation: none;
+        }
       }
     }
   }
@@ -118,7 +126,6 @@
     @media (max-width: $screen-sm-min)
     {
     }
-
 
 
     &__items

@@ -314,8 +314,11 @@ window.addEventListener('touchmove', (e) => {
         } else {
             let maxY = sections[sections.length - 1].offsetTop;
             let directionY = e.changedTouches[0].clientY - currentY;
+            let directionX = e.changedTouches[0].clientX - currentX;
+            console.log(directionX);
+            if ((directionX > 50 || directionX < -50) && (directionY < 50 && directionY > -50)) {
 
-            if (pageYOffset > maxY - 10) {
+            } else if (pageYOffset > maxY - 10) {
                 if (directionY > 0) {
                     e.preventDefault()
                     e.stopPropagation()
@@ -323,14 +326,16 @@ window.addEventListener('touchmove', (e) => {
                 }
             } else {
 
+
                 e.preventDefault()
                 e.stopPropagation()
                 return false
+
             }
         }
     }
 
-}, document.documentElement.clientWidth >= 1366 ? {passive: false} : {passive: true})
+}, {passive: false})
 
 
 window.addEventListener('touchstart', (e) => {
@@ -363,7 +368,7 @@ window.addEventListener(
         if (document.documentElement.clientWidth >= 1366 && (directionY !== 0 && directionX !== 0)) {
 
 
-            console.log(directionX, directionY);
+            // console.log(directionX, directionY);
 
             // console.log(directionX, directionY);
 
@@ -486,17 +491,17 @@ window.addEventListener('scroll',
 
 window.addEventListener('scroll', (e) => {
     if (document.documentElement.clientWidth < 1366) {
-        let clientHeight = document.documentElement.clientHeight
+
         for (let i = 0; i < sections.length; i++) {
             if (
                 sections[i + 1]
                 &&
-                (pageYOffset > (sections[i].offsetTop + (sections[i].clientHeight)) - 10)
+                (pageYOffset > (sections[i].offsetTop + (sections[i].clientHeight / 2)) - 10)
                 &&
-                (pageYOffset < (sections[i + 1].offsetTop + sections[i + 1].clientHeight))
+                (pageYOffset < (sections[i + 1].offsetTop + (sections[i + 1].clientHeight) / 2))
             ) {
-                console.log(i);
-                counter = i
+                console.log(i + 1);
+                counter = i + 1
                 sections[counter].classList.add('animate')
                 return counter
             }
@@ -504,7 +509,17 @@ window.addEventListener('scroll', (e) => {
     }
 })
 
-window.addEventListener()
+window.addEventListener('resize', () => {
+    console.log(counter);
+    sections[counter].classList.add("active");
+    window.scrollTo(
+        0,
+        sections[counter].offsetTop -
+        (document.documentElement.clientHeight -
+            sections[counter].clientHeight) /
+        2
+    );
+})
 
 const ArrowBtnScroll = document.querySelector('.arrow__up');
 
