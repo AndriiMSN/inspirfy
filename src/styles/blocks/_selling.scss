@@ -1,20 +1,26 @@
 @import "../base/mixins";
 
-.selling {
+.selling
+{
 
-  &__toggle {
+  &__toggle
+  {
 
-    h1 {
-      svg {
+    h1
+    {
+      svg
+      {
         //max-width: 252px;
         margin-left: 15px;
         // 1560px
-        @media (max-width: $screen-xl-min) {
+        @media (max-width: $screen-xl-min)
+        {
           //max-width: 210px;
           //transform: translateY(-1.5px);
         }
         // 520px
-        @media (max-width: $screen-mdsm-min) {
+        @media (max-width: $screen-mdsm-min)
+        {
           //max-width: 100px;
           margin-left: 8px;
         }
@@ -22,69 +28,123 @@
     }
   }
 
-  &__slider {
-    &__img {
-      &__images__toggle-1 {
+  &__slider
+  {
+    &__img
+    {
+      &__images__toggle-1
+      {
         position: absolute;
         width: 100%;
         height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: baseline;
 
-        &.row {
+        &.row
+        {
           display: block;
         }
 
-        & img {
+        //& img
+        //{
+        //  position: relative;
+        //  width: auto;
+        //  height: auto;
+        //  z-index: 20;
+        //  margin-bottom: 17px;
+        //  max-width: 155%;
+        //  // 1919px
+        //  @media (max-width: $screen-xxl-min)
+        //  {
+        //    max-width: 135%;
+        //  }
+        //}
+
+        & div
+        {
           position: relative;
-          width: auto;
-          height: auto;
           z-index: 20;
           margin-bottom: 17px;
-          max-width: 155%;
-          // 1919px
-          @media (max-width: $screen-xxl-min) {
-            max-width: 135%;
+
+          &.animate
+          {
+            animation: toggleImage 1s ease-out;
+
+            @keyframes toggleImage
+            {
+              from
+              {
+                width: 0%;
+              }
+              to
+              {
+                width: 152%;
+              }
+            }
           }
+
         }
 
-        &__selling-1 {
-          transform: translateX(10px);
-          animation: opacityImg 0.5s ease-in;
+        &__selling-1
+        {
+
+          width: 945px;
+          height: 323px;
+
+          transform: translateX(-16%);
+
+          background: url("../assets/img/selling-toggle-1.png") no-repeat center;
+          background-size: cover;
+
+
+          canvas
+          {
+            width: 100% !important;
+            height: 100% !important;
+          }
+
           // 1919px
-          @media (max-width: $screen-xxl-min) {
-            transform: translateX(40px);
+          @media (max-width: $screen-xxl-min)
+          {
+
           }
           // 1560px
-          @media (max-width: $screen-xl-min) {
-            max-width: 656px;
+          @media (max-width: $screen-xl-min)
+          {
+
           }
         }
 
-        &__selling-2 {
+        &__selling-2
+        {
           transform: translateX(-40px);
           // 1919px
-          @media (max-width: $screen-xxl-min) {
+          @media (max-width: $screen-xxl-min)
+          {
             transform: translateX(0px);
           }
           // 1560px
-          @media (max-width: $screen-xl-min) {
+          @media (max-width: $screen-xl-min)
+          {
             max-width: 656px;
             transform: translateX(-10px);
           }
         }
 
-        &__selling-3 {
+        &__selling-3
+        {
           max-width: 900px;
           // 1560px
-          @media (max-width: $screen-xl-min) {
+          @media (max-width: $screen-xl-min)
+          {
             max-width: 656px;
           }
         }
 
-        &__selling-4 {
+        &__selling-4
+        {
           position: absolute !important;
           top: 0;
           transform: translateY(15%);
@@ -92,18 +152,21 @@
           max-width: 391px;
           width: 100%;
           // 1919px
-          @media (max-width: $screen-xxl-min) {
+          @media (max-width: $screen-xxl-min)
+          {
             max-width: 61.3% !important;
             left: -40px;
           }
           // 1560px
-          @media (max-width: $screen-xl-min) {
+          @media (max-width: $screen-xl-min)
+          {
             max-width: 260px;
             left: -45px;
           }
         }
 
-        &__selling-5 {
+        &__selling-5
+        {
           position: absolute !important;
           top: 25%;
           transform: translateY(-15%);
@@ -111,12 +174,14 @@
           max-width: 381px;
           width: 100%;
           // 1919px
-          @media (max-width: $screen-xxl-min) {
+          @media (max-width: $screen-xxl-min)
+          {
             max-width: 61.3% !important;
             right: -85px;
           }
           // 1560px
-          @media (max-width: $screen-xl-min) {
+          @media (max-width: $screen-xl-min)
+          {
             right: -80px;
             max-width: 260px;
           }
@@ -126,13 +191,18 @@
   }
 }
 
-.mob-selling {
-  &__slider {
-    &__img {
-      img {
+.mob-selling
+{
+  &__slider
+  {
+    &__img
+    {
+      img
+      {
       }
 
-      &__images__toggle-1 {
+      &__images__toggle-1
+      {
         position: absolute;
         width: 100%;
         height: 100%;
@@ -141,16 +211,19 @@
         justify-content: center;
         align-items: center;
 
-        img {
+        img
+        {
           width: auto !important;
           height: auto !important;
         }
 
-        &.row {
+        &.row
+        {
           display: block;
         }
 
-        & img {
+        & img
+        {
           position: relative;
           width: auto;
           height: auto;
@@ -158,12 +231,14 @@
           margin-bottom: 17px;
         }
 
-        &__selling-1 {
+        &__selling-1
+        {
           width: 100%;
           max-width: 750px;
           max-height: 250px;
           // 768px
-          @media (max-width: $screen-sm-min) {
+          @media (max-width: $screen-sm-min)
+          {
             animation: opacityImg 0.5s ease-in;
             width: auto;
             max-height: 167px;
@@ -172,13 +247,15 @@
           }
         }
 
-        &__selling-2 {
+        &__selling-2
+        {
           max-width: 750px;
           transform: translateX(30px);
           width: 100%;
           max-height: 250px;
           // 768px
-          @media (max-width: $screen-sm-min) {
+          @media (max-width: $screen-sm-min)
+          {
             animation: opacityImg 0.5s ease-in;
             width: auto;
             max-height: 167px;
@@ -187,23 +264,27 @@
           }
         }
 
-        &__selling-3 {
+        &__selling-3
+        {
           max-width: 732px;
           margin-bottom: 0;
 
           // 768px
-          @media (max-width: $screen-sm-min) {
+          @media (max-width: $screen-sm-min)
+          {
             max-width: 450px;
             transform: translateX(0);
           }
           // 375px
-          @media (max-width: $screen-exsm-min) {
+          @media (max-width: $screen-exsm-min)
+          {
             max-width: 344px;
             transform: translateX(50px);
           }
         }
 
-        &__selling-4 {
+        &__selling-4
+        {
           position: absolute !important;
           top: 0;
           transform: translateY(15%);
@@ -212,7 +293,8 @@
           max-width: 250px;
           left: -40px;
           // 768px
-          @media (max-width: $screen-sm-min) {
+          @media (max-width: $screen-sm-min)
+          {
             position: absolute !important;
             top: 0;
             transform: translateY(15%);
@@ -223,7 +305,8 @@
           }
         }
 
-        &__selling-5 {
+        &__selling-5
+        {
           position: absolute !important;
           top: 25%;
           transform: translateY(-15%);
@@ -232,7 +315,8 @@
           right: -30px;
           max-width: 250px;
           // 768px
-          @media (max-width: $screen-sm-min) {
+          @media (max-width: $screen-sm-min)
+          {
             position: absolute !important;
             top: 25%;
             transform: translateY(-15%);

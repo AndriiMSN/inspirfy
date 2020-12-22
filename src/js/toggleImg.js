@@ -225,15 +225,28 @@ function ChangeImages(element, Imgs, SliderImg, classNameImgs) {
         .fill()
         .map(
             (_, i) => `
-      <img
-      class="${element.getAttribute(`data-img-class-${i + 1}`)}"
-      src="${element.getAttribute(`data-img-link-${i + 1}`)}"
-      alt=""
-    />
+<div style="width: 940px;height: 325px">
+        <div  class="${element.getAttribute(`data-img-class-${i + 1}`)} toggle-div"
+               style="background:url('${element.getAttribute(`data-img-link-${i + 1}`)}')">
+         </div>
+     </div>
       `
         );
+
+
     if (element.classList.contains("active")) {
         Imgs.innerHTML = images.join("\n");
+        let arrayClasses = document.querySelectorAll('.toggle-div')
+        arrayClasses.forEach((el) => {
+                // el.classList.add('animate')
+
+                $('.selling__slider__img__images__toggle-1__selling-1').ripples({
+                    resolution: 1028,
+                    dropRadius: 1, //px
+                    perturbance: 0.04,
+                });
+            }
+        )
     } else {
         Imgs.innerHTML = "";
     }
