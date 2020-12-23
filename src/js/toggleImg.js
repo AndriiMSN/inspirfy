@@ -237,29 +237,24 @@ function ChangeImages(element, Imgs, SliderImg, classNameImgs) {
     if (element.classList.contains("active")) {
         Imgs.innerHTML = images.join("\n");
 
+        let arrayWidths = []
+
         let arrayParents = document.querySelectorAll('.toggle-parent')
         arrayParents.forEach((el) => {
+            arrayWidths.push(el.clientWidth)
             el.classList.add('animate')
         })
 
         let arrayClasses = document.querySelectorAll('.toggle-div')
-        arrayClasses.forEach((el) => {
-                // el.classList.add('animate')
-
-
-                // elem.ripples({
-                //     resolution: 1028,
-                //     dropRadius: 1, //px
-                //     perturbance: 0.04,
-                // });
+        arrayClasses.forEach((el,i) => {
 
                 let $elemToRipple = $(`.${el.className.split(' ')[0]}`)
 
                 $elemToRipple.ripples({
                     resolution: 40,
-
                     perturbance: 0.15,
-                    interactive: false
+                    interactive: false,
+                    width:arrayWidths[i]
                 });
 
 
@@ -267,22 +262,22 @@ function ChangeImages(element, Imgs, SliderImg, classNameImgs) {
                 // let y = 0 * $elemToRipple.outerHeight();
                 let y = 0
                 let x = 0
-                let dropRadius = 150;
+                let dropRadius = 100;
                 let strength = 0.15;
 
                 $elemToRipple.ripples('drop', x, y, dropRadius, strength);
                 setTimeout(() => {
                     $elemToRipple.ripples('set', 'perturbance', 0.1)
-                }, 300)
+                }, 400)
                 setTimeout(() => {
-                    $elemToRipple.ripples('set', 'perturbance', 0.07)
+                    $elemToRipple.ripples('set', 'perturbance', 0.05)
                 }, 600)
                 setTimeout(() => {
-                    $elemToRipple.ripples('set', 'perturbance', 0.03)
-                }, 800)
+                    $elemToRipple.ripples('set', 'perturbance', 0.025)
+                }, 1000)
                 setTimeout(() => {
                     $elemToRipple.ripples('set', 'perturbance', 0)
-                }, 1000)
+                }, 1200)
                 // setTimeout(() => {
                 //     $elemToRipple.ripples('set', 'perturbance', 0)
                 // }, 1300)

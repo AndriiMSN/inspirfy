@@ -242,9 +242,10 @@ var Ripples = function (el, options) {
 	this.crossOrigin = options.crossOrigin;
 	this.imageUrl = options.imageUrl;
 
+	this.width = options.width
 	// Init WebGL canvas
 	var canvas = document.createElement('canvas');
-	canvas.width = document.querySelector('.selling__slider__img__images__toggle-1').clientWidth * 1.52;
+	canvas.width = this.width;
 	canvas.height = this.$el.innerHeight();
 	this.canvas = canvas;
 	this.$canvas = $(canvas);
