@@ -34,6 +34,7 @@ function InitSections() {
         ShowHideSections()
 
     }, 3000);
+
     // }
     // else {
     //   console.log("object");

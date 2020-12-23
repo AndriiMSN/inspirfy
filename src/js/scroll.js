@@ -1,4 +1,7 @@
-let delay = false;
+let delay = true;
+setTimeout(() => {
+    delay = false
+}, 3500)
 
 let wheelDelay = 1600
 
@@ -195,7 +198,7 @@ function onWheel(e) {
 
         let maxY = sections[sections.length - 1].offsetTop;
 
-        if (pageYOffset > maxY - 10) {
+        if (pageYOffset > maxY - 10 && maxY > 500) {
             if (directionY < 0 && directionX === 0) {
 
                 e.preventDefault();

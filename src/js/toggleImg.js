@@ -240,11 +240,15 @@ function ChangeImages(element, Imgs, SliderImg, classNameImgs) {
         arrayClasses.forEach((el) => {
                 // el.classList.add('animate')
 
-                $('.selling__slider__img__images__toggle-1__selling-1').ripples({
+                elem = $('.selling__slider__img__images__toggle-1__selling-1')
+
+                elem.ripples({
                     resolution: 1028,
                     dropRadius: 1, //px
                     perturbance: 0.04,
                 });
+
+
             }
         )
     } else {
