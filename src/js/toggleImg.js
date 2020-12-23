@@ -263,24 +263,29 @@ function ChangeImages(element, Imgs, SliderImg, classNameImgs) {
                 });
 
 
-                var x = 0.25 * $elemToRipple.outerWidth();
-                var y = 0.25 * $elemToRipple.outerHeight();
-                var dropRadius = 200;
-                var strength = 0.05;
+                // let x = 0 * $elemToRipple.outerWidth();
+                // let y = 0 * $elemToRipple.outerHeight();
+                let y = 0
+                let x = 0
+                let dropRadius = 150;
+                let strength = 0.15;
 
                 $elemToRipple.ripples('drop', x, y, dropRadius, strength);
                 setTimeout(() => {
                     $elemToRipple.ripples('set', 'perturbance', 0.1)
-                }, 340)
+                }, 300)
                 setTimeout(() => {
-                    $elemToRipple.ripples('set', 'perturbance', 0.05)
-                }, 640)
+                    $elemToRipple.ripples('set', 'perturbance', 0.07)
+                }, 600)
                 setTimeout(() => {
-                    $elemToRipple.ripples('set', 'perturbance', 0.01)
-                }, 840)
+                    $elemToRipple.ripples('set', 'perturbance', 0.03)
+                }, 800)
                 setTimeout(() => {
                     $elemToRipple.ripples('set', 'perturbance', 0)
-                }, 1240)
+                }, 1000)
+                // setTimeout(() => {
+                //     $elemToRipple.ripples('set', 'perturbance', 0)
+                // }, 1300)
 
             }
         )
