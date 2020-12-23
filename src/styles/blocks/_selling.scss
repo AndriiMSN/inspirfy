@@ -40,7 +40,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: baseline;
+        align-items: center;
 
         &.row
         {
@@ -75,27 +75,16 @@
           width: 152%;
           height: 31%;
 
-          transform: translateX(-16%);
+          max-width: 940px;
+          max-height: 353px;
+
+          transform: translateX(-20px);
 
           &.animate
           {
-            animation: leftToRight .8s;
+            animation: leftToRightHorizontalSelling-1 .8s;
 
-            @keyframes leftToRight
-            {
-              from
-              {
-                overflow: hidden;
-                height: 31%;
-                width: 0px;
-              }
-              to
-              {
-                overflow: hidden;
-                width: 152%;
-                height: 31%;
-              }
-            }
+
           }
         }
 
@@ -116,41 +105,73 @@
             height: 100% !important;
           }
 
-          // 1919px
-          @media (max-width: $screen-xxl-min)
-          {
+        }
 
-          }
-          // 1560px
-          @media (max-width: $screen-xl-min)
-          {
+        &__selling-2-parent
+        {
+          width: 152%;
+          height: 31%;
 
+          max-width: 940px;
+          max-height: 353px;
+
+          transform: translateX(-60px);
+
+          &.animate
+          {
+            animation: leftToRightHorizontalSelling-1 .8s;
           }
         }
 
         &__selling-2
         {
-          transform: translateX(-40px);
-          // 1919px
-          @media (max-width: $screen-xxl-min)
+          width: 100%;
+          height: 100%;
+
+
+          background: url("../assets/img/selling-toggle-2.png") !important;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+
+
+          canvas
           {
-            transform: translateX(0px);
+            width: 100% !important;
+            height: 100% !important;
           }
-          // 1560px
-          @media (max-width: $screen-xl-min)
+        }
+
+        &__selling-3-parent
+        {
+          width: 143%;
+          height: 61%;
+
+          max-width: 900px;
+          max-height: 654px;
+
+          &.animate
           {
-            max-width: 656px;
-            transform: translateX(-10px);
+            animation: leftToRightHorizontalSelling-2 .8s;
           }
         }
 
         &__selling-3
         {
-          max-width: 900px;
-          // 1560px
-          @media (max-width: $screen-xl-min)
+          width: 100%;
+          height: 100%;
+
+
+          background: url("../assets/img/selling-toggle-3.png") !important;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover !important;
+
+
+          canvas
           {
-            max-width: 656px;
+            width: 100% !important;
+            height: 100% !important;
           }
         }
 
@@ -339,5 +360,37 @@
         }
       }
     }
+  }
+}
+
+@keyframes leftToRightHorizontalSelling-1
+{
+  from
+  {
+    overflow: hidden;
+    height: 31%;
+    width: 0;
+  }
+  to
+  {
+    overflow: hidden;
+    width: 152%;
+    height: 31%;
+  }
+}
+
+@keyframes leftToRightHorizontalSelling-2
+{
+  from
+  {
+    overflow: hidden;
+    height: 61%;
+    width: 0;
+  }
+  to
+  {
+    overflow: hidden;
+    width: 143%;
+    height: 61%;
   }
 }

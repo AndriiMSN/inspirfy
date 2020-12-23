@@ -258,12 +258,12 @@ function ChangeImages(element, Imgs, SliderImg, classNameImgs) {
                 });
 
 
-                // let x = 0 * $elemToRipple.outerWidth();
-                // let y = 0 * $elemToRipple.outerHeight();
-                let y = 0
-                let x = 0
-                let dropRadius = 100;
-                let strength = 0.15;
+                let x = 0.5 * $elemToRipple.outerWidth();
+                let y =  0.5 * $elemToRipple.outerHeight();
+                // let y = 0
+                // let x = 0
+                let dropRadius = 120;
+                let strength = 0.1;
 
                 $elemToRipple.ripples('drop', x, y, dropRadius, strength);
                 setTimeout(() => {
