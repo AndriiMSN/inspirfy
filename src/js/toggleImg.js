@@ -76,19 +76,13 @@ const sellingBtnRight = document.querySelector(
 sellingTitles.forEach((el, i) => {
     // Change styles slider for el #3
     el.addEventListener("click", () => {
-        if (i === 2) {
-            sellingImages.classList.add("row");
-        } else {
-            sellingImages.classList.remove("row");
-        }
+        // if (i === 2) {
+        //     // sellingImages.classList.add("row");
+        // } else {
+        //     sellingImages.classList.remove("row");
+        // }
     });
-    // el.addEventListener("touchstart", () => {
-    //     if (i === 2) {
-    //         sellingImages.classList.add("row");
-    //     } else {
-    //         sellingImages.classList.remove("row");
-    //     }
-    // });
+
     ToggleImages(
         el,
         sellingTitles,
@@ -107,27 +101,13 @@ sellingBtnRight.addEventListener("click", () => {
         sellingClassNameImages
     );
     // Change styles for el #3
-    if (sellingTitles[2].classList.contains("active")) {
-        sellingImages.classList.add("row");
-    } else {
-        sellingImages.classList.remove("row");
-    }
+    // if (sellingTitles[2].classList.contains("active")) {
+    //     // sellingImages.classList.add("row");
+    // } else {
+    //     // sellingImages.classList.remove("row");
+    // }
 });
 
-// sellingBtnRight.addEventListener("touchstart", () => {
-//     RightBtn(
-//         sellingTitles,
-//         sellingImages,
-//         sellingSliderImg,
-//         sellingClassNameImages
-//     );
-//     // Change styles for el #3
-//     if (sellingTitles[2].classList.contains("active")) {
-//         sellingImages.classList.add("row");
-//     } else {
-//         sellingImages.classList.remove("row");
-//     }
-// });
 
 sellingBtnLeft.addEventListener("click", () => {
     LeftBtn(
@@ -137,27 +117,13 @@ sellingBtnLeft.addEventListener("click", () => {
         sellingClassNameImages
     );
     // Change styles for el #3
-    if (sellingTitles[2].classList.contains("active")) {
-        sellingImages.classList.add("row");
-    } else {
-        sellingImages.classList.remove("row");
-    }
+    // if (sellingTitles[2].classList.contains("active")) {
+    //     sellingImages.classList.add("row");
+    // } else {
+    //     sellingImages.classList.remove("row");
+    // }
 });
 
-// sellingBtnLeft.addEventListener("touchstart", () => {
-//     LeftBtn(
-//         sellingTitles,
-//         sellingImages,
-//         sellingSliderImg,
-//         sellingClassNameImages
-//     );
-//     // Change styles for el #3
-//     if (sellingTitles[2].classList.contains("active")) {
-//         sellingImages.classList.add("row");
-//     } else {
-//         sellingImages.classList.remove("row");
-//     }
-// });
 
 // Tools block
 
@@ -206,7 +172,7 @@ toolsBtnLeft.addEventListener("click", () => {
 //     LeftBtn(toolsTitles, toolsImages, toolsSliderImg, toolsClassNameImages);
 // });
 
-// FUNCTIONS
+// FUNCTIONS --------------------------------------------------------------------------------------------------------
 
 function ChangeImages(element, Imgs, SliderImg, classNameImgs) {
     // inner images
@@ -246,7 +212,12 @@ function ChangeImages(element, Imgs, SliderImg, classNameImgs) {
         })
 
         let arrayClasses = document.querySelectorAll('.toggle-div')
-        arrayClasses.forEach((el,i) => {
+        arrayClasses.forEach((el, i) => {
+
+                el.style.width = `${arrayWidths[i]}px`
+                window.addEventListener('resize', () => {
+                    el.classList.add('widthAuto')
+                })
 
                 let $elemToRipple = $(`.${el.className.split(' ')[0]}`)
 
@@ -254,15 +225,15 @@ function ChangeImages(element, Imgs, SliderImg, classNameImgs) {
                     resolution: 40,
                     perturbance: 0.15,
                     interactive: false,
-                    width:arrayWidths[i]
+
                 });
 
 
-                let x = 0.5 * $elemToRipple.outerWidth();
-                let y =  0.5 * $elemToRipple.outerHeight();
+                let x = 0.15 * $elemToRipple.outerWidth();
+                let y = 0.5 * $elemToRipple.outerHeight();
                 // let y = 0
                 // let x = 0
-                let dropRadius = 120;
+                let dropRadius = 160;
                 let strength = 0.1;
 
                 $elemToRipple.ripples('drop', x, y, dropRadius, strength);
@@ -306,21 +277,7 @@ function ToggleImages(el, titles, Imgs, SliderImg, classNameImgs) {
         ChangeImages(el, Imgs, SliderImg, classNameImgs);
     });
 
-    // el.addEventListener("touchstart", () => {
-    //     // remove active foreach
-    //
-    //     // ads active for current
-    //     if (el.classList.contains("active")) {
-    //         el.classList.remove("active");
-    //     } else {
-    //         titles.forEach((el) => {
-    //             el.classList.remove("active");
-    //         });
-    //         el.classList.add("active");
-    //     }
-    //
-    //     ChangeImages(el, Imgs, SliderImg, classNameImgs);
-    // });
+
 }
 
 function RightBtn(titles, Imgs, SliderImg, classNameImgs) {
@@ -455,74 +412,7 @@ TargetMobBtnsRight.forEach((el) => {
         );
     });
 });
-//
-// TargetMobBtnsLeft.forEach((el) => {
-//     el.addEventListener("touchstart", () => {
-//         let currentSlide = -1;
-//         let nextSlide;
-//         TargetTitles.forEach((el, i) => {
-//             if (el.classList.contains("active")) {
-//                 currentSlide = i;
-//                 return currentSlide;
-//             }
-//         });
-//         TargetTitles.forEach((el) => {
-//             el.classList.remove("active");
-//         });
-//         let getPrevtSlide = () => {
-//             if (currentSlide - 1 <= -1) {
-//                 nextSlide = TargetTitles.length - 1;
-//                 return nextSlide;
-//             } else {
-//                 nextSlide = currentSlide - 1;
-//                 return nextSlide;
-//             }
-//         };
-//         getPrevtSlide();
-//         TargetTitles[nextSlide].classList.add("active");
-//         $("html,body").animate(
-//             {
-//                 scrollTop: TargetTitles[nextSlide].offsetTop - 40,
-//                 behavior: "smooth",
-//             },
-//             800
-//         );
-//     });
-// });
 
-// TargetMobBtnsRight.forEach((el) => {
-//     el.addEventListener("touchstart", () => {
-//         let currentSlide = -1;
-//         let nextSlide;
-//         TargetTitles.forEach((el, i) => {
-//             if (el.classList.contains("active")) {
-//                 currentSlide = i;
-//                 return currentSlide;
-//             }
-//         });
-//         TargetTitles.forEach((el) => {
-//             el.classList.remove("active");
-//         });
-//         let getNextSlide = () => {
-//             if (currentSlide + 1 >= TargetTitles.length) {
-//                 nextSlide = 0;
-//                 return nextSlide;
-//             } else {
-//                 nextSlide = currentSlide + 1;
-//                 return nextSlide;
-//             }
-//         };
-//         getNextSlide();
-//         TargetTitles[nextSlide].classList.add("active");
-//         $("html,body").animate(
-//             {
-//                 scrollTop: TargetTitles[nextSlide].offsetTop - 40,
-//                 behavior: "smooth",
-//             },
-//             800
-//         );
-//     });
-// });
 
 // Selling
 
@@ -602,73 +492,6 @@ SellingMobBtnsRight.forEach((el) => {
     });
 });
 
-// SellingMobBtnsLeft.forEach((el) => {
-//     el.addEventListener("touchstart", () => {
-//         let currentSlide = -1;
-//         let nextSlide;
-//         sellingTitles.forEach((el, i) => {
-//             if (el.classList.contains("active")) {
-//                 currentSlide = i;
-//                 return currentSlide;
-//             }
-//         });
-//         sellingTitles.forEach((el) => {
-//             el.classList.remove("active");
-//         });
-//         let getPrevtSlide = () => {
-//             if (currentSlide - 1 <= -1) {
-//                 nextSlide = sellingTitles.length - 1;
-//                 return nextSlide;
-//             } else {
-//                 nextSlide = currentSlide - 1;
-//                 return nextSlide;
-//             }
-//         };
-//         getPrevtSlide();
-//         sellingTitles[nextSlide].classList.add("active");
-//         $("html,body").animate(
-//             {
-//                 scrollTop: sellingTitles[nextSlide].offsetTop - 40,
-//                 behavior: "smooth",
-//             },
-//             800
-//         );
-//     });
-// });
-
-// SellingMobBtnsRight.forEach((el) => {
-//     el.addEventListener("touchstart", () => {
-//         let currentSlide = -1;
-//         let nextSlide;
-//         sellingTitles.forEach((el, i) => {
-//             if (el.classList.contains("active")) {
-//                 currentSlide = i;
-//                 return currentSlide;
-//             }
-//         });
-//         sellingTitles.forEach((el) => {
-//             el.classList.remove("active");
-//         });
-//         let getNextSlide = () => {
-//             if (currentSlide + 1 >= sellingTitles.length) {
-//                 nextSlide = 0;
-//                 return nextSlide;
-//             } else {
-//                 nextSlide = currentSlide + 1;
-//                 return nextSlide;
-//             }
-//         };
-//         getNextSlide();
-//         sellingTitles[nextSlide].classList.add("active");
-//         $("html,body").animate(
-//             {
-//                 scrollTop: sellingTitles[nextSlide].offsetTop - 40,
-//                 behavior: "smooth",
-//             },
-//             800
-//         );
-//     });
-// });
 
 // Tools
 
@@ -754,76 +577,4 @@ toolsMobBtnsRight.forEach((el) => {
     });
 });
 
-// toolsMobBtnsLeft.forEach((el) => {
-//     el.addEventListener("touchstart", () => {
-//         let currentSlide = -1;
-//         let nextSlide;
-//         toolsTitles.forEach((el, i) => {
-//             if (el.classList.contains("active")) {
-//                 currentSlide = i;
-//                 return currentSlide;
-//             }
-//         });
-//         toolsTitles.forEach((el) => {
-//             el.classList.remove("active");
-//         });
-//         let getPrevSlide = () => {
-//             if (currentSlide - 1 <= -1) {
-//                 nextSlide = toolsTitles.length - 1;
-//                 return nextSlide;
-//             } else {
-//                 nextSlide = currentSlide - 1;
-//                 return nextSlide;
-//             }
-//         };
-//         getPrevSlide();
-//         toolsTitles[nextSlide].classList.add("active");
-//         $("html,body").animate(
-//             {
-//                 scrollTop:
-//                     document.querySelector(".tools").offsetTop +
-//                     toolsTitles[nextSlide].offsetTop -
-//                     40,
-//                 behavior: "smooth",
-//             },
-//             800
-//         );
-//     });
-// });
-//
-// toolsMobBtnsRight.forEach((el) => {
-//     el.addEventListener("touchstart", () => {
-//         let currentSlide = -1;
-//         let nextSlide;
-//         toolsTitles.forEach((el, i) => {
-//             if (el.classList.contains("active")) {
-//                 currentSlide = i;
-//                 return currentSlide;
-//             }
-//         });
-//         toolsTitles.forEach((el) => {
-//             el.classList.remove("active");
-//         });
-//         let getNextSlide = () => {
-//             if (currentSlide + 1 >= toolsTitles.length) {
-//                 nextSlide = 0;
-//                 return nextSlide;
-//             } else {
-//                 nextSlide = currentSlide + 1;
-//                 return nextSlide;
-//             }
-//         };
-//         getNextSlide();
-//         toolsTitles[nextSlide].classList.add("active");
-//         $("html,body").animate(
-//             {
-//                 scrollTop:
-//                     document.querySelector(".tools").offsetTop +
-//                     toolsTitles[nextSlide].offsetTop -
-//                     40,
-//                 behavior: "smooth",
-//             },
-//             800
-//         );
-//     });
-// });
+

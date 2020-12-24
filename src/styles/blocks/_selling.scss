@@ -47,20 +47,6 @@
           display: block;
         }
 
-        //& img
-        //{
-        //  position: relative;
-        //  width: auto;
-        //  height: auto;
-        //  z-index: 20;
-        //  margin-bottom: 17px;
-        //  max-width: 155%;
-        //  // 1919px
-        //  @media (max-width: $screen-xxl-min)
-        //  {
-        //    max-width: 135%;
-        //  }
-        //}
 
         & div
         {
@@ -132,7 +118,7 @@
           background: url("../assets/img/selling-toggle-2.png") !important;
           background-repeat: no-repeat;
           background-position: center;
-          background-size: cover;
+          background-size: cover !important;
 
 
           canvas
@@ -175,49 +161,39 @@
           }
         }
 
-        &__selling-4
+        &__selling-4-parent
         {
-          position: absolute !important;
-          top: 0;
-          transform: translateY(15%);
-          left: -66px;
-          max-width: 391px;
-          width: 100%;
-          // 1919px
-          @media (max-width: $screen-xxl-min)
+          width: 130%;
+          height: 75%;
+
+          max-width: 798px;
+          max-height: 776px;
+
+          &.animate
           {
-            max-width: 61.3% !important;
-            left: -40px;
-          }
-          // 1560px
-          @media (max-width: $screen-xl-min)
-          {
-            max-width: 260px;
-            left: -45px;
+            animation: leftToRightHorizontalSelling-3 .8s;
           }
         }
 
-        &__selling-5
+        &__selling-4
         {
-          position: absolute !important;
-          top: 25%;
-          transform: translateY(-15%);
-          right: -125px;
-          max-width: 381px;
           width: 100%;
-          // 1919px
-          @media (max-width: $screen-xxl-min)
+          height: 100%;
+
+
+          background: url("../assets/img/selling-toggle-4.png") !important;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover !important;
+
+
+          canvas
           {
-            max-width: 61.3% !important;
-            right: -85px;
-          }
-          // 1560px
-          @media (max-width: $screen-xl-min)
-          {
-            right: -80px;
-            max-width: 260px;
+            width: 100% !important;
+            height: 100% !important;
           }
         }
+
       }
     }
   }
@@ -392,5 +368,21 @@
     overflow: hidden;
     width: 143%;
     height: 61%;
+  }
+}
+
+@keyframes leftToRightHorizontalSelling-3
+{
+  from
+  {
+    overflow: hidden;
+    height: 75%;
+    width: 0;
+  }
+  to
+  {
+    overflow: hidden;
+    width: 130%;
+    height: 75%;
   }
 }
