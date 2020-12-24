@@ -524,16 +524,20 @@ window.addEventListener('scroll', (e) => {
     }
 })
 
+let oldWidth = document.documentElement.clientWidth
+let oldHeight = document.documentElement.clientHeight
+
 window.addEventListener('resize', () => {
-    console.log(counter);
-    sections[counter].classList.add("active");
-    window.scrollTo(
-        0,
-        sections[counter].offsetTop -
-        (document.documentElement.clientHeight -
-            sections[counter].clientHeight) /
-        2
-    );
+    if (document.documentElement.clientWidth !== oldWidth && document.documentElement.clientHeight !== oldHeight) {
+        console.log(counter);
+        sections[counter].classList.add("active");
+        window.scrollTo(
+            0,
+            sections[counter].offsetTop
+        );
+
+        return oldWidth = document.documentElement.clientWidth, oldHeight = document.documentElement.clientHeight
+    }
 })
 
 const ArrowBtnScroll = document.querySelector('.arrow__up');
