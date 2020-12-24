@@ -283,9 +283,7 @@
           height: 100%;
 
 
-          background: url("../assets/img/selling-toggle-2.png") !important;
-          background-repeat: no-repeat;
-          background-position: center;
+          background: url("../assets/img/selling-toggle-2.png") no-repeat left !important;
           background-size: cover !important;
 
 
@@ -316,7 +314,7 @@
           height: 100%;
 
 
-          background: url("../assets/img/selling-toggle-3.png") !important;
+          background: url("../assets/img/selling-toggle-3.png") no-repeat left !important;
           background-size: cover !important;
 
 
@@ -347,7 +345,7 @@
           height: 100%;
 
 
-          background: url("../assets/img/selling-toggle-4.png") !important;
+          background: url("../assets/img/selling-toggle-4.png") no-repeat left !important;
           background-size: cover !important;
 
 
@@ -378,23 +376,8 @@
   }
 }
 
-@keyframes leftToRightHorizontalSelling-2
-{
-  from
-  {
-    overflow: hidden;
-    height: 55%;
-    width: 0;
-  }
-  to
-  {
-    overflow: hidden;
-    width: 158%;
-    height: 55%;
-  }
-}
 
-@keyframes leftToRightHorizontalSelling-2-mob
+@keyframes leftToRightHorizontalSelling-2
 {
   from
   {
@@ -407,6 +390,22 @@
     overflow: hidden;
     width: 143%;
     height: 61%;
+  }
+}
+
+@keyframes leftToRightHorizontalSelling-2-mob
+{
+  from
+  {
+    overflow: hidden;
+    height: 55%;
+    width: 0;
+  }
+  to
+  {
+    overflow: hidden;
+    width: 158%;
+    height: 55%;
   }
 }
 
