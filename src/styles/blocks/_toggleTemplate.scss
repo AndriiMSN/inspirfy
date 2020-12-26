@@ -108,6 +108,7 @@
   &__block
   {
     max-width: 694px;
+    box-sizing: border-box;
     // 1560px
     @media (max-width: $screen-xl-min)
     {

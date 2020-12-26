@@ -242,9 +242,11 @@
         this.imageUrl = options.imageUrl;
 
         this.width = options.width
+
+        // this.width = options.width
         // Init WebGL canvas
         var canvas = document.createElement('canvas');
-        canvas.width = this.$el.innerWidth();
+        canvas.width = this.width
         canvas.height = this.$el.innerHeight();
         this.canvas = canvas;
         this.$canvas = $(canvas);

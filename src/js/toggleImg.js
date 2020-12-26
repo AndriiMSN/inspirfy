@@ -206,33 +206,43 @@ function ChangeImages(element, Imgs, SliderImg, classNameImgs) {
         Imgs.innerHTML = images.join("\n");
 
         let arrayWidths = []
+        setTimeout(() => {
 
-        let arrayParents = document.querySelectorAll(`.${currentBlock} .toggle-parent`)
-        arrayParents.forEach((el) => {
-            arrayWidths.push(el.clientWidth)
-            el.classList.add('animate')
-        })
+            let arrayParents = document.querySelectorAll(`.${currentBlock} .toggle-parent`)
 
-        let arrayClasses = document.querySelectorAll(`.${currentBlock} .toggle-div`)
-        arrayClasses.forEach((el, i) => {
+            arrayParents.forEach((el) => {
 
-                el.style.width = `${arrayWidths[i]}px`
-                window.addEventListener('resize', () => {
-                    el.classList.add('widthAuto')
-                })
+                console.log(el.clientWidth);
+                arrayWidths.push(el.clientWidth)
+                // el.classList.add('animate')
+            })
+        }, 0)
 
-                let $elemToRipple = $(`.${el.className.split(' ')[0]}`)
-
-                rippleElement($elemToRipple)
-
-            }
-        )
+        // let arrayClasses = document.querySelectorAll(`.${currentBlock} .toggle-div`)
+        // arrayClasses.forEach((el, i) => {
+        //
+        //         el.style.width = `${arrayWidths[i]}px`
+        //         window.addEventListener('resize', () => {
+        //             el.classList.add('widthAuto')
+        //         })
+        //
+        //         let $elemToRipple = $(`.${el.className.split(' ')[0]}`)
+        //
+        //         rippleElement($elemToRipple)
+        //
+        //     }
+        // )
     } else {
         Imgs.innerHTML = "";
     }
 }
 
 function ChangeImagesMob(element, Imgs, SliderImg, classNameImgs) {
+
+    // let currentBlock = element.className.split(' ')[0].split('__')[0]
+    // // console.log(currentBlock);
+    //
+    // let arrayMobToggleImages
 
     if (element.classList.contains('active')) {
         let countImages = (element.attributes.length - 2) / 2;
@@ -245,15 +255,16 @@ function ChangeImagesMob(element, Imgs, SliderImg, classNameImgs) {
             );
 
             arrayWidths.push(el.clientWidth)
-            console.log(arrayWidths);
-            // el.classList.add('animate')
+            el.classList.add('animate')
+            setTimeout(() => {
+                el.classList.remove('animate')
+            }, 1000)
         }
 
         for (let i = 1; i <= countImages; i++) {
             let elChild = document.querySelector(
                 `.mob-toggle__slider .${element.getAttribute(`data-img-class-${i}`)}-parent div`
             );
-            elChild.style.width = `${arrayWidths[i - 1]}px`
 
             window.addEventListener('resize', () => {
                 elChild.classList.add('widthAuto')
@@ -261,7 +272,7 @@ function ChangeImagesMob(element, Imgs, SliderImg, classNameImgs) {
 
             let $elemToRipple = $(`.${elChild.className.split(' ')[0]}`)
 
-            rippleElement($elemToRipple)
+            rippleElement($elemToRipple, arrayWidths[i - 1])
 
 
         }
@@ -289,7 +300,9 @@ function ToggleImages(el, titles, Imgs, SliderImg, classNameImgs) {
         if (document.documentElement.clientWidth > 1150) {
             ChangeImages(el, Imgs, SliderImg, classNameImgs);
         } else {
-            ChangeImagesMob(el)
+            if (el.classList.contains('active')) {
+                ChangeImagesMob(el)
+            }
         }
 
     });
@@ -350,12 +363,12 @@ function LeftBtn(titles, Imgs, SliderImg, classNameImgs) {
     ChangeImages(titles[nextSlide], Imgs, SliderImg, classNameImgs);
 }
 
-function rippleElement($elemToRipple) {
+function rippleElement($elemToRipple, width) {
     $elemToRipple.ripples({
         resolution: 40,
         perturbance: 0.15,
         interactive: false,
-
+        width: width
     });
 
 
@@ -378,7 +391,7 @@ function rippleElement($elemToRipple) {
     }, 1000)
     setTimeout(() => {
         $elemToRipple.ripples('set', 'perturbance', 0)
-
+        // $elemToRipple.ripples('destroy')
     }, 1200)
 }
 
