@@ -30,6 +30,19 @@
 
   &__slider
   {
+
+    &.active
+    {
+      position: relative;
+      z-index: 20;
+    }
+
+    &.disabled
+    {
+      position: absolute;
+      z-index: -20;
+    }
+
     &__img
     {
       &__images__toggle-1
@@ -41,6 +54,13 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        .toggle-div{
+
+          &.op-0{
+            opacity: 0;
+          }
+        }
 
         &.row
         {

@@ -66,11 +66,13 @@ const sellingBtnLeft = document.querySelector(
     ".selling__slider__img__elements__buttons .left"
 );
 
-const sellingBtnRight = document.querySelector(
+const sellingBtnRight = document.querySelectorAll(
     ".selling__slider__img__elements__buttons .right"
 );
 
 const sellingMobile = document.querySelectorAll('.mob-selling__slider')
+
+const sellingDesktop = document.querySelectorAll('.selling__slider')
 
 sellingTitles.forEach((el, i) => {
     // Change styles slider for el #3
@@ -85,30 +87,30 @@ sellingTitles.forEach((el, i) => {
     ToggleImages(
         el,
         sellingTitles,
-        sellingImages,
-        sellingSliderImg,
-        sellingClassNameImages,
+        sellingDesktop,
         sellingMobile,
         i
     );
 });
 
 
-sellingBtnRight.addEventListener("click", () => {
-    RightBtn(
-        sellingTitles,
-        sellingImages,
-        sellingSliderImg,
-        sellingClassNameImages,
-        sellingMobile
-    );
-    // Change styles for el #3
-    // if (sellingTitles[2].classList.contains("active")) {
-    //     // sellingImages.classList.add("row");
-    // } else {
-    //     // sellingImages.classList.remove("row");
-    // }
-});
+sellingBtnRight.forEach((el,i)=>{
+    el.addEventListener("click", () => {
+        RightBtn(
+            sellingTitles,
+            sellingImages,
+            sellingSliderImg,
+            sellingClassNameImages,
+            sellingMobile
+        );
+        // Change styles for el #3
+        // if (sellingTitles[2].classList.contains("active")) {
+        //     // sellingImages.classList.add("row");
+        // } else {
+        //     // sellingImages.classList.remove("row");
+        // }
+    });
+})
 
 
 sellingBtnLeft.addEventListener("click", () => {
@@ -177,75 +179,82 @@ toolsBtnLeft.addEventListener("click", () => {
 
 // FUNCTIONS --------------------------------------------------------------------------------------------------------
 
-function ChangeImages(element, Imgs, SliderImg, classNameImgs) {
-    // inner images
-    document.querySelector(`${classNameImgs} + img`).remove();
 
-    let bg = document.createElement("img");
-    bg.src = `${element.getAttribute("data-slider-src")}`;
-
-    function insertAfter(referenceNode, newNode) {
-        referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-    }
-
-    bg.classList.add("active");
-    insertAfter(Imgs, bg);
-
-    let currentBlock = element.className.split(' ')[0].split('__')[0]
-    console.log(currentBlock);
-
-    let countImages = (element.attributes.length - 2) / 2;
-    let images = Array(countImages)
-        .fill()
-        .map(
-            (_, i) => `
-     <div class="${element.getAttribute(`data-img-class-${i + 1}`)}-parent toggle-parent">
-        <div  class="${element.getAttribute(`data-img-class-${i + 1}`)} toggle-div"
-               style="background:url('${element.getAttribute(`data-img-link-${i + 1}`)}')">
-         </div>
-     </div>
-      `
-        );
-
+function ChangeImages(element, desktopItems, i) {
 
     if (element.classList.contains("active")) {
-        Imgs.innerHTML = images.join("\n");
 
-        let arrayWidths = []
-        setTimeout(() => {
+        // Show slider block
+        desktopItems.forEach((el) => {
+            el.classList.remove('active')
+            el.classList.add('disabled')
+        })
 
-            let arrayParents = document.querySelectorAll(`.${currentBlock} .toggle-parent`)
+        desktopItems[i].classList.remove('disabled')
+        desktopItems[i].classList.add('active')
 
-            arrayParents.forEach((el) => {
+        // show images
+        desktopItems[i].querySelectorAll('.toggle-div').forEach((el) => {
+            el.classList.remove('op-0')
+        })
 
-                console.log(el.clientWidth);
-                arrayWidths.push(el.clientWidth)
-                // el.classList.add('animate')
-            })
-        }, 0)
+        desktopItems[i].querySelectorAll('.toggle-parent').forEach((el) => {
 
-        // let arrayClasses = document.querySelectorAll(`.${currentBlock} .toggle-div`)
-        // arrayClasses.forEach((el, i) => {
-        //
-        //         el.style.width = `${arrayWidths[i]}px`
-        //         window.addEventListener('resize', () => {
-        //             el.classList.add('widthAuto')
-        //         })
-        //
-        //         let $elemToRipple = $(`.${el.className.split(' ')[0]}`)
-        //
-        //         rippleElement($elemToRipple)
-        //
-        //     }
-        // )
+            if (!el.classList.contains('animate')) {
+
+                // el.style.maxWidth = `${document.documentElement.clientWidth}px`
+
+                let child = el.querySelector('.toggle-div')
+
+                let childWidth = el.clientWidth
+
+                child.style.width = `${childWidth}px`;
+
+                window.addEventListener('resize', () => {
+
+                    // let documentWidth = document.documentElement.clientWidth
+                    //
+                    // el.style.maxWidth = `${documentWidth}px`
+
+                    let childWidth = el.clientWidth
+                    child.style.width = `${childWidth}px`;
+                    // child.style.maxWidth = `${documentWidth}px`
+
+                    let childCanvas = child.querySelector('canvas')
+                    if (childCanvas) {
+                        childCanvas.style.width = `${childWidth}px`
+                        // childCanvas.style.maxWidth = `${documentWidth}px`
+                    }
+
+                })
+
+
+                let queryRipple = $(`.${child.className.split(' ')[0]}`)
+
+                rippleElement(queryRipple, childWidth)
+
+                el.classList.add('animate')
+                setTimeout(() => {
+                    el.classList.remove('animate')
+                }, 1200)
+
+            }
+        })
+
     } else {
-        Imgs.innerHTML = "";
+
+        // hide images
+        desktopItems[i].querySelectorAll('.toggle-div').forEach((el) => {
+            el.classList.add('op-0')
+        })
     }
 }
 
 
 function ChangeImagesMob(element, mobileItem, i) {
+
     if (element.classList.contains('active')) {
+
         mobileItem.querySelectorAll('.mob-toggle-parent').forEach((el) => {
 
             if (!el.classList.contains('animate')) {
@@ -289,7 +298,7 @@ function ChangeImagesMob(element, mobileItem, i) {
     }
 }
 
-function ToggleImages(el, titles, Imgs, SliderImg, classNameImgs, mobileItems, i) {
+function ToggleImages(el, titles, desktopItems, mobileItems, i) {
     el.addEventListener("click", () => {
         // remove active foreach
         // ads active for current
@@ -302,7 +311,7 @@ function ToggleImages(el, titles, Imgs, SliderImg, classNameImgs, mobileItems, i
             el.classList.add("active");
         }
         if (document.documentElement.clientWidth > 1150) {
-            ChangeImages(el, Imgs, SliderImg, classNameImgs);
+            ChangeImages(el, desktopItems, i);
         } else {
             ChangeImagesMob(el, mobileItems[i])
 
@@ -313,7 +322,7 @@ function ToggleImages(el, titles, Imgs, SliderImg, classNameImgs, mobileItems, i
 
 }
 
-function RightBtn(titles, Imgs, SliderImg, classNameImgs, mobileItems) {
+function RightBtn(titles) {
     let currentSlide = -1;
     let nextSlide;
     titles.forEach((el, i) => {
@@ -337,7 +346,7 @@ function RightBtn(titles, Imgs, SliderImg, classNameImgs, mobileItems) {
     getNextSlide();
 
     titles[nextSlide].classList.add("active");
-    ChangeImages(titles[nextSlide], Imgs, SliderImg, classNameImgs, mobileItems, nextSlide);
+    ChangeImages(titles[nextSlide], sellingDesktop, nextSlide)
 
 }
 
@@ -380,7 +389,7 @@ function rippleElement($elemToRipple, width) {
     let y = 0.5 * $elemToRipple.outerHeight();
     // let y = 0
     // let x = 0
-    let dropRadius = 160;
+    let dropRadius = 200;
     let strength = 0.15;
 
     $elemToRipple.ripples('drop', x, y, dropRadius, strength);
