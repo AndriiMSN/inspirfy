@@ -110,18 +110,20 @@ sellingBtnRight.forEach((el, i) => {
 })
 
 
-sellingBtnLeft.addEventListener("click", () => {
-    LeftBtn(
-        sellingTitles,
-        sellingDesktop
-    );
-    // Change styles for el #3
-    // if (sellingTitles[2].classList.contains("active")) {
-    //     sellingImages.classList.add("row");
-    // } else {
-    //     sellingImages.classList.remove("row");
-    // }
-});
+sellingBtnLeft.forEach((el, i) => {
+    el.addEventListener("click", () => {
+        LeftBtn(
+            sellingTitles,
+            sellingDesktop
+        );
+        // Change styles for el #3
+        // if (sellingTitles[2].classList.contains("active")) {
+        //     sellingImages.classList.add("row");
+        // } else {
+        //     sellingImages.classList.remove("row");
+        // }
+    });
+})
 
 
 // Tools block---------------------------------------------------------------------------------------------------------
