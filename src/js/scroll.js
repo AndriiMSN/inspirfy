@@ -491,7 +491,7 @@ window.addEventListener('scroll',
             }
         }
     })
-
+let i = 0
 window.addEventListener('scroll', (e) => {
     if (document.documentElement.clientWidth < 1366) {
 
@@ -505,23 +505,24 @@ window.addEventListener('scroll', (e) => {
             return counter
         }
 
-        for (let i = 0; i < sections.length; i++) {
-            if (
-                sections[i + 1]
-                &&
-                (pageYOffset > (sections[i].offsetTop + (sections[i].clientHeight / 2)) - 10)
-                &&
-                (pageYOffset < (sections[i + 1].offsetTop + (sections[i + 1].clientHeight) / 2))
-            ) {
-                console.log(i + 1);
-                counter = i + 1
-                sections[counter].classList.add('animate')
-                sections[counter].classList.add('active')
 
-                return counter
-            }
+        if (
+            sections[i + 1]
+            &&
+            (pageYOffset + document.documentElement.clientHeight > (sections[i + 1].offsetTop + (sections[i + 1].clientHeight / 4)) - 10)
+            // &&
+            // (pageYOffset  < (sections[i + 1].offsetTop + (sections[i + 1].clientHeight) / 2))
+        ) {
+            console.log(i + 1);
+            i = i + 1
+            counter = i
+            sections[counter].classList.add('animate')
+            sections[counter].classList.add('active')
+
+            return counter, i
         }
     }
+
 })
 
 let oldWidth = document.documentElement.clientWidth
