@@ -70,6 +70,8 @@ const sellingBtnRight = document.querySelector(
     ".selling__slider__img__elements__buttons .right"
 );
 
+const sellingMobile = document.querySelectorAll('.mob-selling__slider')
+
 sellingTitles.forEach((el, i) => {
     // Change styles slider for el #3
     el.addEventListener("click", () => {
@@ -85,7 +87,9 @@ sellingTitles.forEach((el, i) => {
         sellingTitles,
         sellingImages,
         sellingSliderImg,
-        sellingClassNameImages
+        sellingClassNameImages,
+        sellingMobile,
+        i
     );
 });
 
@@ -237,57 +241,55 @@ function ChangeImages(element, Imgs, SliderImg, classNameImgs) {
     }
 }
 
-function ChangeImagesMob(element, Imgs, SliderImg, classNameImgs) {
 
-    // let currentBlock = element.className.split(' ')[0].split('__')[0]
-    // // console.log(currentBlock);
-    //
-    // let arrayMobToggleImages
+function ChangeImagesMob(element, mobileItems, i) {
 
-    if (element.classList.contains('active')) {
-        let countImages = (element.attributes.length - 2) / 2;
+    mobileItems[i].querySelectorAll('.mob-toggle-parent').forEach((el) => {
 
-        let arrayWidths = []
+        if (!el.classList.contains('animate')) {
+            el.style.maxWidth = `${document.documentElement.clientWidth}px`
+            let child = el.querySelector('.mob-toggle-div')
 
-        for (let i = 0; i < countImages; i++) {
-            let el = document.querySelector(
-                `.mob-toggle__slider .${element.getAttribute(`data-img-class-${i + 1}`)}-parent`
-            );
+            let childWidth = el.clientWidth
 
-            arrayWidths.push(el.clientWidth)
-            el.classList.add('animate')
-            setTimeout(() => {
-                el.classList.remove('animate')
-            }, 1000)
-        }
+            child.style.width = `${childWidth}px`;
 
-        for (let i = 1; i <= countImages; i++) {
-            let elChild = document.querySelector(
-                `.mob-toggle__slider .${element.getAttribute(`data-img-class-${i}`)}-parent div`
-            );
 
             window.addEventListener('resize', () => {
-                elChild.classList.add('widthAuto')
+
+                documentWidth = document.documentElement.clientWidth
+
+                el.style.maxWidth = `${documentWidth}px`
+
+                let childWidth = el.clientWidth
+                child.style.width = `${childWidth}px`;
+                child.style.maxWidth = `${documentWidth}px`
+
+                let childCanvas = child.querySelector('canvas')
+                if (childCanvas) {
+                    childCanvas.style.width = `${childWidth}px`
+                    childCanvas.style.maxWidth = `${documentWidth}px`
+                }
+
             })
 
-            let $elemToRipple = $(`.${elChild.className.split(' ')[0]}`)
+            let queryRipple = $(`.${child.className.split(' ')[0]}`)
 
-            rippleElement($elemToRipple, arrayWidths[i - 1])
+            rippleElement(queryRipple, childWidth)
 
+            el.classList.add('animate')
 
+            setTimeout(() => {
+                el.classList.remove('animate')
+            }, 1200)
         }
-
-
-        console.log(arrayWidths);
-    }
-
+    })
 
 }
 
-function ToggleImages(el, titles, Imgs, SliderImg, classNameImgs) {
+function ToggleImages(el, titles, Imgs, SliderImg, classNameImgs, mobileItems, i) {
     el.addEventListener("click", () => {
         // remove active foreach
-
         // ads active for current
         if (el.classList.contains("active")) {
             el.classList.remove("active");
@@ -301,7 +303,7 @@ function ToggleImages(el, titles, Imgs, SliderImg, classNameImgs) {
             ChangeImages(el, Imgs, SliderImg, classNameImgs);
         } else {
             if (el.classList.contains('active')) {
-                ChangeImagesMob(el)
+                ChangeImagesMob(el, mobileItems, i)
             }
         }
 
@@ -377,7 +379,7 @@ function rippleElement($elemToRipple, width) {
     // let y = 0
     // let x = 0
     let dropRadius = 160;
-    let strength = 0.1;
+    let strength = 0.15;
 
     $elemToRipple.ripples('drop', x, y, dropRadius, strength);
     setTimeout(() => {
@@ -391,7 +393,7 @@ function rippleElement($elemToRipple, width) {
     }, 1000)
     setTimeout(() => {
         $elemToRipple.ripples('set', 'perturbance', 0)
-        // $elemToRipple.ripples('destroy')
+        $elemToRipple.ripples('destroy')
     }, 1200)
 }
 

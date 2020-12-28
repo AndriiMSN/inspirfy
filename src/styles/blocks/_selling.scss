@@ -224,135 +224,139 @@
 
         }
 
-        &__selling-1-parent
-        {
-          width: 152%;
-          height: 31%;
-
-          max-width: 940px;
-          max-height: 353px;
-
-          transform: translateX(-20px);
-
-          &.animate
-          {
-            animation: leftToRightHorizontalSelling-1 .8s;
-
-
-          }
-        }
-
-        &__selling-1
+        .selling__slider__img__images__toggle-1
         {
 
-          width: 100%;
-          height: 100%;
-
-
-          background: url("../assets/img/selling-toggle-1.png") no-repeat left !important;
-          background-size: cover !important;
-
-
-          canvas
+          &__selling-1-parent
           {
-            width: 100% !important;
-            height: 100% !important;
+            width: 152%;
+            height: 31%;
+
+            max-width: 940px;
+            max-height: 353px;
+
+            transform: translateX(0px);
+
+            &.animate
+            {
+              animation: leftToRightHorizontalSelling-1 .8s;
+
+
+            }
           }
 
-        }
-
-        &__selling-2-parent
-        {
-          width: 152%;
-          height: 31%;
-
-          max-width: 940px;
-          max-height: 353px;
-
-          transform: translateX(-60px);
-
-          &.animate
+          &__selling-1
           {
-            animation: leftToRightHorizontalSelling-1 .8s;
+
+            width: 100%;
+            height: 100%;
+
+
+            background: url("../assets/img/selling-toggle-1.png") no-repeat left !important;
+            background-size: cover !important;
+
+
+            canvas
+            {
+              width: 100% !important;
+              height: 100% !important;
+            }
+
           }
-        }
 
-        &__selling-2
-        {
-          width: 100%;
-          height: 100%;
-
-
-          background: url("../assets/img/selling-toggle-2.png") no-repeat left !important;
-          background-size: cover !important;
-
-
-          canvas
+          &__selling-2-parent
           {
-            width: 100% !important;
-            height: 100% !important;
+            width: 152%;
+            height: 31%;
+
+            max-width: 940px;
+            max-height: 353px;
+
+            transform: translateX(-20px);
+
+            &.animate
+            {
+              animation: leftToRightHorizontalSelling-1 .8s;
+            }
           }
-        }
 
-        &__selling-3-parent
-        {
-          width: 158%;
-          height: 55%;
-
-          max-width: 732px;
-          max-height: 434px;
-
-          &.animate
+          &__selling-2
           {
-            animation: leftToRightHorizontalSelling-2-mob .8s;
+            width: 100%;
+            height: 100%;
+
+
+            background: url("../assets/img/selling-toggle-2.png") no-repeat left !important;
+            background-size: cover !important;
+
+
+            canvas
+            {
+              width: 100% !important;
+              height: 100% !important;
+            }
           }
-        }
 
-        &__selling-3
-        {
-          width: 100%;
-          height: 100%;
-
-
-          background: url("../assets/img/selling-toggle-3.png") no-repeat left !important;
-          background-size: cover !important;
-
-
-          canvas
+          &__selling-3-parent
           {
-            width: 100% !important;
-            height: 100% !important;
+            width: 143%;
+            height: 61%;
+
+            max-width: 732px;
+            max-height: 434px;
+
+            &.animate
+            {
+              animation: leftToRightHorizontalSelling-2 .8s;
+            }
           }
-        }
 
-        &__selling-4-parent
-        {
-          width: 130%;
-          height: 75%;
-
-          max-width: 798px;
-          max-height: 776px;
-
-          &.animate
+          &__selling-3
           {
-            animation: leftToRightHorizontalSelling-3 .8s;
+            width: 100%;
+            height: 100%;
+
+
+            background: url("../assets/img/selling-toggle-3.png") no-repeat !important;
+            background-size: cover !important;
+
+
+            canvas
+            {
+              width: 100% !important;
+              height: 100% !important;
+            }
           }
-        }
 
-        &__selling-4
-        {
-          width: 100%;
-          height: 100%;
-
-
-          background: url("../assets/img/selling-toggle-4.png") no-repeat left !important;
-          background-size: cover !important;
-
-
-          canvas
+          &__selling-4-parent
           {
-            width: 100% !important;
-            height: 100% !important;
+            width: 130%;
+            height: 75%;
+
+            max-width: 798px;
+            max-height: 776px;
+
+            &.animate
+            {
+              animation: leftToRightHorizontalSelling-3 .8s;
+            }
+          }
+
+          &__selling-4
+          {
+            width: 100%;
+            height: 100%;
+
+
+            background: url("../assets/img/selling-toggle-4.png") no-repeat left !important;
+            background-size: cover !important;
+
+
+            canvas
+            {
+              width: 100% !important;
+              height: 100% !important;
+            }
           }
         }
       }
@@ -393,21 +397,6 @@
   }
 }
 
-@keyframes leftToRightHorizontalSelling-2-mob
-{
-  from
-  {
-    overflow: hidden;
-    height: 55%;
-    width: 0;
-  }
-  to
-  {
-    overflow: hidden;
-    width: 158%;
-    height: 55%;
-  }
-}
 
 @keyframes leftToRightHorizontalSelling-3
 {
