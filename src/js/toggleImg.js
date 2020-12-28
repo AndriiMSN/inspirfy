@@ -52,17 +52,17 @@ const sellingTitles = document.querySelectorAll(
     ".selling__toggle__block__title"
 );
 
-const sellingImages = document.querySelector(
-    ".selling__slider__img__images__toggle-1"
-);
+// const sellingImages = document.querySelector(
+//     ".selling__slider__img__images__toggle-1"
+// );
+//
+// const sellingClassNameImages = ".selling__slider__img__images__toggle-1";
+//
+// const sellingSliderImg = document.querySelector(
+//     ".selling__slider__img__images__toggle-1 + img"
+// );
 
-const sellingClassNameImages = ".selling__slider__img__images__toggle-1";
-
-const sellingSliderImg = document.querySelector(
-    ".selling__slider__img__images__toggle-1 + img"
-);
-
-const sellingBtnLeft = document.querySelector(
+const sellingBtnLeft = document.querySelectorAll(
     ".selling__slider__img__elements__buttons .left"
 );
 
@@ -94,14 +94,11 @@ sellingTitles.forEach((el, i) => {
 });
 
 
-sellingBtnRight.forEach((el,i)=>{
+sellingBtnRight.forEach((el, i) => {
     el.addEventListener("click", () => {
         RightBtn(
             sellingTitles,
-            sellingImages,
-            sellingSliderImg,
-            sellingClassNameImages,
-            sellingMobile
+            sellingDesktop
         );
         // Change styles for el #3
         // if (sellingTitles[2].classList.contains("active")) {
@@ -116,10 +113,7 @@ sellingBtnRight.forEach((el,i)=>{
 sellingBtnLeft.addEventListener("click", () => {
     LeftBtn(
         sellingTitles,
-        sellingImages,
-        sellingSliderImg,
-        sellingClassNameImages,
-        sellingMobile
+        sellingDesktop
     );
     // Change styles for el #3
     // if (sellingTitles[2].classList.contains("active")) {
@@ -193,10 +187,6 @@ function ChangeImages(element, desktopItems, i) {
         desktopItems[i].classList.remove('disabled')
         desktopItems[i].classList.add('active')
 
-        // show images
-        desktopItems[i].querySelectorAll('.toggle-div').forEach((el) => {
-            el.classList.remove('op-0')
-        })
 
         desktopItems[i].querySelectorAll('.toggle-parent').forEach((el) => {
 
@@ -205,6 +195,8 @@ function ChangeImages(element, desktopItems, i) {
                 // el.style.maxWidth = `${document.documentElement.clientWidth}px`
 
                 let child = el.querySelector('.toggle-div')
+
+                child.classList.remove('op-0')
 
                 let childWidth = el.clientWidth
 
@@ -322,7 +314,7 @@ function ToggleImages(el, titles, desktopItems, mobileItems, i) {
 
 }
 
-function RightBtn(titles) {
+function RightBtn(titles, itemsDesktop) {
     let currentSlide = -1;
     let nextSlide;
     titles.forEach((el, i) => {
@@ -346,11 +338,11 @@ function RightBtn(titles) {
     getNextSlide();
 
     titles[nextSlide].classList.add("active");
-    ChangeImages(titles[nextSlide], sellingDesktop, nextSlide)
+    ChangeImages(titles[nextSlide], itemsDesktop, nextSlide)
 
 }
 
-function LeftBtn(titles, Imgs, SliderImg, classNameImgs) {
+function LeftBtn(titles, itemsDesktop) {
     let currentSlide = -1;
     let nextSlide;
     titles.forEach((el, i) => {
@@ -373,7 +365,7 @@ function LeftBtn(titles, Imgs, SliderImg, classNameImgs) {
     };
     getPrevtSlide();
     titles[nextSlide].classList.add("active");
-    ChangeImages(titles[nextSlide], Imgs, SliderImg, classNameImgs);
+    ChangeImages(titles[nextSlide], itemsDesktop, nextSlide);
 }
 
 function rippleElement($elemToRipple, width) {
