@@ -99,7 +99,8 @@ sellingBtnRight.addEventListener("click", () => {
         sellingTitles,
         sellingImages,
         sellingSliderImg,
-        sellingClassNameImages
+        sellingClassNameImages,
+        sellingMobile
     );
     // Change styles for el #3
     // if (sellingTitles[2].classList.contains("active")) {
@@ -115,7 +116,8 @@ sellingBtnLeft.addEventListener("click", () => {
         sellingTitles,
         sellingImages,
         sellingSliderImg,
-        sellingClassNameImages
+        sellingClassNameImages,
+        sellingMobile
     );
     // Change styles for el #3
     // if (sellingTitles[2].classList.contains("active")) {
@@ -242,49 +244,49 @@ function ChangeImages(element, Imgs, SliderImg, classNameImgs) {
 }
 
 
-function ChangeImagesMob(element, mobileItems, i) {
+function ChangeImagesMob(element, mobileItem, i) {
+    if (element.classList.contains('active')) {
+        mobileItem.querySelectorAll('.mob-toggle-parent').forEach((el) => {
 
-    mobileItems[i].querySelectorAll('.mob-toggle-parent').forEach((el) => {
-
-        if (!el.classList.contains('animate')) {
-            el.style.maxWidth = `${document.documentElement.clientWidth}px`
-            let child = el.querySelector('.mob-toggle-div')
-
-            let childWidth = el.clientWidth
-
-            child.style.width = `${childWidth}px`;
-
-
-            window.addEventListener('resize', () => {
-
-                documentWidth = document.documentElement.clientWidth
-
-                el.style.maxWidth = `${documentWidth}px`
+            if (!el.classList.contains('animate')) {
+                el.style.maxWidth = `${document.documentElement.clientWidth}px`
+                let child = el.querySelector('.mob-toggle-div')
 
                 let childWidth = el.clientWidth
+
                 child.style.width = `${childWidth}px`;
-                child.style.maxWidth = `${documentWidth}px`
 
-                let childCanvas = child.querySelector('canvas')
-                if (childCanvas) {
-                    childCanvas.style.width = `${childWidth}px`
-                    childCanvas.style.maxWidth = `${documentWidth}px`
-                }
 
-            })
+                window.addEventListener('resize', () => {
 
-            let queryRipple = $(`.${child.className.split(' ')[0]}`)
+                    let documentWidth = document.documentElement.clientWidth
 
-            rippleElement(queryRipple, childWidth)
+                    el.style.maxWidth = `${documentWidth}px`
 
-            el.classList.add('animate')
+                    let childWidth = el.clientWidth
+                    child.style.width = `${childWidth}px`;
+                    child.style.maxWidth = `${documentWidth}px`
 
-            setTimeout(() => {
-                el.classList.remove('animate')
-            }, 1200)
-        }
-    })
+                    let childCanvas = child.querySelector('canvas')
+                    if (childCanvas) {
+                        childCanvas.style.width = `${childWidth}px`
+                        childCanvas.style.maxWidth = `${documentWidth}px`
+                    }
 
+                })
+
+                let queryRipple = $(`.${child.className.split(' ')[0]}`)
+
+                rippleElement(queryRipple, childWidth)
+
+                el.classList.add('animate')
+
+                setTimeout(() => {
+                    el.classList.remove('animate')
+                }, 1200)
+            }
+        })
+    }
 }
 
 function ToggleImages(el, titles, Imgs, SliderImg, classNameImgs, mobileItems, i) {
@@ -302,9 +304,8 @@ function ToggleImages(el, titles, Imgs, SliderImg, classNameImgs, mobileItems, i
         if (document.documentElement.clientWidth > 1150) {
             ChangeImages(el, Imgs, SliderImg, classNameImgs);
         } else {
-            if (el.classList.contains('active')) {
-                ChangeImagesMob(el, mobileItems, i)
-            }
+            ChangeImagesMob(el, mobileItems[i])
+
         }
 
     });
@@ -312,7 +313,7 @@ function ToggleImages(el, titles, Imgs, SliderImg, classNameImgs, mobileItems, i
 
 }
 
-function RightBtn(titles, Imgs, SliderImg, classNameImgs) {
+function RightBtn(titles, Imgs, SliderImg, classNameImgs, mobileItems) {
     let currentSlide = -1;
     let nextSlide;
     titles.forEach((el, i) => {
@@ -336,7 +337,8 @@ function RightBtn(titles, Imgs, SliderImg, classNameImgs) {
     getNextSlide();
 
     titles[nextSlide].classList.add("active");
-    ChangeImages(titles[nextSlide], Imgs, SliderImg, classNameImgs);
+    ChangeImages(titles[nextSlide], Imgs, SliderImg, classNameImgs, mobileItems, nextSlide);
+
 }
 
 function LeftBtn(titles, Imgs, SliderImg, classNameImgs) {
@@ -519,6 +521,8 @@ SellingMobBtnsLeft.forEach((el) => {
             },
             800
         );
+        ChangeImagesMob(sellingTitles[nextSlide], sellingMobile[nextSlide])
+
     });
 });
 
@@ -526,15 +530,18 @@ SellingMobBtnsRight.forEach((el) => {
     el.addEventListener("click", () => {
         let currentSlide = -1;
         let nextSlide;
+
         sellingTitles.forEach((el, i) => {
             if (el.classList.contains("active")) {
                 currentSlide = i;
                 return currentSlide;
             }
         });
+
         sellingTitles.forEach((el) => {
             el.classList.remove("active");
         });
+
         let getNextSlide = () => {
             if (currentSlide + 1 >= sellingTitles.length) {
                 nextSlide = 0;
@@ -545,7 +552,9 @@ SellingMobBtnsRight.forEach((el) => {
             }
         };
         getNextSlide();
+
         sellingTitles[nextSlide].classList.add("active");
+
         $("html,body").animate(
             {
                 scrollTop: sellingTitles[nextSlide].offsetTop - 40,
@@ -553,6 +562,8 @@ SellingMobBtnsRight.forEach((el) => {
             },
             800
         );
+
+        ChangeImagesMob(sellingTitles[nextSlide], sellingMobile[nextSlide])
     });
 });
 
@@ -640,5 +651,4 @@ toolsMobBtnsRight.forEach((el) => {
         );
     });
 });
-
 
