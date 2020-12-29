@@ -194,32 +194,64 @@ function ChangeImages(element, desktopItems, i) {
 
             if (!el.classList.contains('animate')) {
 
-                // el.style.maxWidth = `${document.documentElement.clientWidth}px`
-
                 let child = el.querySelector('.toggle-div')
 
-                child.classList.remove('op-0')
+                let containerWidth = document.querySelector(`.selling .container`).clientWidth
+
+                let documentWidth = document.documentElement.clientWidth
+
+                let emptyWidth = (documentWidth - containerWidth) / 2
+
+                let maxWidth = emptyWidth + containerWidth / 2
+
+                el.style.maxWidth = `${maxWidth}px`
 
                 let childWidth = el.clientWidth
 
+                if (maxWidth == childWidth) {
+                    el.style.transform = `translateX(-${(documentWidth - containerWidth) / 2}px)`
+                } else {
+                    el.style.transform = `translateX(-20%)`
+                }
+
                 child.style.width = `${childWidth}px`;
+                child.style.maxWidth = `${el.style.maxWidth}`
+
+
+                child.classList.remove('op-0')
+
 
                 window.addEventListener('resize', () => {
 
-                    // let documentWidth = document.documentElement.clientWidth
-                    //
-                    // el.style.maxWidth = `${documentWidth}px`
+                    let documentWidth = document.documentElement.clientWidth
 
-                    let childWidth = el.clientWidth
-                    child.style.width = `${childWidth}px`;
-                    // child.style.maxWidth = `${documentWidth}px`
+                    if (documentWidth > 1150) {
 
-                    let childCanvas = child.querySelector('canvas')
-                    if (childCanvas) {
-                        childCanvas.style.width = `${childWidth}px`
-                        // childCanvas.style.maxWidth = `${documentWidth}px`
+                        let containerWidth = document.querySelector(`.selling .container`).clientWidth
+
+                        let emptyWidth = (documentWidth - containerWidth) / 2
+
+                        let maxWidth = emptyWidth + containerWidth / 2
+
+                        el.style.maxWidth = `${maxWidth}px`
+
+                        let childWidth = el.clientWidth
+
+                        if (maxWidth == childWidth) {
+                            el.style.transform = `translateX(-${(documentWidth - containerWidth) / 2}px)`
+                        } else {
+                            el.style.transform = `translateX(-20%)`
+                        }
+
+                        child.style.width = `${childWidth}px`;
+                        child.style.maxWidth = `${el.style.maxWidth}px`
+
+                        let childCanvas = child.querySelector('canvas')
+                        if (childCanvas) {
+                            childCanvas.style.width = `${childWidth}px`
+                            childCanvas.style.maxWidth = `${el.style.maxWidth}px`
+                        }
                     }
-
                 })
 
 
@@ -228,6 +260,7 @@ function ChangeImages(element, desktopItems, i) {
                 rippleElement(queryRipple, childWidth)
 
                 el.classList.add('animate')
+
                 setTimeout(() => {
                     el.classList.remove('animate')
                 }, 1200)
@@ -265,18 +298,20 @@ function ChangeImagesMob(element, mobileItem, i) {
 
                     let documentWidth = document.documentElement.clientWidth
 
-                    el.style.maxWidth = `${documentWidth}px`
+                    if (documentWidth <= 1150) {
 
-                    let childWidth = el.clientWidth
-                    child.style.width = `${childWidth}px`;
-                    child.style.maxWidth = `${documentWidth}px`
+                        el.style.maxWidth = `${documentWidth}px`
 
-                    let childCanvas = child.querySelector('canvas')
-                    if (childCanvas) {
-                        childCanvas.style.width = `${childWidth}px`
-                        childCanvas.style.maxWidth = `${documentWidth}px`
+                        let childWidth = el.clientWidth
+                        child.style.width = `${childWidth}px`;
+                        child.style.maxWidth = `${documentWidth}px`
+
+                        let childCanvas = child.querySelector('canvas')
+                        if (childCanvas) {
+                            childCanvas.style.width = `${childWidth}px`
+                            childCanvas.style.maxWidth = `${documentWidth}px`
+                        }
                     }
-
                 })
 
                 let queryRipple = $(`.${child.className.split(' ')[0]}`)
@@ -399,7 +434,7 @@ function rippleElement($elemToRipple, width) {
     }, 1000)
     setTimeout(() => {
         $elemToRipple.ripples('set', 'perturbance', 0)
-        // $elemToRipple.ripples('destroy')
+        $elemToRipple.ripples('destroy')
     }, 1200)
 }
 
