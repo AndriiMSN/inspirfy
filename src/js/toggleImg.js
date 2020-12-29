@@ -232,6 +232,7 @@ function ChangeImages(element, desktopItems, i) {
                     el.classList.remove('animate')
                 }, 1200)
 
+
             }
         })
 
@@ -398,7 +399,7 @@ function rippleElement($elemToRipple, width) {
     }, 1000)
     setTimeout(() => {
         $elemToRipple.ripples('set', 'perturbance', 0)
-        $elemToRipple.ripples('destroy')
+        // $elemToRipple.ripples('destroy')
     }, 1200)
 }
 

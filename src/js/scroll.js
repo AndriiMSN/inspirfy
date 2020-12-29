@@ -198,7 +198,7 @@ function onWheel(e) {
 
         let maxY = sections[sections.length - 1].offsetTop;
 
-        if (pageYOffset > maxY - 10 && maxY > 500) {
+        if (pageYOffset > maxY - 10  && maxY !== 0) {
             if (directionY < 0 && directionX === 0) {
 
                 e.preventDefault();
@@ -378,7 +378,7 @@ window.addEventListener(
 
             let maxY = sections[sections.length - 1].offsetTop;
 
-            if (pageYOffset < maxY - 10) {
+            if (pageYOffset < maxY - 10  && maxY !== 0) {
 
 
                 // Remove scroll after scrolling to next
@@ -604,7 +604,7 @@ function checkKey(e) {
 
             let maxY = sections[sections.length - 1].offsetTop;
 
-            if (pageYOffset > maxY - 10) {
+            if (pageYOffset > maxY - 10  && maxY !== 0) {
             } else {
 
                 if (
@@ -638,7 +638,7 @@ function checkKey(e) {
         if (e.keyCode == "38") {
             // up arrow
             let maxY = sections[sections.length - 1].offsetTop;
-            if (pageYOffset > maxY - 10) {
+            if (pageYOffset > maxY - 10 && maxY !== 0) {
             } else {
                 if (
                     modalLets.classList.contains("open") ||
@@ -676,7 +676,7 @@ function checkKey(e) {
 
         } else if (e.keyCode == "40") {
             let maxY = sections[sections.length - 1].offsetTop;
-            if (pageYOffset > maxY - 10) {
+            if (pageYOffset > maxY - 10  && maxY !== 0) {
             } else {
                 if (
                     modalLets.classList.contains("open") ||
