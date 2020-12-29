@@ -6,9 +6,6 @@ setTimeout(() => {
 let wheelDelay = 1600
 
 let counter = 0;
-// let scrollHeight = 0;
-
-window.scrollTo(0, 0)
 
 
 // function debounce(func, wait, immediate) {
@@ -39,6 +36,48 @@ function returnFalse(e) {
 
 // const navItems =
 // document.querySelectorAll(".header__nav__items li");
+function rippleElement($elemToRipple, width) {
+    $elemToRipple.ripples({
+        resolution: 40,
+        perturbance: 0.15,
+        interactive: false,
+        width: width
+    });
+
+
+    let x = 0.5 * $elemToRipple.outerWidth();
+    let y = 0.5 * $elemToRipple.outerHeight();
+    // let y = 0
+    // let x = 0
+    let dropRadius = 200;
+    let strength = 0.15;
+
+    $elemToRipple.ripples('drop', x, y, dropRadius, strength);
+    setTimeout(() => {
+        $elemToRipple.ripples('set', 'perturbance', 0.1)
+    }, 600)
+    setTimeout(() => {
+        $elemToRipple.ripples('set', 'perturbance', 0.05)
+    }, 900)
+    setTimeout(() => {
+        $elemToRipple.ripples('set', 'perturbance', 0.025)
+    }, 1200)
+    setTimeout(() => {
+        $elemToRipple.ripples('set', 'perturbance', 0)
+        $elemToRipple.ripples('destroy')
+    }, 1500)
+}
+
+function toggleImagesBgRipple(counter) {
+    if (counter === 3) {
+        let img = sections[counter].querySelector('.toggle__slider.active .toggle-bg-img')
+
+        console.log(img);
+
+        let queryRipple = $(`.${img.className.split(' ')[0]}`)
+        rippleElement(queryRipple, img.clientWidth)
+    }
+}
 
 function scrollDown() {
 
@@ -58,14 +97,15 @@ function scrollDown() {
             sections[counter - 1].classList.add("invise");
         }
 
-
         // NavBar(); // Change active item Navbar
-
 
         if (sections[counter + 1]) {
             sections[counter + 1].classList.remove('active')
             sections[counter + 1].classList.add("invise");
         }
+
+        toggleImagesBgRipple(counter)
+
     } else {
 
         counter = counter;
@@ -88,6 +128,8 @@ function scrollUp() {
         sections[counter + 1].classList.add("invise");
 
         // NavBar(); // Change active item Navbar
+
+        toggleImagesBgRipple(counter)
 
     } else {
 
@@ -198,7 +240,7 @@ function onWheel(e) {
 
         let maxY = sections[sections.length - 1].offsetTop;
 
-        if (pageYOffset > maxY - 10  && maxY !== 0) {
+        if (pageYOffset > maxY - 10 && maxY !== 0) {
             if (directionY < 0 && directionX === 0) {
 
                 e.preventDefault();
@@ -219,20 +261,6 @@ function onWheel(e) {
                 directionY,
                 directionX);
 
-            // } else {
-            // if scroll up start scroll by sections
-            // if (pageYOffset < maxY + 10 && directionY < 0 && directionX === 0) {
-            //
-            //     // Remove scroll after scrolling to
-            //     // next section by Y
-            //     if (directionY !== 0) {
-            //         e.preventDefault();
-            //     }
-            //     scrollToSection(e,
-            //         directionY,
-            //         directionX);
-            // }
-            // }
         }
     }
 }
@@ -318,7 +346,7 @@ window.addEventListener('touchmove', (e) => {
             let maxY = sections[sections.length - 1].offsetTop;
             let directionY = e.changedTouches[0].clientY - currentY;
             let directionX = e.changedTouches[0].clientX - currentX;
-            console.log(directionX);
+            // console.log(directionX);
             if ((directionX > 50 || directionX < -50) && (directionY < 50 && directionY > -50)) {
 
             } else if (pageYOffset > maxY - 10) {
@@ -378,7 +406,7 @@ window.addEventListener(
 
             let maxY = sections[sections.length - 1].offsetTop;
 
-            if (pageYOffset < maxY - 10  && maxY !== 0) {
+            if (pageYOffset < maxY - 10 && maxY !== 0) {
 
 
                 // Remove scroll after scrolling to next
@@ -513,7 +541,7 @@ window.addEventListener('scroll', (e) => {
             // &&
             // (pageYOffset  < (sections[i + 1].offsetTop + (sections[i + 1].clientHeight) / 2))
         ) {
-            console.log(i + 1);
+            // console.log(i + 1);
             i = i + 1
             counter = i
             sections[counter].classList.add('animate')
@@ -530,7 +558,7 @@ let oldHeight = document.documentElement.clientHeight
 
 window.addEventListener('resize', () => {
     if (document.documentElement.clientWidth !== oldWidth && document.documentElement.clientHeight !== oldHeight) {
-        console.log(counter);
+        // console.log(counter);
         sections[counter].classList.add("active");
         window.scrollTo(
             0,
@@ -604,7 +632,7 @@ function checkKey(e) {
 
             let maxY = sections[sections.length - 1].offsetTop;
 
-            if (pageYOffset > maxY - 10  && maxY !== 0) {
+            if (pageYOffset > maxY - 10 && maxY !== 0) {
             } else {
 
                 if (
@@ -676,7 +704,7 @@ function checkKey(e) {
 
         } else if (e.keyCode == "40") {
             let maxY = sections[sections.length - 1].offsetTop;
-            if (pageYOffset > maxY - 10  && maxY !== 0) {
+            if (pageYOffset > maxY - 10 && maxY !== 0) {
             } else {
                 if (
                     modalLets.classList.contains("open") ||

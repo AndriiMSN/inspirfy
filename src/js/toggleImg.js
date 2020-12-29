@@ -161,17 +161,11 @@ toolsBtnRight.addEventListener("click", () => {
     RightBtn(toolsTitles, toolsImages, toolsSliderImg, toolsClassNameImages);
 });
 
-// toolsBtnRight.addEventListener("touchstart", () => {
-//     RightBtn(toolsTitles, toolsImages, toolsSliderImg, toolsClassNameImages);
-// });
 
 toolsBtnLeft.addEventListener("click", () => {
     LeftBtn(toolsTitles, toolsImages, toolsSliderImg, toolsClassNameImages);
 });
 
-// toolsBtnLeft.addEventListener("touchstart", () => {
-//     LeftBtn(toolsTitles, toolsImages, toolsSliderImg, toolsClassNameImages);
-// });
 
 // FUNCTIONS --------------------------------------------------------------------------------------------------------
 
@@ -189,6 +183,13 @@ function ChangeImages(element, desktopItems, i) {
         desktopItems[i].classList.remove('disabled')
         desktopItems[i].classList.add('active')
 
+        let bgToRipple = desktopItems[i].querySelector('.toggle-bg-img')
+
+        let bgToRippleClassName = bgToRipple.className.split(' ')[0]
+
+        let queryBgToRipple = $(`.${bgToRippleClassName}`)
+
+        rippleBg(queryBgToRipple, bgToRipple.clientWidth)
 
         desktopItems[i].querySelectorAll('.toggle-parent').forEach((el) => {
 
@@ -211,7 +212,7 @@ function ChangeImages(element, desktopItems, i) {
                 if (maxWidth == childWidth) {
                     el.style.transform = `translateX(-${(documentWidth - containerWidth) / 2}px)`
                 } else {
-                    el.style.transform = `translateX(-20%)`
+                    el.style.transform = `translateX(-15%)`
                 }
 
                 child.style.width = `${childWidth}px`;
@@ -240,7 +241,7 @@ function ChangeImages(element, desktopItems, i) {
                         if (maxWidth == childWidth) {
                             el.style.transform = `translateX(-${(documentWidth - containerWidth) / 2}px)`
                         } else {
-                            el.style.transform = `translateX(-20%)`
+                            el.style.transform = `translateX(-15%)`
                         }
 
                         child.style.width = `${childWidth}px`;
@@ -436,6 +437,38 @@ function rippleElement($elemToRipple, width) {
         $elemToRipple.ripples('set', 'perturbance', 0)
         $elemToRipple.ripples('destroy')
     }, 1200)
+}
+
+function rippleBg($elemToRipple, width) {
+    $elemToRipple.ripples({
+        resolution: 40,
+        perturbance: 0.15,
+        interactive: false,
+        width: width
+    });
+
+
+    let x = 0.5 * $elemToRipple.outerWidth();
+    let y = 0.5 * $elemToRipple.outerHeight();
+    // let y = 0
+    // let x = 0
+    let dropRadius = 200;
+    let strength = 0.15;
+
+    $elemToRipple.ripples('drop', x, y, dropRadius, strength);
+    setTimeout(() => {
+        $elemToRipple.ripples('set', 'perturbance', 0.1)
+    }, 600)
+    setTimeout(() => {
+        $elemToRipple.ripples('set', 'perturbance', 0.05)
+    }, 900)
+    setTimeout(() => {
+        $elemToRipple.ripples('set', 'perturbance', 0.025)
+    }, 1200)
+    setTimeout(() => {
+        $elemToRipple.ripples('set', 'perturbance', 0)
+        $elemToRipple.ripples('destroy')
+    }, 1500)
 }
 
 // Mobile buttons
