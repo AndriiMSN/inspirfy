@@ -336,22 +336,44 @@ function ChangeImagesMob(element, mobileItem, i) {
 
 function ToggleImages(el, titles, desktopItems, mobileItems, i) {
     el.addEventListener("click", () => {
-        // remove active foreach
-        // ads active for current
 
-        titles[0].classList.remove('rm-active')
 
-        if (el.classList.contains("active")) {
-            el.classList.remove("active");
-        } else {
-            titles.forEach((el) => {
-                el.classList.remove("active");
-            });
-            el.classList.add("active");
-        }
         if (document.documentElement.clientWidth > 1150) {
+            if (el.classList.contains("active") && !el.classList.contains('rm-active')) {
+
+                el.classList.remove("active");
+
+            } else {
+
+                titles.forEach((el) => {
+
+                    el.classList.remove("active");
+                });
+
+                el.classList.add("active");
+            }
+
+            titles[0].classList.remove('rm-active')
             ChangeImages(el, desktopItems, i);
+
         } else {
+
+            if (el.classList.contains("active")) {
+
+                el.classList.remove("active");
+
+            } else {
+
+                titles.forEach((el) => {
+
+                    el.classList.remove("active");
+                });
+
+                el.classList.add("active");
+            }
+
+            titles[0].classList.remove('rm-active')
+
             ChangeImagesMob(el, mobileItems[i])
 
         }
