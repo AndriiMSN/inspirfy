@@ -39,106 +39,180 @@
 
   &__slider
   {
+
+    &.active
+    {
+      position: relative;
+      z-index: 20;
+      opacity: 1;
+    }
+
+    &.disabled
+    {
+      position: absolute;
+      z-index: -20;
+      opacity: 0;
+    }
+
     &__img
     {
+      width: 100%;
+
+      &__bg-1
+      {
+        background: url("../assets/img/slider-bg.png");
+        width: 100%;
+        height: 100%;
+      }
+
+      &__bg-2
+      {
+        background: url("../assets/img/slider-bg-2.png");
+        width: 100%;
+        height: 100%;
+      }
+
+      &__bg-3
+      {
+        background: url("../assets/img/slider-bg-3.png");
+        width: 100%;
+        height: 100%;
+      }
+
       &__images__toggle-1
       {
         position: absolute;
         width: 100%;
         height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: baseline;
 
-        &__key
+        .toggle-div
         {
-          top: 50%;
-          left: -224px;
-          transform: translateY(-63%);
-          // 1560px
-          @media (max-width: $screen-xl-min)
+
+          &.op-0
           {
-            max-width: 320px;
-            left: -152px;
+            opacity: 0;
           }
         }
 
-        &__user
+        &.row
         {
-          top: 50%;
-          right: -105px;
-          transform: translateY(-35%);
-          max-width: 350px;
-          // 1560px
-          @media (max-width: $screen-xl-min)
-          {
-            max-width: 235px;
-            right: -35px;
-          }
+          display: block;
         }
 
-        &__earth
-        {
-          top: 50%;
-          left: -80px;
-          transform: translateY(-85%);
-          max-width: 385px;
-          // 1560px
-          @media (max-width: $screen-xl-min)
-          {
-            max-width: 245px;
-            left: -40px;
-          }
-        }
 
-        &__star
+        & div
         {
-          top: 50%;
-          right: -118px;
-          transform: translateY(-35%);
-          max-width: 309px;
-          // 1560px
-          @media (max-width: $screen-xl-min)
-          {
-            max-width: 225px;
-            right: -72px;
-          }
-        }
 
-        &__graph
-        {
-          top: 50%;
-          left: -71px;
-          transform: translateY(-10%);
-          max-width: 375px;
-          // 1560px
-          @media (max-width: $screen-xl-min)
-          {
-            max-width: 240px;
-            left: -30px;
-          }
-        }
-
-        &__wall
-        {
-          top: 50%;
-          right: -49px;
-          transform: translateY(-60%);
-          max-width: 273px;
-          // 1560px
-          @media (max-width: $screen-xl-min)
-          {
-            max-width: 165px;
-            right: -15px;
-          }
-        }
-
-        & img
-        {
-          position: absolute;
-          width: auto;
-          height: auto;
           z-index: 20;
+          margin-bottom: 17px;
+
         }
+
+        &__target-1-parent
+        {
+          width: 154%;
+          height: 56%;
+
+          max-width: 936px;
+          max-height: 595px;
+
+          &.animate
+          {
+            animation: leftToRightHorizontalTarget-1 .8s;
+
+
+          }
+        }
+
+        &__target-1
+        {
+
+          width: 100%;
+          height: 100%;
+
+
+          background: url("../assets/img/target-toggle-1.png") no-repeat center !important;
+          background-size: contain !important;
+
+
+          canvas
+          {
+            width: 100% !important;
+            height: 100% !important;
+          }
+
+        }
+
+        &__target-2-parent
+        {
+          width: 154%;
+          height: 56%;
+
+          max-width: 936px;
+          max-height: 595px;
+
+          &.animate
+          {
+            animation: leftToRightHorizontalTarget-1 .8s;
+          }
+        }
+
+        &__target-2
+        {
+          width: 100%;
+          height: 100%;
+
+          transform: translateX(-40px);
+
+          background: url("../assets/img/target-toggle-2.png") no-repeat center !important;
+          background-size: contain !important;
+
+
+          canvas
+          {
+            width: 100% !important;
+            height: 100% !important;
+          }
+        }
+
+        &__target-3-parent
+        {
+          width: 154%;
+          height: 56%;
+
+          max-width: 936px;
+          max-height: 595px;
+
+          &.animate
+          {
+            animation: leftToRightHorizontalTarget-1 .8s;
+          }
+        }
+
+        &__target-3
+        {
+          width: 100%;
+          height: 100%;
+
+
+          background: url("../assets/img/target-toggle-3.png") no-repeat center !important;
+          background-size: contain !important;
+
+
+          canvas
+          {
+            width: 100% !important;
+            height: 100% !important;
+          }
+        }
+
       }
     }
+
   }
 }
 
@@ -153,99 +227,150 @@
         position: absolute;
         width: 100%;
         height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
-        img
+        .toggle-div
         {
-          height: auto !important;
-        }
 
-        &__key
-        {
-          top: 50%;
-          transform: translateY(-63%);
-          max-width: 320px;
-          left: -152px;
-
-          // 768px
-          @media (max-width: $screen-sm-min)
+          &.op-0
           {
-            max-width: 180px;
-            top: 50%;
-            height: auto !important;
-            left: -39px;
-            transform: translateY(-63%);
+            opacity: 0;
           }
         }
 
-        &__user
+        &.row
         {
-          max-width: 260px;
-          top: 50%;
-          transform: translateY(-35%);
-          right: -55px;
-          // 768px
-          @media (max-width: $screen-sm-min)
-          {
-            top: 50%;
-            transform: translateY(-35%);
-            max-width: 57%;
-            right: -5px;
-          }
+          display: block;
         }
 
-        &__earth
-        {
-          top: 50%;
-          left: -50px;
-          transform: translateY(-85%);
-          max-width: 57%;
-          // 768px
-          @media (max-width: $screen-sm-min)
-          {
-            top: 35%;
-          }
-        }
 
-        &__star
+        & div
         {
-          top: 50%;
-          right: -48px;
-          transform: translateY(-35%);
-          max-width: 50%;
-          // 768px
-          @media (max-width: $screen-sm-min)
-          {
-            top: 50%;
-            right: -8px;
-            transform: translateY(-35%);
-            max-width: 50%;
-          }
-        }
 
-        &__graph
-        {
-          top: 50%;
-          left: -21px;
-          transform: translateY(-10%);
-          max-width: 61%;
-        }
-
-        &__wall
-        {
-          top: 50%;
-          right: 9px;
-          transform: translateY(-70%);
-          max-width: 44.53%;
-        }
-
-        & img
-        {
-          position: absolute;
-          width: auto;
-          height: auto;
           z-index: 20;
+          margin-bottom: 17px;
+
         }
+
+        &__target-1-parent
+        {
+          width: 154%;
+          height: 56%;
+
+          max-width: 936px;
+          max-height: 595px;
+
+          &.animate
+          {
+            animation: leftToRightHorizontalTarget-1 .8s;
+
+
+          }
+        }
+
+        &__target-1
+        {
+
+          width: 100%;
+          height: 100%;
+
+
+          background: url("../assets/img/target-toggle-1.png") no-repeat center !important;
+          background-size: contain !important;
+
+
+          canvas
+          {
+            width: 100% !important;
+            height: 100% !important;
+          }
+
+        }
+
+        &__target-2-parent
+        {
+          width: 154%;
+          height: 56%;
+
+          max-width: 936px;
+          max-height: 595px;
+
+          &.animate
+          {
+            animation: leftToRightHorizontalTarget-1 .8s;
+          }
+        }
+
+        &__target-2
+        {
+          width: 100%;
+          height: 100%;
+
+          transform: translateX(-40px);
+
+          background: url("../assets/img/target-toggle-2.png") no-repeat center !important;
+          background-size: contain !important;
+
+
+          canvas
+          {
+            width: 100% !important;
+            height: 100% !important;
+          }
+        }
+
+        &__target-3-parent
+        {
+          width: 154%;
+          height: 56%;
+
+          max-width: 936px;
+          max-height: 595px;
+
+          &.animate
+          {
+            animation: leftToRightHorizontalTarget-1 .8s;
+          }
+        }
+
+        &__target-3
+        {
+          width: 100%;
+          height: 100%;
+
+
+          background: url("../assets/img/target-toggle-3.png") no-repeat center !important;
+          background-size: contain !important;
+
+
+          canvas
+          {
+            width: 100% !important;
+            height: 100% !important;
+          }
+        }
+
       }
     }
+  }
+}
+
+
+@keyframes leftToRightHorizontalTarget-1
+{
+  from
+  {
+    overflow: hidden;
+    height: 56%;
+    width: 0;
+  }
+  to
+  {
+    overflow: hidden;
+    width: 154%;
+    height: 56%;
   }
 }

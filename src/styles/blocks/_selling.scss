@@ -35,12 +35,14 @@
     {
       position: relative;
       z-index: 20;
+      opacity: 1;
     }
 
     &.disabled
     {
       position: absolute;
       z-index: -20;
+      opacity: 0;
     }
 
     &__img
@@ -236,6 +238,7 @@
 
       }
     }
+
   }
 }
 

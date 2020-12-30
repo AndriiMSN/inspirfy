@@ -69,6 +69,14 @@ function rippleElement($elemToRipple, width) {
 }
 
 function toggleImagesBgRipple(counter) {
+    if (counter === 2) {
+        let img = sections[counter].querySelector('.toggle__slider.active .toggle-bg-img')
+
+        img.classList.add('rippled')
+
+        let queryRipple = $(`.${img.className.split(' ')[0]}`)
+        rippleElement(queryRipple, img.clientWidth)
+    }
     if (counter === 3) {
         let img = sections[counter].querySelector('.toggle__slider.active .toggle-bg-img')
 

@@ -1,49 +1,61 @@
-// Target block
+// Target block------------------------------------------------------------------------------
 
 const TargetTitles = document.querySelectorAll(".target__toggle__block__title");
 
-const TargetImages = document.querySelector(
-    ".target__slider__img__images__toggle-1"
-);
-
-const TargetClassNameImages = ".target__slider__img__images__toggle-1";
-
-const TargetSliderImg = document.querySelector(
-    ".target__slider__img__images__toggle-1 + img"
-);
-
-const TargetBtnLeft = document.querySelector(
+const TargetBtnLeft = document.querySelectorAll(
     ".target__slider__img__elements__buttons .left"
 );
 
-const TargetBtnRight = document.querySelector(
+const TargetBtnRight = document.querySelectorAll(
     ".target__slider__img__elements__buttons .right"
 );
 
-TargetTitles.forEach((el) => {
-});
+const TargetMobile = document.querySelectorAll('.mob-target__slider')
 
-TargetTitles.forEach((el) => {
+const TargetDesktop = document.querySelectorAll('.target__slider')
+
+
+TargetTitles.forEach((el,i) => {
     ToggleImages(
         el,
         TargetTitles,
-        TargetImages,
-        TargetSliderImg,
-        TargetClassNameImages
+        TargetDesktop,
+        TargetMobile,
+        i
     );
 });
 
-TargetBtnRight.addEventListener("click", () => {
-    RightBtn(TargetTitles, TargetImages, TargetSliderImg, TargetClassNameImages);
-});
 
-// TargetBtnRight.addEventListener("touchstart", () => {
-//     RightBtn(TargetTitles, TargetImages, TargetSliderImg, TargetClassNameImages);
-// });
+TargetBtnRight.forEach((el, i) => {
+    el.addEventListener("click", () => {
+        RightBtn(
+            TargetTitles,
+            TargetDesktop,
+        );
+        // Change styles for el #3
+        // if (sellingTitles[2].classList.contains("active")) {
+        //     // sellingImages.classList.add("row");
+        // } else {
+        //     // sellingImages.classList.remove("row");
+        // }
+    });
+})
 
-TargetBtnLeft.addEventListener("click", () => {
-    LeftBtn(TargetTitles, TargetImages, TargetSliderImg, TargetClassNameImages);
-});
+
+TargetBtnLeft.forEach((el, i) => {
+    el.addEventListener("click", () => {
+        LeftBtn(
+            TargetTitles,
+            TargetDesktop,
+        );
+        // Change styles for el #3
+        // if (sellingTitles[2].classList.contains("active")) {
+        //     sellingImages.classList.add("row");
+        // } else {
+        //     sellingImages.classList.remove("row");
+        // }
+    });
+})
 
 
 // Selling block----------------------------------------------------------------------------------------------------------
@@ -51,16 +63,6 @@ TargetBtnLeft.addEventListener("click", () => {
 const sellingTitles = document.querySelectorAll(
     ".selling__toggle__block__title"
 );
-
-// const sellingImages = document.querySelector(
-//     ".selling__slider__img__images__toggle-1"
-// );
-//
-// const sellingClassNameImages = ".selling__slider__img__images__toggle-1";
-//
-// const sellingSliderImg = document.querySelector(
-//     ".selling__slider__img__images__toggle-1 + img"
-// );
 
 const sellingBtnLeft = document.querySelectorAll(
     ".selling__slider__img__elements__buttons .left"
