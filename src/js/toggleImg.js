@@ -185,11 +185,16 @@ function ChangeImages(element, desktopItems, i) {
 
         let bgToRipple = desktopItems[i].querySelector('.toggle-bg-img')
 
-        let bgToRippleClassName = bgToRipple.className.split(' ')[0]
+        if (!bgToRipple.classList.contains('rippled')) {
 
-        let queryBgToRipple = $(`.${bgToRippleClassName}`)
+            let bgToRippleClassName = bgToRipple.className.split(' ')[0]
 
-        rippleBg(queryBgToRipple, bgToRipple.clientWidth)
+            let queryBgToRipple = $(`.${bgToRippleClassName}`)
+
+            rippleBg(queryBgToRipple, bgToRipple.clientWidth)
+        }
+
+        bgToRipple.classList.remove('rippled')
 
         desktopItems[i].querySelectorAll('.toggle-parent').forEach((el) => {
 
@@ -216,7 +221,7 @@ function ChangeImages(element, desktopItems, i) {
                 }
 
                 child.style.width = `${childWidth}px`;
-                child.style.maxWidth = `${el.style.maxWidth}`
+                // child.style.maxWidth = `${}`
 
 
                 child.classList.remove('op-0')
@@ -245,7 +250,7 @@ function ChangeImages(element, desktopItems, i) {
                         }
 
                         child.style.width = `${childWidth}px`;
-                        child.style.maxWidth = `${el.style.maxWidth}px`
+                        // child.style.maxWidth = `${el.style.maxWidth}px`
 
                         let childCanvas = child.querySelector('canvas')
                         if (childCanvas) {
@@ -333,6 +338,9 @@ function ToggleImages(el, titles, desktopItems, mobileItems, i) {
     el.addEventListener("click", () => {
         // remove active foreach
         // ads active for current
+
+        titles[0].classList.remove('rm-active')
+
         if (el.classList.contains("active")) {
             el.classList.remove("active");
         } else {

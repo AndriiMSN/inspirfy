@@ -316,7 +316,7 @@
             max-width: 940px;
             max-height: 353px;
 
-            transform: translateX(-20px);
+            transform: translateX(-40px);
 
             &.animate
             {
@@ -332,7 +332,7 @@
 
             background: url("../assets/img/selling-toggle-2.png") no-repeat left !important;
             background-size: cover !important;
-
+            transform: translateX(0);
 
             canvas
             {

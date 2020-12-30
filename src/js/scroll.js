@@ -72,7 +72,7 @@ function toggleImagesBgRipple(counter) {
     if (counter === 3) {
         let img = sections[counter].querySelector('.toggle__slider.active .toggle-bg-img')
 
-        console.log(img);
+        img.classList.add('rippled')
 
         let queryRipple = $(`.${img.className.split(' ')[0]}`)
         rippleElement(queryRipple, img.clientWidth)
@@ -349,7 +349,7 @@ window.addEventListener('touchmove', (e) => {
             // console.log(directionX);
             if ((directionX > 50 || directionX < -50) && (directionY < 50 && directionY > -50)) {
 
-            } else if (pageYOffset > maxY - 10) {
+            } else if (pageYOffset > maxY - 10 && maxY !== 0) {
                 if (directionY > 0) {
                     e.preventDefault()
                     e.stopPropagation()
