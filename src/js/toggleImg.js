@@ -15,7 +15,7 @@ const TargetMobile = document.querySelectorAll('.mob-target__slider')
 const TargetDesktop = document.querySelectorAll('.target__slider')
 
 
-TargetTitles.forEach((el,i) => {
+TargetTitles.forEach((el, i) => {
     ToggleImages(
         el,
         TargetTitles,
@@ -388,15 +388,28 @@ function ToggleImages(el, titles, desktopItems, mobileItems, i) {
 function RightBtn(titles, itemsDesktop) {
     let currentSlide = -1;
     let nextSlide;
+
+
     titles.forEach((el, i) => {
         if (el.classList.contains("active")) {
-            currentSlide = i;
-            return currentSlide;
+
+            if (el.classList.contains('rm-active')) {
+
+                return currentSlide = -1;
+
+            } else {
+
+                currentSlide = i;
+                return currentSlide;
+
+            }
         }
     });
+
     titles.forEach((el) => {
         el.classList.remove("active");
     });
+
     let getNextSlide = () => {
         if (currentSlide + 1 >= titles.length) {
             nextSlide = 0;
@@ -408,6 +421,10 @@ function RightBtn(titles, itemsDesktop) {
     };
     getNextSlide();
 
+    // console.log(nextSlide);
+    // console.log(titles[nextSlide]);
+
+    titles[nextSlide].classList.remove('rm-active')
     titles[nextSlide].classList.add("active");
     ChangeImages(titles[nextSlide], itemsDesktop, nextSlide)
 
@@ -417,15 +434,27 @@ function LeftBtn(titles, itemsDesktop) {
     let currentSlide = -1;
     let nextSlide;
     titles.forEach((el, i) => {
+
         if (el.classList.contains("active")) {
-            currentSlide = i;
-            return currentSlide;
+
+            if (el.classList.contains('rm-active')) {
+
+                return currentSlide = 0;
+
+            } else {
+
+                currentSlide = i;
+                return currentSlide;
+
+            }
         }
     });
+
     titles.forEach((el) => {
         el.classList.remove("active");
     });
-    let getPrevtSlide = () => {
+
+    let getPrevSlide = () => {
         if (currentSlide - 1 <= -1) {
             nextSlide = titles.length - 1;
             return nextSlide;
@@ -434,9 +463,13 @@ function LeftBtn(titles, itemsDesktop) {
             return nextSlide;
         }
     };
-    getPrevtSlide();
+    getPrevSlide();
+
+    titles[nextSlide].classList.remove('rm-active')
     titles[nextSlide].classList.add("active");
     ChangeImages(titles[nextSlide], itemsDesktop, nextSlide);
+
+    itemsDesktop[0].querySelector('.toggle-bg-img').classList.remove('rippled')
 }
 
 function rippleElement($elemToRipple, width) {
@@ -515,72 +548,14 @@ const TargetMobBtnsRight = document.querySelectorAll(
     ".mob-target__slider__img__elements__buttons .right"
 );
 
+const targetBlock = document.querySelector('.target')
+
 TargetMobBtnsLeft.forEach((el) => {
-    el.addEventListener("click", () => {
-        let currentSlide = -1;
-        let nextSlide;
-        TargetTitles.forEach((el, i) => {
-            if (el.classList.contains("active")) {
-                currentSlide = i;
-                return currentSlide;
-            }
-        });
-        TargetTitles.forEach((el) => {
-            el.classList.remove("active");
-        });
-        let getPrevtSlide = () => {
-            if (currentSlide - 1 <= -1) {
-                nextSlide = TargetTitles.length - 1;
-                return nextSlide;
-            } else {
-                nextSlide = currentSlide - 1;
-                return nextSlide;
-            }
-        };
-        getPrevtSlide();
-        TargetTitles[nextSlide].classList.add("active");
-        $("html,body").animate(
-            {
-                scrollTop: TargetTitles[nextSlide].offsetTop - 40,
-                behavior: "smooth",
-            },
-            800
-        );
-    });
+    LeftBtnMob(el, TargetTitles, targetBlock)
 });
 
 TargetMobBtnsRight.forEach((el) => {
-    el.addEventListener("click", () => {
-        let currentSlide = -1;
-        let nextSlide;
-        TargetTitles.forEach((el, i) => {
-            if (el.classList.contains("active")) {
-                currentSlide = i;
-                return currentSlide;
-            }
-        });
-        TargetTitles.forEach((el) => {
-            el.classList.remove("active");
-        });
-        let getNextSlide = () => {
-            if (currentSlide + 1 >= TargetTitles.length) {
-                nextSlide = 0;
-                return nextSlide;
-            } else {
-                nextSlide = currentSlide + 1;
-                return nextSlide;
-            }
-        };
-        getNextSlide();
-        TargetTitles[nextSlide].classList.add("active");
-        $("html,body").animate(
-            {
-                scrollTop: TargetTitles[nextSlide].offsetTop - 40,
-                behavior: "smooth",
-            },
-            800
-        );
-    });
+    RgtBtnMob(el, TargetTitles, targetBlock, TargetMobile)
 });
 
 
@@ -594,81 +569,14 @@ const SellingMobBtnsRight = document.querySelectorAll(
     ".mob-selling__slider__img__elements__buttons .right"
 );
 
-SellingMobBtnsLeft.forEach((el) => {
-    el.addEventListener("click", () => {
-        let currentSlide = -1;
-        let nextSlide;
-        sellingTitles.forEach((el, i) => {
-            if (el.classList.contains("active")) {
-                currentSlide = i;
-                return currentSlide;
-            }
-        });
-        sellingTitles.forEach((el) => {
-            el.classList.remove("active");
-        });
-        let getPrevtSlide = () => {
-            if (currentSlide - 1 <= -1) {
-                nextSlide = sellingTitles.length - 1;
-                return nextSlide;
-            } else {
-                nextSlide = currentSlide - 1;
-                return nextSlide;
-            }
-        };
-        getPrevtSlide();
-        sellingTitles[nextSlide].classList.add("active");
-        $("html,body").animate(
-            {
-                scrollTop: sellingTitles[nextSlide].offsetTop - 40,
-                behavior: "smooth",
-            },
-            800
-        );
-        ChangeImagesMob(sellingTitles[nextSlide], sellingMobile[nextSlide])
+const sellingBlock = document.querySelector('.selling')
 
-    });
+SellingMobBtnsLeft.forEach((el) => {
+    LeftBtnMob(el, sellingTitles, sellingBlock)
 });
 
 SellingMobBtnsRight.forEach((el) => {
-    el.addEventListener("click", () => {
-        let currentSlide = -1;
-        let nextSlide;
-
-        sellingTitles.forEach((el, i) => {
-            if (el.classList.contains("active")) {
-                currentSlide = i;
-                return currentSlide;
-            }
-        });
-
-        sellingTitles.forEach((el) => {
-            el.classList.remove("active");
-        });
-
-        let getNextSlide = () => {
-            if (currentSlide + 1 >= sellingTitles.length) {
-                nextSlide = 0;
-                return nextSlide;
-            } else {
-                nextSlide = currentSlide + 1;
-                return nextSlide;
-            }
-        };
-        getNextSlide();
-
-        sellingTitles[nextSlide].classList.add("active");
-
-        $("html,body").animate(
-            {
-                scrollTop: sellingTitles[nextSlide].offsetTop - 40,
-                behavior: "smooth",
-            },
-            800
-        );
-
-        ChangeImagesMob(sellingTitles[nextSlide], sellingMobile[nextSlide])
-    });
+    RgtBtnMob(el, sellingTitles, sellingBlock, sellingMobile)
 });
 
 
@@ -682,19 +590,78 @@ const toolsMobBtnsRight = document.querySelectorAll(
     ".mob-tools__slider__img__elements__buttons .right"
 );
 
+const tollsBlock = document.querySelector('.tools')
+
 toolsMobBtnsLeft.forEach((el) => {
+    LeftBtnMob(el, toolsTitles, tollsBlock)
+});
+
+toolsMobBtnsRight.forEach((el) => {
+    RgtBtnMob(el, toolsTitles, tollsBlock)
+});
+
+function RgtBtnMob(el, titles, block, mobileItems) {
+
     el.addEventListener("click", () => {
+
         let currentSlide = -1;
         let nextSlide;
-        toolsTitles.forEach((el, i) => {
+
+        titles.forEach((el, i) => {
             if (el.classList.contains("active")) {
                 currentSlide = i;
                 return currentSlide;
             }
         });
-        toolsTitles.forEach((el) => {
+
+        titles.forEach((el) => {
             el.classList.remove("active");
         });
+
+        let getNextSlide = () => {
+            if (currentSlide + 1 >= titles.length) {
+                nextSlide = 0;
+                return nextSlide;
+            } else {
+                nextSlide = currentSlide + 1;
+                return nextSlide;
+            }
+        };
+        getNextSlide();
+
+        titles[nextSlide].classList.add("active");
+        // console.log(titles[nextSlide].offsetTop);
+
+        $("html,body").animate(
+            {
+                scrollTop: block.offsetTop + titles[nextSlide].offsetTop,
+                behavior: "smooth",
+            },
+            800
+        );
+
+        ChangeImagesMob(titles[nextSlide], mobileItems[nextSlide])
+    });
+}
+
+function LeftBtnMob(el, titles, block, mobileItems) {
+
+    el.addEventListener("click", () => {
+
+        let currentSlide = -1;
+        let nextSlide;
+
+        titles.forEach((el, i) => {
+            if (el.classList.contains("active")) {
+                currentSlide = i;
+                return currentSlide;
+            }
+        });
+
+        titles.forEach((el) => {
+            el.classList.remove("active");
+        });
+
         let getPrevSlide = () => {
             if (currentSlide - 1 <= -1) {
                 nextSlide = toolsTitles.length - 1;
@@ -705,54 +672,18 @@ toolsMobBtnsLeft.forEach((el) => {
             }
         };
         getPrevSlide();
-        toolsTitles[nextSlide].classList.add("active");
+
+        titles[nextSlide].classList.add("active");
+        // console.log(titles[nextSlide].offsetTop);
+
         $("html,body").animate(
             {
-                scrollTop:
-                    document.querySelector(".tools").offsetTop +
-                    toolsTitles[nextSlide].offsetTop -
-                    40,
+                scrollTop: block.offsetTop + titles[nextSlide].offsetTop,
                 behavior: "smooth",
             },
             800
         );
+        ChangeImagesMob(titles[nextSlide], mobileItems[nextSlide])
     });
-});
 
-toolsMobBtnsRight.forEach((el) => {
-    el.addEventListener("click", () => {
-        let currentSlide = -1;
-        let nextSlide;
-        toolsTitles.forEach((el, i) => {
-            if (el.classList.contains("active")) {
-                currentSlide = i;
-                return currentSlide;
-            }
-        });
-        toolsTitles.forEach((el) => {
-            el.classList.remove("active");
-        });
-        let getNextSlide = () => {
-            if (currentSlide + 1 >= toolsTitles.length) {
-                nextSlide = 0;
-                return nextSlide;
-            } else {
-                nextSlide = currentSlide + 1;
-                return nextSlide;
-            }
-        };
-        getNextSlide();
-        toolsTitles[nextSlide].classList.add("active");
-        $("html,body").animate(
-            {
-                scrollTop:
-                    document.querySelector(".tools").offsetTop +
-                    toolsTitles[nextSlide].offsetTop -
-                    40,
-                behavior: "smooth",
-            },
-            800
-        );
-    });
-});
-
+}
