@@ -33,6 +33,7 @@ TargetBtnRight.forEach((el, i) => {
         RightBtn(
             TargetTitles,
             TargetDesktop,
+            TargetDescriptions
         );
         // Change styles for el #3
         // if (sellingTitles[2].classList.contains("active")) {
@@ -49,6 +50,7 @@ TargetBtnLeft.forEach((el, i) => {
         LeftBtn(
             TargetTitles,
             TargetDesktop,
+            TargetDescriptions
         );
         // Change styles for el #3
         // if (sellingTitles[2].classList.contains("active")) {
@@ -78,6 +80,8 @@ const sellingMobile = document.querySelectorAll('.mob-selling__slider')
 
 const sellingDesktop = document.querySelectorAll('.selling__slider')
 
+const sellingDescriptions = document.querySelectorAll('.selling__toggle__block__description')
+
 sellingTitles.forEach((el, i) => {
     // Change styles slider for el #3
     el.addEventListener("click", () => {
@@ -93,7 +97,8 @@ sellingTitles.forEach((el, i) => {
         sellingTitles,
         sellingDesktop,
         sellingMobile,
-        i
+        i,
+        sellingDescriptions
     );
 });
 
@@ -102,7 +107,8 @@ sellingBtnRight.forEach((el, i) => {
     el.addEventListener("click", () => {
         RightBtn(
             sellingTitles,
-            sellingDesktop
+            sellingDesktop,
+            sellingDescriptions
         );
         // Change styles for el #3
         // if (sellingTitles[2].classList.contains("active")) {
@@ -118,7 +124,8 @@ sellingBtnLeft.forEach((el, i) => {
     el.addEventListener("click", () => {
         LeftBtn(
             sellingTitles,
-            sellingDesktop
+            sellingDesktop,
+            sellingDescriptions
         );
         // Change styles for el #3
         // if (sellingTitles[2].classList.contains("active")) {
@@ -338,11 +345,6 @@ function ChangeImagesMob(element, mobileItem, i) {
     }
 }
 
-function fitAccardeon(el) {
-    el.style.height = `${el.querySelector('p').clientHeight}px`
-}
-
-
 function ToggleImages(el, titles, desktopItems, mobileItems, i, descriptions) {
     el.addEventListener("click", () => {
 
@@ -379,11 +381,12 @@ function ToggleImages(el, titles, desktopItems, mobileItems, i, descriptions) {
             titles[0].classList.remove('rm-active')
             ChangeImages(el, desktopItems, i);
 
-        } else {
+        } else { // MOBILE
 
-            if (el.classList.contains("active")) {
+            if (el.classList.contains("active") || el.classList.contains('rm-active')) {
 
                 el.classList.remove("active");
+                el.classList.remove('rm-active')
 
             } else {
 
@@ -420,10 +423,13 @@ function ToggleImages(el, titles, desktopItems, mobileItems, i, descriptions) {
 
 }
 
-function RightBtn(titles, itemsDesktop) {
+function RightBtn(titles, itemsDesktop, descriptions) {
     let currentSlide = -1;
     let nextSlide;
 
+    descriptions.forEach((el) => {
+        el.style.height = '0px'
+    })
 
     titles.forEach((el, i) => {
         if (el.classList.contains("active")) {
@@ -461,13 +467,30 @@ function RightBtn(titles, itemsDesktop) {
 
     titles[nextSlide].classList.remove('rm-active')
     titles[nextSlide].classList.add("active");
+
+    descriptions[nextSlide].style.height = `${descriptions[i].querySelector('p').clientHeight}px`
+
+
+    window.addEventListener('resize', () => {
+
+        if (titles[nextSlide].classList.contains('active')) {
+
+            descriptions[nextSlide].style.height = `${descriptions[i].querySelector('p').clientHeight}px`
+        }
+    })
+
     ChangeImages(titles[nextSlide], itemsDesktop, nextSlide)
 
 }
 
-function LeftBtn(titles, itemsDesktop) {
+function LeftBtn(titles, itemsDesktop, descriptions) {
     let currentSlide = -1;
     let nextSlide;
+
+    descriptions.forEach((el) => {
+        el.style.height = '0px'
+    })
+
     titles.forEach((el, i) => {
 
         if (el.classList.contains("active")) {
@@ -502,6 +525,17 @@ function LeftBtn(titles, itemsDesktop) {
 
     titles[nextSlide].classList.remove('rm-active')
     titles[nextSlide].classList.add("active");
+
+    descriptions[nextSlide].style.height = `${descriptions[i].querySelector('p').clientHeight}px`
+
+    window.addEventListener('resize', () => {
+
+        if (titles[nextSlide].classList.contains('active')) {
+
+            descriptions[nextSlide].style.height = `${descriptions[i].querySelector('p').clientHeight}px`
+        }
+    })
+
     ChangeImages(titles[nextSlide], itemsDesktop, nextSlide);
 
     itemsDesktop[0].querySelector('.toggle-bg-img').classList.remove('rippled')
