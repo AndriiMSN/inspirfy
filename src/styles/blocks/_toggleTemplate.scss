@@ -162,11 +162,7 @@
 
         & + .toggle__block__items__description
         {
-          visibility: collapse;
-          height: 0;
-          padding-bottom: 0;
-          opacity: 0;
-          transition: opacity 0.5s ease-out;
+
           // 768px
           @media (max-width: $screen-sm-min)
           {
@@ -188,12 +184,18 @@
 
           & + .toggle__block__items__description
           {
-            visibility: visible;
-            height: auto;
+
             padding-bottom: 24px;
-            display: block;
-            opacity: 1;
-            transition: opacity 0.5s ease-out;
+            transition: height 0.5s ease-out;
+            //height: 96px;
+            visibility: visible;
+            overflow: hidden;
+
+            p
+            {
+              animation: InitHide .3s, ShowItem .5s .3s linear forwards;
+            }
+
 
             & + .mob-toggle__slider
             {
@@ -238,13 +240,11 @@
 
             & + .toggle__block__items__description
             {
-
-              visibility: collapse;
-              height: 0;
-              padding-bottom: 0;
-              opacity: 0;
-              transition: opacity 0.5s ease-out;
-
+              padding-bottom: 0px;
+              transition: height 0.5s ease-out;
+              height: 0px;
+              visibility: visible;
+              overflow: hidden;
               // 768px
               @media (max-width: $screen-sm-min)
               {
@@ -311,10 +311,15 @@
 
       &__description
       {
-        padding-bottom: 24px;
+        padding-bottom: 0px;
+        transition: height 0.5s ease-out;
+        height: 0px;
+        visibility: visible;
+        overflow: hidden;
 
         p
         {
+          opacity: 0;
           @include text($Noto-sans, normal, normal, 18px, 32px);
           @media (max-width: $screen-xl-min)
           {

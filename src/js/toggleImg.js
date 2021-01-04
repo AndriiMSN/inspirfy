@@ -14,6 +14,7 @@ const TargetMobile = document.querySelectorAll('.mob-target__slider')
 
 const TargetDesktop = document.querySelectorAll('.target__slider')
 
+const TargetDescriptions = document.querySelectorAll('.target__toggle__block__description')
 
 TargetTitles.forEach((el, i) => {
     ToggleImages(
@@ -21,7 +22,8 @@ TargetTitles.forEach((el, i) => {
         TargetTitles,
         TargetDesktop,
         TargetMobile,
-        i
+        i,
+        TargetDescriptions
     );
 });
 
@@ -336,9 +338,17 @@ function ChangeImagesMob(element, mobileItem, i) {
     }
 }
 
-function ToggleImages(el, titles, desktopItems, mobileItems, i) {
+function fitAccardeon(el) {
+    el.style.height = `${el.querySelector('p').clientHeight}px`
+}
+
+
+function ToggleImages(el, titles, desktopItems, mobileItems, i, descriptions) {
     el.addEventListener("click", () => {
 
+        descriptions.forEach((el) => {
+            el.style.height = '0px'
+        })
 
         if (document.documentElement.clientWidth > 1150) {
             if (el.classList.contains("active") && !el.classList.contains('rm-active')) {
@@ -353,7 +363,18 @@ function ToggleImages(el, titles, desktopItems, mobileItems, i) {
                 });
 
                 el.classList.add("active");
+
             }
+
+            if (el.classList.contains('active')) {
+                descriptions[i].style.height = `${descriptions[i].querySelector('p').clientHeight}px`
+            }
+
+            window.addEventListener('resize', () => {
+                if (el.classList.contains('active')) {
+                    descriptions[i].style.height = `${descriptions[i].querySelector('p').clientHeight}px`
+                }
+            })
 
             titles[0].classList.remove('rm-active')
             ChangeImages(el, desktopItems, i);
@@ -373,6 +394,20 @@ function ToggleImages(el, titles, desktopItems, mobileItems, i) {
 
                 el.classList.add("active");
             }
+
+            if (el.classList.contains('active')) {
+
+                descriptions[i].style.height = `${descriptions[i].querySelector('p').clientHeight}px`
+
+            }
+
+            window.addEventListener('resize', () => {
+
+                if (el.classList.contains('active')) {
+                    descriptions[i].style.height = `${descriptions[i].querySelector('p').clientHeight}px`
+
+                }
+            })
 
             titles[0].classList.remove('rm-active')
 
@@ -634,7 +669,7 @@ function RgtBtnMob(el, titles, block, mobileItems) {
 
         $("html,body").animate(
             {
-                scrollTop: block.offsetTop + titles[nextSlide].offsetTop,
+                scrollTop: block.offsetTop + titles[nextSlide].offsetTop - 120,
                 behavior: "smooth",
             },
             800
@@ -678,7 +713,7 @@ function LeftBtnMob(el, titles, block, mobileItems) {
 
         $("html,body").animate(
             {
-                scrollTop: block.offsetTop + titles[nextSlide].offsetTop,
+                scrollTop: block.offsetTop + titles[nextSlide].offsetTop - 120,
                 behavior: "smooth",
             },
             800
@@ -687,3 +722,4 @@ function LeftBtnMob(el, titles, block, mobileItems) {
     });
 
 }
+
