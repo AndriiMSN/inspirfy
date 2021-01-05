@@ -85,6 +85,15 @@ function toggleImagesBgRipple(counter) {
         let queryRipple = $(`.${img.className.split(' ')[0]}`)
         rippleElement(queryRipple, img.clientWidth)
     }
+
+    if (counter === 4) {
+        let img = sections[counter].querySelector('.toggle__slider.active .toggle-bg-img')
+
+        img.classList.add('rippled')
+
+        let queryRipple = $(`.${img.className.split(' ')[0]}`)
+        rippleElement(queryRipple, img.clientWidth)
+    }
 }
 
 function scrollDown() {

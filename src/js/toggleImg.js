@@ -98,7 +98,8 @@ sellingTitles.forEach((el, i) => {
         sellingDesktop,
         sellingMobile,
         i,
-        sellingDescriptions
+        sellingDescriptions,
+        '-'
     );
 });
 
@@ -108,7 +109,8 @@ sellingBtnRight.forEach((el, i) => {
         RightBtn(
             sellingTitles,
             sellingDesktop,
-            sellingDescriptions
+            sellingDescriptions,
+            "-"
         );
         // Change styles for el #3
         // if (sellingTitles[2].classList.contains("active")) {
@@ -125,7 +127,8 @@ sellingBtnLeft.forEach((el, i) => {
         LeftBtn(
             sellingTitles,
             sellingDesktop,
-            sellingDescriptions
+            sellingDescriptions,
+            '-'
         );
         // Change styles for el #3
         // if (sellingTitles[2].classList.contains("active")) {
@@ -139,49 +142,63 @@ sellingBtnLeft.forEach((el, i) => {
 
 // Tools block---------------------------------------------------------------------------------------------------------
 
-const toolsTitles = document.querySelectorAll(".tools__toggle__block__title");
-
-const toolsImages = document.querySelector(
-    ".tools__slider__img__images__toggle-1"
-);
-const toolsClassNameImages = ".tools__slider__img__images__toggle-1";
-
-const toolsSliderImg = document.querySelector(
-    ".tools__slider__img__images__toggle-1 + img"
+const toolsTitles = document.querySelectorAll(
+    ".tools__toggle__block__title"
 );
 
-const toolsBtnLeft = document.querySelector(
+const toolsBtnLeft = document.querySelectorAll(
     ".tools__slider__img__elements__buttons .left"
 );
 
-const toolsBtnRight = document.querySelector(
+const toolsBtnRight = document.querySelectorAll(
     ".tools__slider__img__elements__buttons .right"
 );
 
-toolsTitles.forEach((el) => {
+const toolsMobile = document.querySelectorAll('.mob-tools__slider')
+
+const toolsDesktop = document.querySelectorAll('.tools__slider')
+
+const toolsDescriptions = document.querySelectorAll('.tools__toggle__block__description')
+
+toolsTitles.forEach((el, i) => {
+
     ToggleImages(
         el,
         toolsTitles,
-        toolsImages,
-        toolsSliderImg,
-        toolsClassNameImages
+        toolsDesktop,
+        toolsMobile,
+        i,
+        toolsDescriptions
     );
 });
 
-toolsBtnRight.addEventListener("click", () => {
-    RightBtn(toolsTitles, toolsImages, toolsSliderImg, toolsClassNameImages);
-});
+
+toolsBtnRight.forEach((el, i) => {
+    el.addEventListener("click", () => {
+        RightBtn(
+            toolsTitles,
+            toolsDesktop,
+            toolsDescriptions
+        );
+    });
+})
 
 
-toolsBtnLeft.addEventListener("click", () => {
-    LeftBtn(toolsTitles, toolsImages, toolsSliderImg, toolsClassNameImages);
-});
+toolsBtnLeft.forEach((el, i) => {
+    el.addEventListener("click", () => {
+        LeftBtn(
+            toolsTitles,
+            toolsDesktop,
+            toolsDescriptions
+        );
+    });
+})
 
 
 // FUNCTIONS --------------------------------------------------------------------------------------------------------
 
 
-function ChangeImages(element, desktopItems, i) {
+function ChangeImages(element, desktopItems, i, direction = "") {
 
     if (element.classList.contains("active")) {
 
@@ -226,9 +243,9 @@ function ChangeImages(element, desktopItems, i) {
                 let childWidth = el.clientWidth
 
                 if (maxWidth == childWidth) {
-                    el.style.transform = `translateX(-${(documentWidth - containerWidth) / 2}px)`
+                    el.style.transform = `translateX(${direction}${(documentWidth - containerWidth) / 2}px)`
                 } else {
-                    el.style.transform = `translateX(-15%)`
+                    el.style.transform = `translateX(${direction}15%)`
                 }
 
                 child.style.width = `${childWidth}px`;
@@ -255,9 +272,9 @@ function ChangeImages(element, desktopItems, i) {
                         let childWidth = el.clientWidth
 
                         if (maxWidth == childWidth) {
-                            el.style.transform = `translateX(-${(documentWidth - containerWidth) / 2}px)`
+                            el.style.transform = `translateX(${(documentWidth - containerWidth) / 2}px)`
                         } else {
-                            el.style.transform = `translateX(-15%)`
+                            el.style.transform = `translateX(15%)`
                         }
 
                         child.style.width = `${childWidth}px`;
@@ -294,7 +311,6 @@ function ChangeImages(element, desktopItems, i) {
         })
     }
 }
-
 
 function ChangeImagesMob(element, mobileItem, i) {
 
@@ -345,7 +361,7 @@ function ChangeImagesMob(element, mobileItem, i) {
     }
 }
 
-function ToggleImages(el, titles, desktopItems, mobileItems, i, descriptions) {
+function ToggleImages(el, titles, desktopItems, mobileItems, i, descriptions, direction) {
     el.addEventListener("click", () => {
 
         descriptions.forEach((el) => {
@@ -379,7 +395,7 @@ function ToggleImages(el, titles, desktopItems, mobileItems, i, descriptions) {
             })
 
             titles[0].classList.remove('rm-active')
-            ChangeImages(el, desktopItems, i);
+            ChangeImages(el, desktopItems, i, direction);
 
         } else { // MOBILE
 
@@ -423,7 +439,7 @@ function ToggleImages(el, titles, desktopItems, mobileItems, i, descriptions) {
 
 }
 
-function RightBtn(titles, itemsDesktop, descriptions) {
+function RightBtn(titles, itemsDesktop, descriptions, direction) {
     let currentSlide = -1;
     let nextSlide;
 
@@ -468,22 +484,22 @@ function RightBtn(titles, itemsDesktop, descriptions) {
     titles[nextSlide].classList.remove('rm-active')
     titles[nextSlide].classList.add("active");
 
-    descriptions[nextSlide].style.height = `${descriptions[i].querySelector('p').clientHeight}px`
+    descriptions[nextSlide].style.height = `${descriptions[nextSlide].querySelector('p').clientHeight}px`
 
 
     window.addEventListener('resize', () => {
 
         if (titles[nextSlide].classList.contains('active')) {
 
-            descriptions[nextSlide].style.height = `${descriptions[i].querySelector('p').clientHeight}px`
+            descriptions[nextSlide].style.height = `${descriptions[nextSlide].querySelector('p').clientHeight}px`
         }
     })
 
-    ChangeImages(titles[nextSlide], itemsDesktop, nextSlide)
+    ChangeImages(titles[nextSlide], itemsDesktop, nextSlide, direction)
 
 }
 
-function LeftBtn(titles, itemsDesktop, descriptions) {
+function LeftBtn(titles, itemsDesktop, descriptions, direction) {
     let currentSlide = -1;
     let nextSlide;
 
@@ -526,17 +542,17 @@ function LeftBtn(titles, itemsDesktop, descriptions) {
     titles[nextSlide].classList.remove('rm-active')
     titles[nextSlide].classList.add("active");
 
-    descriptions[nextSlide].style.height = `${descriptions[i].querySelector('p').clientHeight}px`
+    descriptions[nextSlide].style.height = `${descriptions[nextSlide].querySelector('p').clientHeight}px`
 
     window.addEventListener('resize', () => {
 
         if (titles[nextSlide].classList.contains('active')) {
 
-            descriptions[nextSlide].style.height = `${descriptions[i].querySelector('p').clientHeight}px`
+            descriptions[nextSlide].style.height = `${descriptions[nextSlide].querySelector('p').clientHeight}px`
         }
     })
 
-    ChangeImages(titles[nextSlide], itemsDesktop, nextSlide);
+    ChangeImages(titles[nextSlide], itemsDesktop, nextSlide, direction);
 
     itemsDesktop[0].querySelector('.toggle-bg-img').classList.remove('rippled')
 }
@@ -620,11 +636,11 @@ const TargetMobBtnsRight = document.querySelectorAll(
 const targetBlock = document.querySelector('.target')
 
 TargetMobBtnsLeft.forEach((el) => {
-    LeftBtnMob(el, TargetTitles, targetBlock)
+    LeftBtnMob(el, TargetTitles, targetBlock, TargetMobile, TargetDescriptions)
 });
 
 TargetMobBtnsRight.forEach((el) => {
-    RgtBtnMob(el, TargetTitles, targetBlock, TargetMobile)
+    RgtBtnMob(el, TargetTitles, targetBlock, TargetMobile, TargetDescriptions)
 });
 
 
@@ -641,16 +657,15 @@ const SellingMobBtnsRight = document.querySelectorAll(
 const sellingBlock = document.querySelector('.selling')
 
 SellingMobBtnsLeft.forEach((el) => {
-    LeftBtnMob(el, sellingTitles, sellingBlock)
+    LeftBtnMob(el, sellingTitles, sellingBlock, sellingMobile, sellingDescriptions)
 });
 
 SellingMobBtnsRight.forEach((el) => {
-    RgtBtnMob(el, sellingTitles, sellingBlock, sellingMobile)
+    RgtBtnMob(el, sellingTitles, sellingBlock, sellingMobile, sellingDescriptions)
 });
 
 
-// Tools
-
+// Tools -----------------------------------------------------------------------------------------------------
 const toolsMobBtnsLeft = document.querySelectorAll(
     ".mob-tools__slider__img__elements__buttons .left"
 );
@@ -659,17 +674,19 @@ const toolsMobBtnsRight = document.querySelectorAll(
     ".mob-tools__slider__img__elements__buttons .right"
 );
 
-const tollsBlock = document.querySelector('.tools')
+const toolsBlock = document.querySelector('.tools')
 
 toolsMobBtnsLeft.forEach((el) => {
-    LeftBtnMob(el, toolsTitles, tollsBlock)
+    LeftBtnMob(el, toolsTitles, toolsBlock, toolsMobile, toolsDescriptions)
 });
 
 toolsMobBtnsRight.forEach((el) => {
-    RgtBtnMob(el, toolsTitles, tollsBlock)
+    RgtBtnMob(el, toolsTitles, toolsBlock, toolsMobile, toolsDescriptions)
 });
 
-function RgtBtnMob(el, titles, block, mobileItems) {
+// MOB BTNS FUNCTIONS -------------------------------------------------------------------------------------------------
+
+function RgtBtnMob(el, titles, block, mobileItems, descriptions) {
 
     el.addEventListener("click", () => {
 
@@ -677,7 +694,7 @@ function RgtBtnMob(el, titles, block, mobileItems) {
         let nextSlide;
 
         titles.forEach((el, i) => {
-            if (el.classList.contains("active")) {
+            if (el.classList.contains("active") || el.classList.contains('rm-active')) {
                 currentSlide = i;
                 return currentSlide;
             }
@@ -698,12 +715,24 @@ function RgtBtnMob(el, titles, block, mobileItems) {
         };
         getNextSlide();
 
+        titles[0].classList.remove('rm-active')
         titles[nextSlide].classList.add("active");
         // console.log(titles[nextSlide].offsetTop);
 
+        descriptions[nextSlide].style.height = `${descriptions[nextSlide].querySelector('p').clientHeight}px`
+
+
+        window.addEventListener('resize', () => {
+
+            if (titles[nextSlide].classList.contains('active')) {
+
+                descriptions[nextSlide].style.height = `${descriptions[nextSlide].querySelector('p').clientHeight}px`
+            }
+        })
+
         $("html,body").animate(
             {
-                scrollTop: block.offsetTop + titles[nextSlide].offsetTop - 120,
+                scrollTop: block.offsetTop + titles[nextSlide].offsetTop - 50,
                 behavior: "smooth",
             },
             800
@@ -713,7 +742,7 @@ function RgtBtnMob(el, titles, block, mobileItems) {
     });
 }
 
-function LeftBtnMob(el, titles, block, mobileItems) {
+function LeftBtnMob(el, titles, block, mobileItems, descriptions) {
 
     el.addEventListener("click", () => {
 
@@ -742,12 +771,24 @@ function LeftBtnMob(el, titles, block, mobileItems) {
         };
         getPrevSlide();
 
+        titles[0].classList.remove('rm-active')
         titles[nextSlide].classList.add("active");
         // console.log(titles[nextSlide].offsetTop);
 
+        descriptions[nextSlide].style.height = `${descriptions[nextSlide].querySelector('p').clientHeight}px`
+        console.log(descriptions, nextSlide);
+
+        window.addEventListener('resize', () => {
+
+            if (titles[nextSlide].classList.contains('active')) {
+
+                descriptions[nextSlide].style.height = `${descriptions[nextSlide].querySelector('p').clientHeight}px`
+            }
+        })
+
         $("html,body").animate(
             {
-                scrollTop: block.offsetTop + titles[nextSlide].offsetTop - 120,
+                scrollTop: block.offsetTop + titles[nextSlide].offsetTop - 50,
                 behavior: "smooth",
             },
             800
