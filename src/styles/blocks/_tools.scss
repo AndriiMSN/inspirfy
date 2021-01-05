@@ -143,7 +143,7 @@
         &__tools-1-parent
         {
           width: 148%;
-          height: 48%;
+          height: 58%;
 
           max-width: 900px;
           max-height: 507px;
@@ -161,7 +161,7 @@
           height: 100%;
 
 
-          background: url("../assets/img/tools-toggle-1.png") no-repeat left !important;
+          background: url("../assets/img/tools-toggle-1.png") no-repeat !important;
           background-size: cover !important;
 
 
@@ -176,7 +176,7 @@
         &__tools-2-parent
         {
           width: 148%;
-          height: 48%;
+          height: 58%;
 
           max-width: 900px;
           max-height: 507px;
@@ -194,7 +194,7 @@
           height: 100%;
 
 
-          background: url("../assets/img/tools-toggle-2.png") no-repeat left !important;
+          background: url("../assets/img/tools-toggle-2.png") no-repeat !important;
           background-size: cover !important;
 
 
@@ -209,7 +209,7 @@
         &__tools-3-parent
         {
           width: 148%;
-          height: 48%;
+          height: 58%;
 
           max-width: 900px;
           max-height: 507px;
@@ -227,7 +227,7 @@
           height: 100%;
 
 
-          background: url("../assets/img/tools-toggle-3.png") no-repeat left !important;
+          background: url("../assets/img/tools-toggle-3.png") no-repeat !important;
           background-size: cover !important;
 
 
@@ -306,13 +306,13 @@
   from
   {
     overflow: hidden;
-    height: 48%;
+    height: 58%;
     width: 0;
   }
   to
   {
     overflow: hidden;
     width: 148%;
-    height: 48%;
+    height: 58%;
   }
 }

@@ -1,22 +1,26 @@
 @import "../base/mixins";
 
-.about {
+.about
+{
   @include block;
   position: relative;
   overflow: hidden;
   background-color: #ffffff;
 
-  &.animate {
+  &.animate
+  {
 
-    .about__story{
+    .about__story
+    {
 
 
-
-      &__description{
+      &__description
+      {
         animation: ShowItem 1.8s linear .3s, InitHide .3s;
       }
 
-      h1{
+      h1
+      {
         animation: titleTranslate .7s .4s ease, InitHide .4s;
 
       }
@@ -26,48 +30,58 @@
 
 
   // 992px
-  @media (max-width: $screen-md-min) {
+  @media (max-width: $screen-md-min)
+  {
     max-height: 794px;
     min-height: fit-content;
     height: 100vh;
   }
   // 768px
-  @media (max-width: $screen-sm-min) {
+  @media (max-width: $screen-sm-min)
+  {
     height: fit-content;
     max-height: none;
   }
 
-  &__marks {
+  &__marks
+  {
     z-index: 30;
     // 768px
-    @media (max-width: $screen-sm-min) {
+    @media (max-width: $screen-sm-min)
+    {
       margin-top: -15px;
     }
   }
 
-  .container {
+  .container
+  {
     padding-top: 20px;
     padding-bottom: 20px;
     // 768px
-    @media (max-width: $screen-sm-min) {
+    @media (max-width: $screen-sm-min)
+    {
       flex-direction: column;
       box-sizing: border-box;
     }
   }
 
-  &__img {
+  &__img
+  {
     margin-left: 6px;
     max-width: 709px;
-    @media (max-width: $screen-xl-min) {
+
+    background: url("../assets/img/about.jpg") no-repeat !important;
+    background-size: cover !important;
+
+    @media (max-width: $screen-xl-min)
+    {
       max-width: 520px;
     }
 
-    img {
-      width: 100%;
-    }
 
     // 992px
-    @media (max-width: $screen-md-min) {
+    @media (max-width: $screen-md-min)
+    {
       order: 2;
       min-width: 492px;
       margin-left: 0;
@@ -75,7 +89,8 @@
       z-index: 20;
     }
     // 768px
-    @media (max-width: $screen-sm-min) {
+    @media (max-width: $screen-sm-min)
+    {
       order: 2;
       max-width: 288px;
       min-width: 288px;
@@ -85,18 +100,22 @@
     }
   }
 
-  &__story {
+  &__story
+  {
     margin-left: 67px;
     max-width: 499px;
     padding-top: 20px;
     // 1560px
-    @media (max-width: $screen-xl-min) {
+    @media (max-width: $screen-xl-min)
+    {
       max-width: 380px;
       margin-left: 43px;
     }
     // 992px
-    @media (max-width: $screen-md-min) {
-      &.col-md-6 {
+    @media (max-width: $screen-md-min)
+    {
+      &.col-md-6
+      {
         flex: 0 0 50%;
         min-width: 449px;
         z-index: 30;
@@ -105,53 +124,63 @@
       order: 1;
     }
     // 768px
-    @media (max-width: $screen-sm-min) {
+    @media (max-width: $screen-sm-min)
+    {
       order: 1;
       padding-top: 7px;
       max-width: 100%;
       min-width: 100%;
-      &.col-md-6 {
+      &.col-md-6
+      {
         flex: 0 0 100%;
         min-width: 100%;
         z-index: 30;
       }
     }
 
-    &__title {
+    &__title
+    {
       color: rgba($color: #1a1a1a, $alpha: 0.7);
       letter-spacing: 0.02em;
       padding-top: 40px;
       // 1560px
-      @media (max-width: $screen-xl-min) {
+      @media (max-width: $screen-xl-min)
+      {
         padding-top: 0;
       }
     }
 
-    h1 {
+    h1
+    {
       color: #1a1a1a;
       padding-top: 43px;
 
 
-      @media (max-width: $screen-xl-min) {
+      @media (max-width: $screen-xl-min)
+      {
         padding-top: 20px;
       }
     }
 
-    &__description {
+    &__description
+    {
       @include text($Noto-sans, normal, normal, 18px, 32px, #1a1a1a);
       max-width: 477px;
       padding-top: 21px;
 
       // 1560px
-      @media (max-width: $screen-xl-min) {
+      @media (max-width: $screen-xl-min)
+      {
         font-size: 14px;
         line-height: 24px;
       }
       // 992px
-      @media (max-width: $screen-md-min) {
+      @media (max-width: $screen-md-min)
+      {
       }
       // 768px
-      @media (max-width: $screen-sm-min) {
+      @media (max-width: $screen-sm-min)
+      {
       }
     }
   }

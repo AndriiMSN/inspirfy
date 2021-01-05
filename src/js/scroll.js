@@ -94,6 +94,15 @@ function toggleImagesBgRipple(counter) {
         let queryRipple = $(`.${img.className.split(' ')[0]}`)
         rippleElement(queryRipple, img.clientWidth)
     }
+
+    if (counter === 6) {
+        let img = sections[counter].querySelector('.about__img')
+
+        img.classList.add('rippled')
+
+        let queryRipple = $(`.${img.className.split(' ')[0]}`)
+        rippleElement(queryRipple, img.clientWidth)
+    }
 }
 
 function scrollDown() {
@@ -103,7 +112,10 @@ function scrollDown() {
 
     if (counter + 1 !== sections.length) {
         counter++;
+
         sections[counter - 1].classList.remove("active");
+        sections[counter - 1].classList.remove("animate");
+
         sections[counter].classList.add("active");
         sections[counter].classList.add("animate");
 
@@ -138,10 +150,14 @@ function scrollUp() {
     if (counter - 1 !== -1) {
 
         counter--;
+
         sections[counter].classList.remove("invise");
-        sections[counter + 1].classList.remove("active");
+
         sections[counter].classList.add("animate");
         sections[counter].classList.add("active");
+
+        sections[counter + 1].classList.remove("animate");
+        sections[counter + 1].classList.remove("active");
         sections[counter + 1].classList.add("invise");
 
         // NavBar(); // Change active item Navbar
