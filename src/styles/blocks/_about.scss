@@ -10,6 +10,17 @@
   &.animate
   {
 
+    .about__marks
+    {
+      svg
+      {
+        text
+        {
+          animation: draw 2s ease-in;
+        }
+      }
+    }
+
     .about__story
     {
 
