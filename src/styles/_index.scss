@@ -1,5 +1,4 @@
-html
-{
+html {
   width: 100%;
   scrollbar-width: none; /* Also needed to disable scrollbar Firefox */
   -ms-overflow-style: none; /* Disable scrollbar IE 10+ */
@@ -8,13 +7,11 @@ html
   overflow-x: hidden;
 
 
-  &.unlock
-  {
+  &.unlock {
     overflow: scroll;
   }
 
-  &.lock
-  {
+  &.lock {
     height: 100vh;
     overflow: hidden;
     // scroll-behavior: smooth;
@@ -24,36 +21,30 @@ html
     // scroll-behavior: smooth;
   }
 
-  section
-  {
+  section {
     // scroll-snap-align: start;
     // position: relative;
     scrollbar-width: none; /* Also needed to disable scrollbar Firefox */
     -ms-overflow-style: none; /* Disable scrollbar IE 10+ */
 
-    &::-webkit-scrollbar
-    {
+    &::-webkit-scrollbar {
       width: 0px;
       background: transparent; /* Disable scrollbar Chrome/Safari/Webkit */
     }
   }
 
-  @-moz-document url-prefix()
-  {
+  @-moz-document url-prefix() {
     /* Disable scrollbar Firefox */
-    html
-    {
+    html {
       scrollbar-width: none;
     }
 
-    body
-    {
+    body {
       scrollbar-width: none;
     }
   }
 
-  body
-  {
+  body {
     margin: 0;
     padding: 0;
     font-family: $Noto-sans;
@@ -63,60 +54,51 @@ html
     width: 100%;
     //overflow: hidden;
     // height: auto !important;
-    &::-webkit-scrollbar
-    {
+    &::-webkit-scrollbar {
       width: 0px;
       background: transparent; /* Disable scrollbar Chrome/Safari/Webkit */
     }
   }
 }
 
-html::-webkit-scrollbar
-{
+html::-webkit-scrollbar {
   width: 0px;
   background: transparent; /* Disable scrollbar Chrome/Safari/Webkit */
 }
 
-.container
-{
+.container {
   max-width: 1520px;
   width: 100%;
   margin: 0 auto;
   // 1560px
-  @media (max-width: $screen-xl-min)
-  {
+  @media (max-width: $screen-xl-min) {
     max-width: 1120px;
   }
   // 1260px
-  @media (max-width: $screen-lg-min)
-  {
+  @media (max-width: $screen-lg-min) {
     max-width: 100%;
     width: 100%;
     margin: 0 20px;
   }
   // 375px
-  @media (max-width: $screen-exsm-min)
-  {
+  @media (max-width: $screen-exsm-min) {
     padding: 0 16px;
     margin: 0;
   }
 }
 
-ul
-{
+ul {
   padding: 0;
   margin: 0;
 }
 
-p
-{
+p {
   margin: 0;
   padding: 0;
 }
 
 
-h1
-{
+h1 {
   margin: 0;
   padding: 0;
   @include text($Elina03W03, normal, 600, 70px, 84px);
@@ -125,32 +107,27 @@ h1
   position: relative;
 
   // 1560px
-  @media (max-width: $screen-xl-min)
-  {
+  @media (max-width: $screen-xl-min) {
     font-size: 50px;
     line-height: 61px;
   }
   // 520px
-  @media (max-width: $screen-mdsm-min)
-  {
+  @media (max-width: $screen-mdsm-min) {
     font-size: 24px;
     line-height: 34px;
-    br
-    {
+    br {
       display: none;
     }
   }
 
 
-  svg
-  {
+  svg {
     position: relative;
     height: 100%;
     width: 100%;
 
 
-    text
-    {
+    text {
       @include text($Elina03W03, normal, 600, 70px, 84px);
 
       color: transparent;
@@ -162,19 +139,16 @@ h1
       stroke-dashoffset: 0;
 
       // 1560px
-      @media (max-width: $screen-xl-min)
-      {
+      @media (max-width: $screen-xl-min) {
         font-size: 50px;
         line-height: 61px;
       }
       // 768px
-      @media (max-width: $screen-sm-min)
-      {
+      @media (max-width: $screen-sm-min) {
         stroke-width: .7;
       }
       // 520px
-      @media (max-width: $screen-mdsm-min)
-      {
+      @media (max-width: $screen-mdsm-min) {
         font-size: 24px;
         line-height: 34px;
       }
@@ -183,65 +157,53 @@ h1
 
 }
 
-svg
-{
+svg {
 
-  text
-  {
+  text {
     // 768px
-    @media (max-width: $screen-sm-min)
-    {
+    @media (max-width: $screen-sm-min) {
       stroke-width: .7 !important;
     }
   }
 }
 
-section
-{
+section {
   transition: filter 0.3s ease-in-out;
 }
 
-.col-md-6
-{
+.col-md-6 {
   -ms-flex: 0 0 50%;
   flex: 0 0 50%;
   max-width: 50%;
 }
 
-.row
-{
+.row {
   display: flex;
 }
 
-.text-transparent
-{
+.text-transparent {
   color: transparent !important;
   -webkit-text-stroke: 1px #ffffff;
 
   // 1560px
-  @media (max-width: $screen-xl-min)
-  {
+  @media (max-width: $screen-xl-min) {
     -webkit-text-stroke: 0.8px #ffffff;
   }
   // 992px
-  @media (max-width: $screen-md-min)
-  {
+  @media (max-width: $screen-md-min) {
     -webkit-text-stroke: 0.5px #ffffff;
   }
 }
 
-.text-transparent-black
-{
+.text-transparent-black {
   color: transparent !important;
   -webkit-text-stroke: 1px #1a1a1a;
-  @media (max-width: $screen-xl-min)
-  {
+  @media (max-width: $screen-xl-min) {
     -webkit-text-stroke: 0.8px #1a1a1a;
   }
 }
 
-.block__title
-{
+.block__title {
   @include text(
                   $Noto-sans,
                   normal,
@@ -251,112 +213,92 @@ section
                   rgba(255, 255, 255, 0.7)
   );
   letter-spacing: 0.02em;
-  @media (max-width: $screen-xl-min)
-  {
+  @media (max-width: $screen-xl-min) {
     font-size: 14px;
     line-height: 19px;
   }
   // 992px
-  @media (max-width: $screen-md-min)
-  {
+  @media (max-width: $screen-md-min) {
     font-size: 17px;
     line-height: 24px;
   }
   // 375px
-  @media (max-width: $screen-exsm-min)
-  {
+  @media (max-width: $screen-exsm-min) {
     font-size: 12px;
     line-height: 24px;
   }
 }
 
 .start-earning,
-.lets__talk__start-earning
-{
+.lets__talk__start-earning {
   display: flex;
   cursor: pointer;
   align-items: center;
 
-  &.clicked
-  {
-    p
-    {
+  &.clicked {
+    p {
       color: $brown;
     }
 
   }
 
-  svg
-  {
+  svg {
     transform: translateY(50%);
     margin-left: 25px;
     transition: all 0.6s ease-in;
     fill: #ffffff;
     // 1560px
-    @media (max-width: $screen-xl-min)
-    {
+    @media (max-width: $screen-xl-min) {
       width: 26px;
       height: 9px;
       margin-left: 16px;
     }
     // 992px
-    @media (max-width: $screen-md-min)
-    {
+    @media (max-width: $screen-md-min) {
       width: 38px;
       height: 12px;
       margin-left: 25px;
     }
 
-    path
-    {
+    path {
       stroke: #ffffff;
       transition: all 0.3s ease-out;
     }
   }
 
-  &:hover
-  {
-    svg
-    {
-      path
-      {
+  &:hover {
+    svg {
+      path {
         stroke: $brown;
         transition: all 0.3s ease-in;
       }
     }
   }
 
-  p
-  {
+  p {
     @include text($Noto-sans, normal, 800);
     // 1560px
-    @media (max-width: $screen-xl-min)
-    {
+    @media (max-width: $screen-xl-min) {
       font-size: 12px;
       line-height: 16px;
     }
     // 992px
-    @media (max-width: $screen-md-min)
-    {
+    @media (max-width: $screen-md-min) {
       font-size: 16px;
       line-height: 22px;
     }
   }
 
-  img
-  {
+  img {
     transform: translateY(50%);
     margin-left: 25px;
     // 1560px
-    @media (max-width: $screen-xl-min)
-    {
+    @media (max-width: $screen-xl-min) {
       margin-left: 16px;
     }
     // 768px
-    @media (max-width: $screen-sm-min)
-    {
-      img
-      {
+    @media (max-width: $screen-sm-min) {
+      img {
         width: 28px;
         height: 8px;
       }
@@ -364,8 +306,7 @@ section
   }
 }
 
-.marks
-{
+.marks {
   position: absolute;
   top: 0;
   width: 100%;
@@ -373,23 +314,19 @@ section
   display: flex;
   margin-top: -30px;
   // 1560px
-  @media (max-width: $screen-xl-min)
-  {
+  @media (max-width: $screen-xl-min) {
     margin-top: -24px;
   }
   // 992px
-  @media (max-width: $screen-md-min)
-  {
+  @media (max-width: $screen-md-min) {
     margin-top: -10px;
   }
   // 768px
-  @media (max-width: $screen-sm-min)
-  {
+  @media (max-width: $screen-sm-min) {
     margin-top: 0;
   }
 
-  div
-  {
+  div {
 
     opacity: 0.1;
     min-width: 581px;
@@ -398,16 +335,13 @@ section
     display: flex;
     flex-direction: column;
 
-    svg
-    {
+    svg {
 
-      &.svg-under
-      {
+      &.svg-under {
         transform: translateY(-35%);
       }
 
-      text
-      {
+      text {
         @include text($Noto-sans, normal, bold, 140px, 120px);
 
         color: transparent;
@@ -422,43 +356,34 @@ section
     }
 
     // 1560px
-    @media (max-width: $screen-xl-min)
-    {
+    @media (max-width: $screen-xl-min) {
 
       min-width: 423px;
       max-width: 423px;
-      svg
-      {
-        text
-        {
+      svg {
+        text {
           font-size: 100px;
           line-height: 90px;
         }
       }
     }
     // 992px
-    @media (max-width: $screen-md-min)
-    {
+    @media (max-width: $screen-md-min) {
 
-      svg
-      {
-        text
-        {
+      svg {
+        text {
           font-size: 70px;
           line-height: 70px;
         }
       }
     }
     // 768px
-    @media (max-width: $screen-sm-min)
-    {
+    @media (max-width: $screen-sm-min) {
 
       min-width: 180px;
       max-width: 180px;
-      svg
-      {
-        text
-        {
+      svg {
+        text {
           font-size: 45px;
           line-height: 50px;
         }
@@ -467,18 +392,15 @@ section
   }
 }
 
-.blur
-{
+.blur {
   filter: blur(14px);
 }
 
-.hide
-{
+.hide {
   display: none !important;
 }
 
-.hide-section
-{
+.hide-section {
   display: none !important;
   // // 768px
   // @media (max-width: $screen-sm-min) {
@@ -487,29 +409,24 @@ section
 }
 
 
-.scrolling-block
-{
-  &.invise
-  {
+.scrolling-block {
+  &.invise {
     opacity: 0;
     transition: opacity 0.5s ease-in;
     // 1366px
-    @media (max-width: 1366px)
-    {
+    @media (max-width: 1366px) {
       opacity: 0;
     }
   }
 
-  &.active
-  {
+  &.active {
     opacity: 1;
     transition: opacity 0.5s ease-in;
   }
 }
 
 // IOS PHONE REMOVE BORDER RADIUS
-input
-{
+input {
   border-radius: 0;
   -webkit-appearance: none;
 }
@@ -517,10 +434,8 @@ input
 
 // FORMS
 
-form
-{
-  button
-  {
+form {
+  button {
     background-color: transparent;
     border: none;
     outline: transparent;
@@ -528,59 +443,48 @@ form
 }
 
 .start__earning__form,
-.lets__talk__form
-{
-  &__input
-  {
+.lets__talk__form {
+  &__input {
 
     margin-bottom: 62px;
     // 1560px
-    @media (max-width: $screen-xl-min)
-    {
+    @media (max-width: $screen-xl-min) {
       margin-bottom: 47px;
     }
     // 992px
-    @media (max-width: $screen-md-min)
-    {
+    @media (max-width: $screen-md-min) {
       margin-bottom: 68px;
     }
     // 768px
-    @media (max-width: $screen-sm-min)
-    {
+    @media (max-width: $screen-sm-min) {
       margin-bottom: 30px;
     }
     // 375px
-    @media (max-width: $screen-exsm-min)
-    {
+    @media (max-width: $screen-exsm-min) {
       margin-bottom: 17px;
     }
 
-    label
-    {
+    label {
       @include text($Noto-sans, normal, normal, 14px, 32px);
       letter-spacing: 0.02em;
       text-transform: uppercase;
       // 1560px
-      @media (max-width: $screen-xl-min)
-      {
+      @media (max-width: $screen-xl-min) {
         font-size: 10px;
         line-height: 26px;
       }
       // 992px
-      @media (max-width: $screen-md-min)
-      {
+      @media (max-width: $screen-md-min) {
         @include text($Noto-sans, normal, normal, 14px, 32px);
       }
       // 520px
-      @media (max-width: $screen-mdsm-min)
-      {
+      @media (max-width: $screen-mdsm-min) {
         font-size: 10px;
         line-height: 26px;
       }
     }
 
-    input, textarea
-    {
+    input, textarea {
       background: transparent;
       border: none;
       border-bottom: 1px solid #ffffff;
@@ -591,52 +495,44 @@ form
       @include text($Noto-sans, normal, normal, 18px, 32px);
       box-sizing: border-box;
       // 1560px
-      @media (max-width: $screen-xl-min)
-      {
+      @media (max-width: $screen-xl-min) {
         height: 24px;
         font-size: 14px;
         line-height: 24px;
       }
       // 992px
-      @media (max-width: $screen-md-min)
-      {
+      @media (max-width: $screen-md-min) {
         @include text($Noto-sans, normal, normal, 18px, 32px);
         height: 35px;
       }
       // 520px
-      @media (max-width: $screen-mdsm-min)
-      {
+      @media (max-width: $screen-mdsm-min) {
         height: 24px;
         font-size: 14px;
         line-height: 24px;
       }
 
-      &::placeholder
-      {
+      &::placeholder {
         @include text($Noto-sans, normal, normal, 18px, 32px);
         letter-spacing: 0.02em;
         // 1560px
-        @media (max-width: $screen-xl-min)
-        {
+        @media (max-width: $screen-xl-min) {
           font-size: 14px;
           line-height: 24px;
         }
         // 992px
-        @media (max-width: $screen-md-min)
-        {
+        @media (max-width: $screen-md-min) {
           @include text($Noto-sans, normal, normal, 18px, 32px);
         }
         // 520px
-        @media (max-width: $screen-mdsm-min)
-        {
+        @media (max-width: $screen-mdsm-min) {
           font-size: 14px;
           line-height: 24px;
         }
 
       }
 
-      &:focus
-      {
+      &:focus {
         border: none;
         border-bottom: 1px solid #ffffff;
         outline: transparent;
@@ -644,80 +540,66 @@ form
       }
     }
 
-    textarea
-    {
+    textarea {
       resize: none;
 
-      &:focus
-      {
+      &:focus {
         width: 536px;
         height: 70px;
         padding-top: 10px;
         // 1560px
-        @media (max-width: $screen-xl-min)
-        {
+        @media (max-width: $screen-xl-min) {
           height: 56px;
         }
         // 992px
-        @media (max-width: $screen-md-min)
-        {
+        @media (max-width: $screen-md-min) {
           width: 100%;
         }
       }
 
-      &:not(:placeholder-shown)
-      {
+      &:not(:placeholder-shown) {
         height: 70px;
         width: 536px;
         padding-top: 10px;
         // 1560px
-        @media (max-width: $screen-xl-min)
-        {
+        @media (max-width: $screen-xl-min) {
           height: 56px;
         }
         // 992px
-        @media (max-width: $screen-md-min)
-        {
+        @media (max-width: $screen-md-min) {
           width: 100%;
         }
       }
     }
 
-    &__error
-    {
+    &__error {
       display: none;
       @include text($Noto-sans, normal, normal, 12px, 32px);
       letter-spacing: 0.02em;
       margin-top: 5px;
     }
 
-    &.error
-    {
+    &.error {
       margin-bottom: calc(62px - 37px);
       // 1560px
-      @media (max-width: $screen-xl-min)
-      {
+      @media (max-width: $screen-xl-min) {
         margin-bottom: calc(47px - 37px);
       }
       // 992px
-      @media (max-width: $screen-md-min)
-      {
+      @media (max-width: $screen-md-min) {
         margin-bottom: calc(68px - 37px);
       }
       // 768px
-      @media (max-width: $screen-sm-min)
-      {
+      @media (max-width: $screen-sm-min) {
         margin-bottom: 30px;
       }
       // 375px
-      @media (max-width: $screen-exsm-min)
-      {
+      @media (max-width: $screen-exsm-min) {
         margin-bottom: 17px;
       }
 
 
-      input, textarea
-      {
+      input, textarea {
         border: none;
         background: url(../assets/img/wave-border.png) repeat-x bottom;
         background-size: 50% 3.5px;
@@ -726,49 +608,41 @@ form
       }
 
       .start__earning__form__input__error,
-      .lets__talk__form__input__error
-      {
+      .lets__talk__form__input__error {
         display: block;
       }
     }
   }
 
-  &__submit
-  {
+  &__submit {
     width: 100%;
     margin-top: 35px;
 
-    .start-earning.header__start
-    {
+    .start-earning.header__start {
       transform: translate(0, 0);
 
 
-      img
-      {
+      img {
         margin-left: 23px;
       }
     }
 
     // 1560px
-    @media (max-width: $screen-xl-min)
-    {
+    @media (max-width: $screen-xl-min) {
       margin-top: calc(77px - 61px);
     }
     // 992px
-    @media (max-width: $screen-md-min)
-    {
+    @media (max-width: $screen-md-min) {
       margin-top: calc(105px - 75px);
       margin-bottom: 35px;
     }
     // 375px
-    @media (max-width: $screen-exsm-min)
-    {
+    @media (max-width: $screen-exsm-min) {
       margin-top: calc(35px - 17px);
     }
   }
 }
 
-.widthAuto
-{
+.widthAuto {
   width: auto !important;
 }

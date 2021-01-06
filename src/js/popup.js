@@ -16,38 +16,40 @@ const letsTalkCloseBtn = document.querySelector(
 const html = document.querySelector('html')
 
 // MODALS RENDER SVG ------------------------------------------------------------------
-function fitSvgTextModals(element) {
+function fitSvgTextModals(elements) {
 
+    for (const element of elements) {
 
-    const box = element.querySelectorAll('text') ?
-        element.querySelectorAll('text') : false
-    // console.log(box);
+        const box = element.querySelectorAll('text') ?
+            element.querySelectorAll('text') : false
+        // console.log(box);
 
-    let maxWidth, maxHeight
+        let maxWidth, maxHeight
 
-    maxWidth = box[0].getBBox().width
-    maxHeight = box[0].getBBox().height
+        maxWidth = box[0].getBBox().width
+        maxHeight = box[0].getBBox().height
 
-    if (box.length > 0) {
+        if (box.length > 0) {
 
-        for (let i = 1; i < box.length; i++) {
+            for (let i = 1; i < box.length; i++) {
 
-            (maxWidth > box[i].getBBox().width) ? maxWidth = maxWidth : maxWidth = box[i].getBBox().width
+                (maxWidth > box[i].getBBox().width) ? maxWidth = maxWidth : maxWidth = box[i].getBBox().width
 
-            maxHeight += box[i].getBBox().height
+                maxHeight += box[i].getBBox().height
 
-            // console.log(maxHeight);
+                // console.log(maxHeight);
+
+            }
 
         }
-
+        element ? element.style.width = `${maxWidth}px` : false
+        element ? element.style.height = `${maxHeight}px` : false
     }
-    element ? element.style.width = `${maxWidth}px` : false
-    element ? element.style.height = `${maxHeight}px` : false
 
 }
 
-const letsTalkSvgText = document.querySelector('.lets__talk__text h1 svg')
-const startEarningSvgText = document.querySelector('.start__earning__text h1 svg')
+const letsTalkSvgText = document.querySelectorAll('.lets__talk .svg-text')
+const startEarningSvgText = document.querySelectorAll('.start__earning .svg-text')
 
 let currPosition = 0;
 
