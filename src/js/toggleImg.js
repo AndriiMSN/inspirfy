@@ -16,6 +16,8 @@ const TargetDesktop = document.querySelectorAll('.target__slider')
 
 const TargetDescriptions = document.querySelectorAll('.target__toggle__block__description')
 
+const targetBlock = document.querySelector('.target')
+
 TargetTitles.forEach((el, i) => {
     ToggleImages(
         el,
@@ -23,7 +25,9 @@ TargetTitles.forEach((el, i) => {
         TargetDesktop,
         TargetMobile,
         i,
-        TargetDescriptions
+        TargetDescriptions,
+        "",
+        targetBlock
     );
 });
 
@@ -82,6 +86,8 @@ const sellingDesktop = document.querySelectorAll('.selling__slider')
 
 const sellingDescriptions = document.querySelectorAll('.selling__toggle__block__description')
 
+const sellingBlock = document.querySelector('.selling')
+
 sellingTitles.forEach((el, i) => {
     // Change styles slider for el #3
     el.addEventListener("click", () => {
@@ -99,7 +105,8 @@ sellingTitles.forEach((el, i) => {
         sellingMobile,
         i,
         sellingDescriptions,
-        '-'
+        '-',
+        sellingBlock
     );
 });
 
@@ -160,6 +167,8 @@ const toolsDesktop = document.querySelectorAll('.tools__slider')
 
 const toolsDescriptions = document.querySelectorAll('.tools__toggle__block__description')
 
+const toolsBlock = document.querySelector('.tools')
+
 toolsTitles.forEach((el, i) => {
 
     ToggleImages(
@@ -168,7 +177,9 @@ toolsTitles.forEach((el, i) => {
         toolsDesktop,
         toolsMobile,
         i,
-        toolsDescriptions
+        toolsDescriptions,
+        "",
+        toolsBlock
     );
 });
 
@@ -361,7 +372,7 @@ function ChangeImagesMob(element, mobileItem, i) {
     }
 }
 
-function ToggleImages(el, titles, desktopItems, mobileItems, i, descriptions, direction) {
+function ToggleImages(el, titles, desktopItems, mobileItems, i, descriptions, direction, block) {
     el.addEventListener("click", () => {
 
         descriptions.forEach((el) => {
@@ -397,7 +408,7 @@ function ToggleImages(el, titles, desktopItems, mobileItems, i, descriptions, di
             titles[0].classList.remove('rm-active')
             ChangeImages(el, desktopItems, i, direction);
 
-        } else { // MOBILE
+        } else { // MOBILE--------------------------------------------------------------------------
 
             if (el.classList.contains("active") || el.classList.contains('rm-active')) {
 
@@ -429,6 +440,14 @@ function ToggleImages(el, titles, desktopItems, mobileItems, i, descriptions, di
             })
 
             titles[0].classList.remove('rm-active')
+
+            $("html,body").animate(
+                {
+                    scrollTop: block.offsetTop + titles[0].offsetTop + i * titles[0].clientHeight - 20,
+                    behavior: "smooth",
+                },
+                800
+            );
 
             ChangeImagesMob(el, mobileItems[i])
 
@@ -633,7 +652,6 @@ const TargetMobBtnsRight = document.querySelectorAll(
     ".mob-target__slider__img__elements__buttons .right"
 );
 
-const targetBlock = document.querySelector('.target')
 
 TargetMobBtnsLeft.forEach((el) => {
     LeftBtnMob(el, TargetTitles, targetBlock, TargetMobile, TargetDescriptions)
@@ -654,7 +672,6 @@ const SellingMobBtnsRight = document.querySelectorAll(
     ".mob-selling__slider__img__elements__buttons .right"
 );
 
-const sellingBlock = document.querySelector('.selling')
 
 SellingMobBtnsLeft.forEach((el) => {
     LeftBtnMob(el, sellingTitles, sellingBlock, sellingMobile, sellingDescriptions)
@@ -674,7 +691,6 @@ const toolsMobBtnsRight = document.querySelectorAll(
     ".mob-tools__slider__img__elements__buttons .right"
 );
 
-const toolsBlock = document.querySelector('.tools')
 
 toolsMobBtnsLeft.forEach((el) => {
     LeftBtnMob(el, toolsTitles, toolsBlock, toolsMobile, toolsDescriptions)
@@ -719,7 +735,12 @@ function RgtBtnMob(el, titles, block, mobileItems, descriptions) {
         titles[nextSlide].classList.add("active");
         // console.log(titles[nextSlide].offsetTop);
 
-        descriptions[nextSlide].style.height = `${descriptions[nextSlide].querySelector('p').clientHeight}px`
+        descriptions.forEach((el) => {
+            el.style.height = '0px'
+        })
+
+        let currentHeight = descriptions[nextSlide].querySelector('p').clientHeight
+        descriptions[nextSlide].style.height = `${currentHeight}px`
 
 
         window.addEventListener('resize', () => {
@@ -730,9 +751,13 @@ function RgtBtnMob(el, titles, block, mobileItems, descriptions) {
             }
         })
 
+        console.log(block.offsetTop);
+        console.log(titles[nextSlide].offsetTop);
+        console.log(block.offsetTop + titles[nextSlide].offsetTop);
+
         $("html,body").animate(
             {
-                scrollTop: block.offsetTop + titles[nextSlide].offsetTop - 50,
+                scrollTop: block.offsetTop + titles[0].offsetTop + nextSlide * titles[nextSlide].clientHeight - 20,
                 behavior: "smooth",
             },
             800
@@ -775,8 +800,12 @@ function LeftBtnMob(el, titles, block, mobileItems, descriptions) {
         titles[nextSlide].classList.add("active");
         // console.log(titles[nextSlide].offsetTop);
 
-        descriptions[nextSlide].style.height = `${descriptions[nextSlide].querySelector('p').clientHeight}px`
-        console.log(descriptions, nextSlide);
+        descriptions.forEach((el) => {
+            el.style.height = '0px'
+        })
+
+        let currentHeight = descriptions[nextSlide].querySelector('p').clientHeight
+        descriptions[nextSlide].style.height = `${currentHeight}px`
 
         window.addEventListener('resize', () => {
 
@@ -788,7 +817,7 @@ function LeftBtnMob(el, titles, block, mobileItems, descriptions) {
 
         $("html,body").animate(
             {
-                scrollTop: block.offsetTop + titles[nextSlide].offsetTop - 50,
+                scrollTop: block.offsetTop + titles[0].offsetTop + nextSlide * titles[nextSlide].clientHeight - 20,
                 behavior: "smooth",
             },
             800
