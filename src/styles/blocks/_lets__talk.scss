@@ -44,6 +44,14 @@
     display: flex;
     animation: ShowItem .2s linear;
 
+    .lets__talk__marks {
+      svg {
+        text {
+          animation: draw 4s ease;
+        }
+      }
+    }
+
     .lets__talk__text {
 
       h1 {
