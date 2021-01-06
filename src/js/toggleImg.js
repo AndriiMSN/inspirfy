@@ -272,9 +272,9 @@ function ChangeImages(element, desktopItems, i, direction = "") {
                         let childWidth = el.clientWidth
 
                         if (maxWidth == childWidth) {
-                            el.style.transform = `translateX(${(documentWidth - containerWidth) / 2}px)`
+                            el.style.transform = `translateX(${direction}${(documentWidth - containerWidth) / 2}px)`
                         } else {
-                            el.style.transform = `translateX(15%)`
+                            el.style.transform = `translateX(${direction}15%)`
                         }
 
                         child.style.width = `${childWidth}px`;
