@@ -45,7 +45,7 @@
   }
 
   &__marks {
-    z-index: 30;
+    z-index: 0;
     // 768px
     @media (max-width: $screen-sm-min) {
       margin-top: -15px;
