@@ -368,7 +368,6 @@ let currentY = 0,
 
 window.addEventListener('touchmove', (e) => {
     if (document.documentElement.clientWidth >= 1366) {
-        ;
 
         if (modalLets.classList.contains("open")
             ||
@@ -383,6 +382,7 @@ window.addEventListener('touchmove', (e) => {
             if ((directionX > 50 || directionX < -50) && (directionY < 50 && directionY > -50)) {
 
             } else if (pageYOffset > maxY - 10 && maxY !== 0) {
+
                 if (directionY > 0) {
                     e.preventDefault()
                     e.stopPropagation()
@@ -399,7 +399,7 @@ window.addEventListener('touchmove', (e) => {
         }
     }
 
-}, {passive: false})
+}, document.documentElement.clientWidth >= 1336 ? {passive: false} : {passive: true})
 
 
 window.addEventListener('touchstart', (e) => {
@@ -411,7 +411,7 @@ window.addEventListener('touchstart', (e) => {
 
         return currentY, currentX, false
     }
-}, {passive: false})
+}, document.documentElement.clientWidth >= 1336 ? {passive: false} : {passive: true})
 
 window.addEventListener(
     "touchend",
@@ -423,6 +423,7 @@ window.addEventListener(
             modalLets.classList.contains("open") ||
             modalStart.classList.contains("open")
         ) {
+            e.preventDefault();
             return false;
         }
         let directionY = e.changedTouches[0].clientY - currentY;
@@ -483,7 +484,7 @@ window.addEventListener(
             // }
         }
     },
-    {passive: false}
+    document.documentElement.clientWidth >= 1336 ? {passive: false} : {passive: true}
 );
 
 function touchToSection(e, directionY, directionX) {
