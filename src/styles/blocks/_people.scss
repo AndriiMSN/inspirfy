@@ -421,6 +421,10 @@
         transition: all 0.7s;
       }
 
+      &:hover a {
+        color: inherit;
+      }
+
       img {
         max-width: 112px;
         filter: grayscale(100%);
