@@ -6,7 +6,8 @@
 // let y = regLetterLong.test('') ? '85%' : '80%'
 
 
-function fitSvgTextElements(elements) {
+
+ function fitSvgTextElements(elements) {
 
 
     for (const el of elements) {
@@ -37,6 +38,8 @@ function fitSvgTextElements(elements) {
         el ? el.style.height = `${maxHeight}px` : false
     }
 }
+
+export {fitSvgTextElements};
 
 setTimeout(() => {
     const elements = document.querySelectorAll('.svg-text')

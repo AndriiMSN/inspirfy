@@ -3,125 +3,136 @@
 
 .mobile__menu
 {
-  width: 100%;
-  height: 100vh;
+  width      : 100%;
+  height     : 100vh;
 
-  background: #282828;
+  background : #282828;
   //background: rgba(40, 40, 40, 0.7);
   //backdrop-filter: blur(14px);
-  filter: blur(0px) !important;
+  filter     : blur(0px) !important;
 
-  position: fixed;
-  top: 0;
-  z-index: 150;
+  position   : fixed;
+  top        : 0;
+  z-index    : 150;
 
-  display: none;
-  overflow-y: scroll;
+  display    : none;
+  overflow-y : scroll;
 
 
   & .inherit
   {
-    min-height: 1024px;
-    position: relative;
-    width: 100%;
+	min-height     : 1024px;
+	position       : relative;
+	width          : 100%;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-y: scroll;
+	display        : flex;
+	flex-direction : column;
+	align-items    : center;
+	overflow-y     : scroll;
 
-    // 520px
-    @media (max-width: $screen-mdsm-min)
-    {
-      min-height: 568px;
-    }
+	// 520px
+	@media (max-width : $screen-mdsm-min)
+	{
+	  min-height : 568px;
+	}
   }
 
   &.open
   {
-    display: flex;
+	display : flex;
+
+	.mobile__menu__marks
+	{
+	  svg
+	  {
+		text
+		{
+		  animation : draw 4s ease;
+		}
+	  }
+	}
   }
 
   &__coub
   {
-    position: absolute;
-    right: -10px;
-    top: 257px;
+	position : absolute;
+	right    : -10px;
+	top      : 257px;
 
-    img
-    {
-      width: 100%;
-    }
+	img
+	{
+	  width : 100%;
+	}
 
-    // 520px
-    @media (max-width: $screen-mdsm-min)
-    {
-      max-width: 74px;
-      right: -3px;
-      top: 167px;
-    }
+	// 520px
+	@media (max-width : $screen-mdsm-min)
+	{
+	  max-width : 74px;
+	  right     : -3px;
+	  top       : 167px;
+	}
   }
 
   &__piramide
   {
 
-    &__big
-    {
-      position: absolute;
-      left: -10px;
-      bottom: 316px;
+	&__big
+	{
+	  position : absolute;
+	  left     : -10px;
+	  bottom   : 316px;
 
-      img
-      {
-        width: 100%;
-      }
+	  img
+	  {
+		width : 100%;
+	  }
 
-      // 520px
-      @media (max-width: $screen-mdsm-min)
-      {
-        max-width: 110px;
-        bottom: 93px;
-      }
-    }
+	  // 520px
+	  @media (max-width : $screen-mdsm-min)
+	  {
+		max-width : 110px;
+		bottom    : 93px;
+	  }
+	}
 
-    &__small
-    {
-      position: absolute;
-      bottom: 69px;
-      right: 76px;
-      max-width: 69px;
+	&__small
+	{
+	  position  : absolute;
+	  bottom    : 69px;
+	  right     : 76px;
+	  max-width : 69px;
 
-      img
-      {
-        width: 100%;
-      }
+	  img
+	  {
+		width : 100%;
+	  }
 
-      // 520px
-      @media (max-width: $screen-mdsm-min)
-      {
-        right: 7px;
-        bottom: 16px;
-      }
-    }
+	  // 520px
+	  @media (max-width : $screen-mdsm-min)
+	  {
+		right  : 7px;
+		bottom : 16px;
+	  }
+	}
 
 
   }
 
   &__top
   {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	display         : flex;
+	justify-content : space-between;
+	align-items     : center;
 
-    margin-top: 24px;
-    width: calc(100% - 50px);
-    position: relative;
+	margin-top      : 24px;
+	width           : calc(100% - 50px);
+	position        : relative;
   }
 
   &__close,
   &__logo
   {
-    //position: absolute;
+	//position: absolute;
   }
 
   &__close
@@ -131,63 +142,147 @@
 
   &__logo
   {
-    margin-right: 50%;
-    transform: translateX(50%);
+	margin-right : 50%;
+	transform    : translateX(50%);
 
-    // 520px
-    @media (max-width: $screen-mdsm-min)
-    {
-      width: 95px;
+	// 520px
+	@media (max-width : $screen-mdsm-min)
+	{
+	  width : 95px;
 
-      img
-      {
-        width: 100%;
-      }
-    }
+	  img
+	  {
+		width : 100%;
+	  }
+	}
   }
 
+  &__marks
+  {
+
+	margin    : 65px 0 45px;
+	width     : 100%;
+	z-index   : 1;
+
+	display   : flex;
+
+	transform : translateX(-25%);
+
+	// 768px
+	@media (max-width : $screen-sm-min)
+	{
+	  transform : translateX(-60%);
+	}
+
+	// 768px
+	@media (max-width : $screen-sm-min)
+	{
+	  margin : 35px 0 30px;
+	}
+
+	div
+	{
+
+	  opacity   : 0.1;
+	  width     : 100%;
+
+	  min-width : 308px;
+	  margin    : 0 45px;
+
+	  // 768px
+	  @media (max-width : $screen-sm-min)
+	  {
+		min-width : 185px;
+		margin    : 0 21px;
+	  }
+
+	  &:first-child
+	  {
+
+	  }
+
+	  &:nth-child(2)
+	  {
+
+	  }
+
+	  &:nth-child(3)
+	  {
+
+	  }
+	}
+
+	svg
+	{
+
+	  &.svg-text
+	  {
+
+		text
+		{
+		  @include text($Noto-sans, normal, bold, 100px, 90px);
+
+		  color             : transparent;
+		  fill-opacity      : 0;
+		  stroke-width      : 2;
+		  stroke            : white;
+
+
+		  stroke-dasharray  : 860;
+		  stroke-dashoffset : 0;
+
+		  // 768px
+		  @media (max-width : $screen-sm-min)
+		  {
+
+			font-size   : 70px;
+			line-height : 70px;
+
+		  }
+		}
+	  }
+	}
+  }
 
   &__nav
   {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-height: fit-content;
+	display         : flex;
+	flex-direction  : column;
+	align-items     : center;
+	justify-content : center;
+	width           : 100%;
+	min-height      : fit-content;
 
-    &__items
-    {
-      list-style: none;
-      width: 100%;
-      margin-top: 204px;
+	&__items
+	{
+	  list-style : none;
+	  width      : 100%;
 
-      // 520px
-      @media (max-width: $screen-mdsm-min)
-      {
-        margin-top: 109px;
-      }
+	  // 520px
+	  @media (max-width : $screen-mdsm-min)
+	  {
+	  }
 
-      &__item
-      {
-        @include text($Noto-sans, normal, 600, 51px, 66px);
-        margin-bottom: 48px;
-        cursor: pointer;
-        text-align: center;
+	  &__item
+	  {
+		@include text($Noto-sans, normal, 600, 51px, 66px);
+		margin-bottom : 48px;
+		cursor        : pointer;
+		text-align    : center;
 
-        // 520px
-        @media (max-width: $screen-mdsm-min)
-        {
-          font-size: 24px;
-          line-height: 32px;
-          margin-bottom: 32px;
-        }
+		// 520px
+		@media (max-width : $screen-mdsm-min)
+		{
+		  font-size     : 24px;
+		  line-height   : 32px;
+		  margin-bottom : 32px;
+		}
 
-        &.active
-        {
-          opacity: 1;
-        }
-      }
-    }
+		&.active
+		{
+		  opacity : 1;
+		}
+	  }
+	}
   }
 }

@@ -169,6 +169,45 @@
 
 		  }
 
+		  &.stop-animation
+		  {
+
+			.stages__items__item__animate
+			{
+			  &__icon
+			  {
+				div
+				{
+				  animation : none !important;
+				  // 1560px
+				  @media (max-width : $screen-xl-min)
+				  {
+					animation : none !important;
+				  }
+				  // 992px
+				  @media (max-width : $screen-md-min)
+				  {
+					animation : none !important;
+				  }
+				}
+			  }
+
+			  &__line
+			  {
+				div
+				{
+				  animation : none !important;
+				  // 992px
+				  @media (max-width : $screen-md-min)
+				  {
+					animation : none !important;
+				  }
+				}
+			  }
+			}
+		  }
+
+
 		  &:nth-child(1)
 		  {
 			.stages__items__item__animate
@@ -322,8 +361,7 @@
 			}
 		  }
 
-
-		  &:last-child
+		  &:nth-child(5)
 		  {
 			.stages__items__item__animate
 			{
@@ -344,9 +382,83 @@
 				  }
 				}
 			  }
+
+			  &__line
+			  {
+				div
+				{
+				  animation : StagesAnimateLine ease-in 1.4s 8.9s, StagesInitLine 8.9s;
+				  // 992px
+				  @media (max-width : $screen-md-min)
+				  {
+					animation : StagesAnimateLineMob ease-in 1.4s 8.9s, StagesInitLine 8.9s;
+				  }
+				}
+			  }
 			}
 		  }
 
+		  &:nth-child(6)
+		  {
+			.stages__items__item__animate
+			{
+			  &__icon
+			  {
+				div
+				{
+				  animation : StagesAnimateIconPc .4s ease-out 10.3s, StagesInitIcon 10.3s;
+				  // 1560px
+				  @media (max-width : $screen-xl-min)
+				  {
+					animation : StagesAnimateIconTab .4s ease-out 10.3s, StagesInitIcon 10.3s;
+				  }
+				  // 992px
+				  @media (max-width : $screen-md-min)
+				  {
+					animation : StagesAnimateIconMob .4s ease-out 10.3s, StagesInitIcon 10.3s;
+				  }
+				}
+			  }
+
+			  &__line
+			  {
+				div
+				{
+				  animation : StagesAnimateLine ease-in 1.4s 10.7s, StagesInitLine 10.7s;
+				  // 992px
+				  @media (max-width : $screen-md-min)
+				  {
+					animation : StagesAnimateLineMob ease-in 1.4s 10.7s, StagesInitLine 10.7s;
+				  }
+				}
+			  }
+			}
+		  }
+
+
+		  &:last-child
+		  {
+			.stages__items__item__animate
+			{
+			  &__icon
+			  {
+				div
+				{
+				  animation : StagesAnimateIconPc .4s ease-out 12.1s, StagesInitIcon 12.1s;
+				  // 1560px
+				  @media (max-width : $screen-xl-min)
+				  {
+					animation : StagesAnimateIconTab .4s ease-out 12.1s, StagesInitIcon 12.1s;
+				  }
+				  // 992px
+				  @media (max-width : $screen-md-min)
+				  {
+					animation : StagesAnimateIconMob .4s ease-out 12.1s, StagesInitIcon 12.1s;
+				  }
+				}
+			  }
+			}
+		  }
 
 		}
 	  }
@@ -796,40 +908,32 @@
 		}
 	  }
 
-	  &.active
+	  &.stop-animation
 	  {
 		.stages__items__item__animate
 		{
 		  &__icon
 		  {
-			background-color : #ffffff;
+			div
+			{
+			  background-color : #1f1f1f;
+			}
 		  }
 
 		  &__line
 		  {
-			position : relative;
 
 			div
 			{
-			  position   : relative;
-			  width      : 70%;
-			  height     : 100%;
-			  background : linear-gradient(
-							  90deg,
-							  #ffffff 0.34%,
-							  rgba(230, 230, 230, 0.01) 118.37%
-			  );
-			  z-index    : 20;
+
+			  background : none;
+
 			  // 992px
 			  @media (max-width : $screen-md-min)
 			  {
-				width      : 100%;
-				height     : 70%;
-				background : linear-gradient(
-								180deg,
-								#ffffff 0.34%,
-								rgba(230, 230, 230, 0.01) 118.37%
-				);
+
+				background : none;
+
 			  }
 			}
 		  }

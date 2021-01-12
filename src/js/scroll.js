@@ -1,7 +1,7 @@
 let delay = true;
 setTimeout(() => {
     delay = false
-}, 3500)
+}, 3600)
 
 let wheelDelay = 1600
 
@@ -571,7 +571,7 @@ window.addEventListener('scroll', (e) => {
         if (
             sections[i + 1]
             &&
-            (pageYOffset + document.documentElement.clientHeight > (sections[i + 1].offsetTop + (sections[i + 1].clientHeight / 4)) - 10)
+            (pageYOffset + document.documentElement.clientHeight > (sections[i + 1].offsetTop + (sections[i + 1].clientHeight / 10)) - 10)
             // &&
             // (pageYOffset  < (sections[i + 1].offsetTop + (sections[i + 1].clientHeight) / 2))
         ) {

@@ -1,13 +1,13 @@
-go();
-window.addEventListener("resize", go);
+FitStagesWidth();
+window.addEventListener("resize", FitStagesWidth);
 
-function go() {
-  if (document.documentElement.clientWidth > 768) {
-    document.querySelector(".stages__items").style.width = `${
-      (document.documentElement.clientWidth -
-        document.querySelector(".hero .container").clientWidth) /
-        2 +
-      document.querySelector(".hero .container").clientWidth
-    }px`;
-  }
+function FitStagesWidth() {
+    if (document.documentElement.clientWidth > 768) {
+        document.querySelector(".stages__items").style.width = `${
+            (document.documentElement.clientWidth -
+                document.querySelector(".hero .container").clientWidth) /
+            2 +
+            document.querySelector(".hero .container").clientWidth
+        }px`;
+    }
 }

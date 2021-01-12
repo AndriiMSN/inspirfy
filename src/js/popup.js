@@ -16,37 +16,10 @@ const letsTalkCloseBtn = document.querySelector(
 const html = document.querySelector('html')
 
 // MODALS RENDER SVG ------------------------------------------------------------------
-function fitSvgTextModals(elements) {
 
-    for (const element of elements) {
+import {fitSvgTextElements} from "./renderSVG";
 
-        const box = element.querySelectorAll('text') ?
-            element.querySelectorAll('text') : false
-        // console.log(box);
 
-        let maxWidth, maxHeight
-
-        maxWidth = box[0].getBBox().width
-        maxHeight = box[0].getBBox().height
-
-        if (box.length > 0) {
-
-            for (let i = 1; i < box.length; i++) {
-
-                (maxWidth > box[i].getBBox().width) ? maxWidth = maxWidth : maxWidth = box[i].getBBox().width
-
-                maxHeight += box[i].getBBox().height
-
-                // console.log(maxHeight);
-
-            }
-
-        }
-        element ? element.style.width = `${maxWidth}px` : false
-        element ? element.style.height = `${maxHeight}px` : false
-    }
-
-}
 
 const letsTalkSvgText = document.querySelectorAll('.lets__talk .svg-text')
 const startEarningSvgText = document.querySelectorAll('.start__earning .svg-text')
@@ -89,9 +62,9 @@ function OpenModal(btn,
 
                     modal.classList.add("open");
 
-                    svgText && fitSvgTextModals(svgText)
+                    svgText && fitSvgTextElements(svgText)
                     svgText && window.addEventListener('resize', () => {
-                        fitSvgTextModals(svgText)
+                        fitSvgTextElements(svgText)
                     });
 
                     html.classList.add('lock')
