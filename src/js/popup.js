@@ -17,14 +17,44 @@ const html = document.querySelector('html')
 
 // MODALS RENDER SVG ------------------------------------------------------------------
 
-import {fitSvgTextElements} from "./renderSVG";
-
-
-
 const letsTalkSvgText = document.querySelectorAll('.lets__talk .svg-text')
+
 const startEarningSvgText = document.querySelectorAll('.start__earning .svg-text')
 
 let currPosition = 0;
+
+function fitSvgTextElements(elements) {
+
+
+    for (const el of elements) {
+
+        const box = el.querySelectorAll('text') ?
+            el.querySelectorAll('text') : false
+        // console.log(box);
+
+        let maxWidth, maxHeight
+
+        maxWidth = box[0].getBBox().width
+        maxHeight = box[0].getBBox().height
+
+        if (box.length > 0) {
+
+            for (let i = 1; i < box.length; i++) {
+
+                (maxWidth > box[i].getBBox().width) ? maxWidth = maxWidth : maxWidth = box[i].getBBox().width
+
+                maxHeight += box[i].getBBox().height
+
+                // console.log(maxHeight);
+
+            }
+
+        }
+        el ? el.style.width = `${maxWidth}px` : false
+        el ? el.style.height = `${maxHeight}px` : false
+    }
+}
+
 
 OpenModal(
     startEarningsBtn,

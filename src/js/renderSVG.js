@@ -6,8 +6,7 @@
 // let y = regLetterLong.test('') ? '85%' : '80%'
 
 
-
- function fitSvgTextElements(elements) {
+function fitSvgTextElements(elements) {
 
 
     for (const el of elements) {
@@ -39,7 +38,7 @@
     }
 }
 
-export {fitSvgTextElements};
+
 
 setTimeout(() => {
     const elements = document.querySelectorAll('.svg-text')
@@ -87,6 +86,34 @@ function CreateSvgMainBlock(text, element) {
 }
 
 CreateSvgMainBlock()
+
+// FAQ BLOCK-----------------------------------------------------------
+
+const arrayFaqItemsTitles = document.querySelectorAll('.faq__toggle__items__item__title__question')
+
+function CreateSvgTextFaqQuestions() {
+    for (let i = 1; i < arrayFaqItemsTitles.length + 1; i++) {
+        let num = i > 9 ? i : '0' + i.toString()
+        let svg = `
+             <svg 
+                class="svg-text svg-text-faq" 
+                shape-rendering="geometricPrecision"
+                xmlns="http://www.w3.org/2000/svg">
+                 <text 
+                    text-rendering="geometricPrecision"
+                    x="0" 
+                    y="80%">
+                        ${num}
+                 </text>
+             </svg>
+        `
+        arrayFaqItemsTitles[i - 1].insertAdjacentHTML('beforebegin', svg)
+
+    }
+}
+
+CreateSvgTextFaqQuestions()
+
 
 // BRANDS ------------------------------------------------------------------
 
@@ -275,33 +302,6 @@ CreateSvgMainBlock()
 //
 // CreateSvgTextPeopleTitle()
 
-
-// FAQ BLOCK-----------------------------------------------------------
-
-const arrayFaqItemsTitles = document.querySelectorAll('.faq__toggle__items__item__title__question')
-
-function CreateSvgTextFaqQuestions() {
-    for (let i = 1; i < arrayFaqItemsTitles.length + 1; i++) {
-        let num = i > 9 ? i : '0' + i.toString()
-        let svg = `
-             <svg 
-                class="svg-text svg-text-faq" 
-                shape-rendering="geometricPrecision"
-                xmlns="http://www.w3.org/2000/svg">
-                 <text 
-                    text-rendering="geometricPrecision"
-                    x="0" 
-                    y="80%">
-                        ${num}
-                 </text>
-             </svg>
-        `
-        arrayFaqItemsTitles[i - 1].insertAdjacentHTML('beforebegin', svg)
-
-    }
-}
-
-CreateSvgTextFaqQuestions()
 
 // WRITE US BLOCK -----------------------------------------------------
 

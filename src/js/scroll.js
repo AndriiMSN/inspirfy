@@ -423,7 +423,7 @@ window.addEventListener(
             modalLets.classList.contains("open") ||
             modalStart.classList.contains("open")
         ) {
-
+            e.preventDefault()
             return false;
         }
         let directionY = e.changedTouches[0].clientY - currentY;
