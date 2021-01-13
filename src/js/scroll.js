@@ -366,126 +366,134 @@ function scrollToSection(e,
 let currentY = 0,
     currentX = 0
 
-window.addEventListener('touchmove', (e) => {
-    if (document.documentElement.clientWidth >= 1366) {
+function touchmove(e) {
+    if (modalLets.classList.contains("open")
+        ||
+        modalStart.classList.contains("open")
+    ) {
 
-        if (modalLets.classList.contains("open")
-            ||
-            modalStart.classList.contains("open")
-        ) {
+    } else {
+        let maxY = sections[sections.length - 1].offsetTop;
+        let directionY = e.changedTouches[0].clientY - currentY;
+        let directionX = e.changedTouches[0].clientX - currentX;
+        // console.log(directionX);
+        if ((directionX > 50 || directionX < -50) && (directionY < 50 && directionY > -50)) {
 
-        } else {
-            let maxY = sections[sections.length - 1].offsetTop;
-            let directionY = e.changedTouches[0].clientY - currentY;
-            let directionX = e.changedTouches[0].clientX - currentX;
-            // console.log(directionX);
-            if ((directionX > 50 || directionX < -50) && (directionY < 50 && directionY > -50)) {
+        } else if (pageYOffset > maxY - 10 && maxY !== 0) {
 
-            } else if (pageYOffset > maxY - 10 && maxY !== 0) {
-
-                if (directionY > 0) {
-                    e.preventDefault()
-                    e.stopPropagation()
-                    return false
-                }
-            } else {
-
-
+            if (directionY > 0) {
                 e.preventDefault()
                 e.stopPropagation()
                 return false
-
             }
-        }
-    }
-
-}, document.documentElement.clientWidth >= 1336 ? {passive: false} : {passive: true})
+        } else {
 
 
-window.addEventListener('touchstart', (e) => {
-    if (document.documentElement.clientWidth >= 1366) {
-        // e.preventDefault()
-        currentY = e.changedTouches[0].clientY;
-        currentX = e.changedTouches[0].clientX;
-
-
-        return currentY, currentX, false
-    }
-}, document.documentElement.clientWidth >= 1336 ? {passive: false} : {passive: true})
-
-window.addEventListener(
-    "touchend",
-    function (e) {
-        // console.log('touchend');
-        // If open modals
-        // e.preventDefault()
-        if (
-            modalLets.classList.contains("open") ||
-            modalStart.classList.contains("open")
-        ) {
             e.preventDefault()
-            return false;
+            e.stopPropagation()
+            return false
+
         }
-        let directionY = e.changedTouches[0].clientY - currentY;
+    }
+}
 
-        let directionX = e.changedTouches[0].clientX - currentX;
-
-        if (document.documentElement.clientWidth >= 1366 && (directionY !== 0 && directionX !== 0)) {
-
-
-            // console.log(directionX, directionY);
-
-            // console.log(directionX, directionY);
+function touchstart(e) {
+    currentY = e.changedTouches[0].clientY;
+    currentX = e.changedTouches[0].clientX;
 
 
-            let maxY = sections[sections.length - 1].offsetTop;
+    return currentY, currentX, false
+}
 
-            if (pageYOffset < maxY - 10 && maxY !== 0) {
+function touchend(e) {
+    if (
+        modalLets.classList.contains("open") ||
+        modalStart.classList.contains("open")
+    ) {
+        return false;
+    }
+    let directionY = e.changedTouches[0].clientY - currentY;
+
+    let directionX = e.changedTouches[0].clientX - currentX;
+
+    if ((directionY !== 0 && directionX !== 0)) {
 
 
-                // Remove scroll after scrolling to next
-                // section by Y
-                if (directionY < 50 && directionY > -50) {
-                    e.preventDefault();
+        // console.log(directionX, directionY);
 
-                    // console.log('prev');
-                } else {
+        // console.log(directionX, directionY);
 
-                    // if (pageYOffset > maxY - 10 && directionY < 0) {
-                    //     console.log('max');
-                    // } else {
 
-                    touchToSection(e,
-                        directionY,
-                        directionX);
-                    // }
-                }
+        let maxY = sections[sections.length - 1].offsetTop;
+
+        if (pageYOffset < maxY - 10 && maxY !== 0) {
+
+
+            // Remove scroll after scrolling to next
+            // section by Y
+            if (directionY < 50 && directionY > -50) {
+                e.preventDefault();
+
+                // console.log('prev');
             } else {
-                if (directionY > 0) {
-                    // console.log('uup');
-                    touchToSection(e,
-                        directionY,
-                        directionX);
-                }
-            }
 
-            // } else {
-            // if scroll up start scroll by sections
-            // if (pageYOffset < maxY && directionY < 0 && directionX === 0) {
-            //
-            //     // Remove scroll after scrolling to
-            //     // next section by Y
-            //     if (directionY !== 0) {
-            //         e.preventDefault();
-            //     }
-            //     touchToSection(e,
-            //         directionY,
-            //         directionX);
-            // }
+                // if (pageYOffset > maxY - 10 && directionY < 0) {
+                //     console.log('max');
+                // } else {
+
+                touchToSection(e,
+                    directionY,
+                    directionX);
+                // }
+            }
+        } else {
+            if (directionY > 0) {
+                // console.log('uup');
+                touchToSection(e,
+                    directionY,
+                    directionX);
+            }
         }
-    },
-    document.documentElement.clientWidth >= 1336 ? {passive: false} : {passive: true}
-);
+
+        // } else {
+        // if scroll up start scroll by sections
+        // if (pageYOffset < maxY && directionY < 0 && directionX === 0) {
+        //
+        //     // Remove scroll after scrolling to
+        //     // next section by Y
+        //     if (directionY !== 0) {
+        //         e.preventDefault();
+        //     }
+        //     touchToSection(e,
+        //         directionY,
+        //         directionX);
+        // }
+    }
+}
+
+function InitTouchScroll() {
+    if (document.documentElement.clientWidth >= 1366) {
+        window.addEventListener('touchmove', touchmove,
+            {passive: false})
+
+
+        window.addEventListener('touchstart', touchstart, {passive: false})
+
+        window.addEventListener(
+            "touchend",
+            touchend,
+            {passive: false}
+        );
+    } else {
+        window.removeEventListener('touchmove', touchmove,)
+        window.removeEventListener('touchstart', touchstart,)
+        window.removeEventListener('touchend', touchend,)
+    }
+}
+
+InitTouchScroll()
+
+window.addEventListener('resize', InitTouchScroll)
 
 function touchToSection(e, directionY, directionX) {
     if (delay || sections[2].offsetTop === 0) {
