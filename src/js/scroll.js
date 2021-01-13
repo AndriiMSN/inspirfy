@@ -423,7 +423,7 @@ window.addEventListener(
             modalLets.classList.contains("open") ||
             modalStart.classList.contains("open")
         ) {
-
+            e.preventDefault()
             return false;
         }
         let directionY = e.changedTouches[0].clientY - currentY;
@@ -553,44 +553,83 @@ window.addEventListener('scroll',
             }
         }
     })
+
+let lastScrollTop = 0;
 let i = 0
 window.addEventListener('scroll', (e) => {
+
+
     if (document.documentElement.clientWidth < 1366) {
 
-        if (
-            pageYOffset > sections[sections.length - 2].offsetTop
-        ) {
+        let st = window.pageYOffset || document.documentElement.scrollTop
 
-            counter = sections.length - 1;
-            sections[counter].classList.add('animate')
-            sections[counter].classList.add('active')
-            return counter
+        if (st > lastScrollTop) {
+
+            if (
+                pageYOffset > sections[sections.length - 2].offsetTop
+            ) {
+
+                counter = sections.length - 1;
+                sections[counter].classList.add('animate')
+                sections[counter].classList.add('active')
+                console.log(counter, '1')
+                return counter
+            }
+
+
+            if (
+                sections[i + 1]
+                &&
+                (pageYOffset + document.documentElement.clientHeight > (sections[i + 1].offsetTop + (sections[i + 1].clientHeight / 10)) - 10)
+                // &&
+                // (pageYOffset  < (sections[i + 1].offsetTop + (sections[i + 1].clientHeight) / 2))
+            ) {
+                // console.log(i + 1);
+                i = i + 1
+                counter = i
+                sections[counter].classList.add('animate')
+                sections[counter].classList.add('active')
+                console.log(counter, '2')
+                return counter, i
+            }
+        } else {
+            if (
+                pageYOffset < sections[1].offsetTop
+            ) {
+
+                counter = 0;
+                sections[counter].classList.add('animate')
+                sections[counter].classList.add('active')
+                console.log(counter, '3')
+                return counter
+            }
+
+
+            if (
+                sections[i - 1]
+                &&
+                (pageYOffset - document.documentElement.clientHeight < (sections[i - 1].offsetTop + (sections[i - 1].clientHeight / 10)) - 10)
+                // &&
+                // (pageYOffset  < (sections[i + 1].offsetTop + (sections[i + 1].clientHeight) / 2))
+            ) {
+                // console.log(i + 1);
+                i = i - 1
+                counter = i
+                sections[counter].classList.add('animate')
+                sections[counter].classList.add('active')
+                console.log(counter, '4')
+                return counter, i
+            }
         }
-
-
-        if (
-            sections[i + 1]
-            &&
-            (pageYOffset + document.documentElement.clientHeight > (sections[i + 1].offsetTop + (sections[i + 1].clientHeight / 10)) - 10)
-            // &&
-            // (pageYOffset  < (sections[i + 1].offsetTop + (sections[i + 1].clientHeight) / 2))
-        ) {
-            // console.log(i + 1);
-            i = i + 1
-            counter = i
-            sections[counter].classList.add('animate')
-            sections[counter].classList.add('active')
-
-            return counter, i
-        }
+        return lastScrollTop = st <= 0 ? 0 : st
     }
-
 })
 
 let oldWidth = document.documentElement.clientWidth
 let oldHeight = document.documentElement.clientHeight
 
 window.addEventListener('resize', () => {
+    console.log(counter)
     if (document.documentElement.clientWidth !== oldWidth && document.documentElement.clientHeight !== oldHeight) {
         // console.log(counter);
         sections[counter].classList.add("active");
